@@ -14,7 +14,7 @@
    <string>QtKalmanFilterExamplesDialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolKalmanFilterer.qrc">
+   <iconset resource="KalmanFilterer.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -45,7 +45,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="ToolKalmanFilterer.qrc"/>
+  <include location="KalmanFilterer.qrc"/>
  </resources>
  <connections/>
 </ui>

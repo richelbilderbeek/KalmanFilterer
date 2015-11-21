@@ -6,16 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>521</height>
+    <width>974</width>
+    <height>560</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="ToolKalmanFilterer.qrc">
-    <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
+   <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -698,8 +694,6 @@ predicted states</string>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ToolKalmanFilterer.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

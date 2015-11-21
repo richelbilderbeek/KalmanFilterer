@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolKalmanFilterer.qrc">
+   <iconset resource="KalmanFilterer.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -332,7 +332,7 @@ Kalman gain</string>
   </layout>
  </widget>
  <resources>
-  <include location="ToolKalmanFilterer.qrc"/>
+  <include location="KalmanFilterer.qrc"/>
  </resources>
  <connections/>
 </ui>

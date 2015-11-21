@@ -57,7 +57,7 @@ QPushButton { font: 48px, bold, &quot;Courier New&quot;, courier, monospace }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolKalmanFilterer.qrc">:/images/ToolKalmanFiltererWelcome.png</pixmap>
+      <pixmap resource="KalmanFilterer.qrc">:/images/KalmanFiltererWelcome.png</pixmap>
      </property>
     </widget>
    </item>
@@ -79,7 +79,7 @@ QPushButton { font: 48px, bold, &quot;Courier New&quot;, courier, monospace }
   <tabstop>button_quit</tabstop>
  </tabstops>
  <resources>
-  <include location="ToolKalmanFilterer.qrc"/>
+  <include location="KalmanFilterer.qrc"/>
  </resources>
  <connections/>
 </ui>
