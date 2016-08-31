@@ -1,4 +1,3 @@
 #!/bin/bash
-qmake CaesarCipherConsoleTest.pro
+qmake KalmanFiltererConsole.pro
 make
-./CaesarCipherConsoleTest
