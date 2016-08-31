@@ -11,6 +11,7 @@ before_install:
 
 install: 
   - sudo apt-get install -qq g++-5
+  - ./install_oclint.sh
 
 addons:
   apt:
@@ -37,6 +38,7 @@ script:
  - ./clean.sh # Now build without -gcov
  - ./build_desktop.sh
  - ./build_console.sh
+  - ./do_oclint.sh
 
 after_success: 
   - bash <(curl -s https://codecov.io/bash)
