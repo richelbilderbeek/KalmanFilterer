@@ -55,11 +55,11 @@
 #include "trace.h"
 #include "ui_qtkalmanfilterermaindialog.h"
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+//#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
 //Due to Qmake error
 //http://richelbilderbeek.nl/CppQmakeErrorUnknownModulesInQtLocationSensors.htm
 #define DISABLE_QWEBVIEW
-#endif
+//#endif
 
 #pragma GCC diagnostic pop
 
