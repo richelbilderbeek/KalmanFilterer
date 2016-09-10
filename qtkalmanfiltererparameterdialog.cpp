@@ -57,9 +57,9 @@ ribi::kalman::QtKalmanFiltererParameterDialog::QtKalmanFiltererParameterDialog(
   //ui->table->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
   //ui->table->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
   QObject::connect(ui->table->model(),
-    &QAbstractItemModel::layoutChanged,
+    SIGNAL(layoutChanged()),
     this,
-    &ribi::kalman::QtKalmanFiltererParameterDialog::OnModelSizeChanged
+    SLOT(OnModelSizeChanged())
   );
 }
 

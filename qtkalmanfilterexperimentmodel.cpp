@@ -207,9 +207,9 @@ ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(QObje
     assert(m);
     QObject::connect(
       m,
-      &QAbstractTableModel::dataChanged,
+      SIGNAL(dataChanged(QModelIndex,QModelIndex)),
       this,
-      &ribi::kalman::QtKalmanFilterExperimentModel::OnStateNamesChanged
+      SLOT(OnStateNamesChanged())
     );
   }
 }
