@@ -8,7 +8,7 @@ include(../RibiLibraries/Qwt.pri)
 
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
-include(../RibiClasses/CppKalmanFilter/CppKalmanFilter.pri)
+include(CppKalmanFilter.pri)
 include(../RibiClasses/CppMatrix/CppMatrix.pri)
 include(../RibiClasses/CppQtMatrix/CppQtMatrix.pri)
 include(../RibiClasses/CppQtModel/CppQtModel.pri)
