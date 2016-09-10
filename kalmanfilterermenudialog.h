@@ -7,7 +7,6 @@
 #include "about.h"
 #include "menudialog.h"
 #include "help.h"
-#include "richelbilderbeekprogram.h"
 
 namespace ribi {
 namespace kalman {
@@ -22,10 +21,6 @@ struct KalmanFiltererMenuDialog final : public ribi::MenuDialog
 
   private:
   int ExecuteSpecific(const std::vector<std::string>& argv) noexcept override;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

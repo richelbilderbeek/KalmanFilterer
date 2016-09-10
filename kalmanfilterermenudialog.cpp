@@ -22,16 +22,13 @@
 
 int ribi::kalman::KalmanFiltererMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   const int argc = static_cast<int>(argv.size());
-  if (argc == 1)
+  if (argc > 1)
   {
     std::cout << GetHelp() << '\n';
     return 1;
   }
-  assert(!"TODO");
+  std::cout << "KalmanFilterer does not have a command-line version\n";
   return 0;
 }
 
@@ -109,29 +106,3 @@ std::vector<std::string> ribi::kalman::KalmanFiltererMenuDialog::GetVersionHisto
     "2015-11-21: version 2.0: moved to own GitHub"
   };
 }
-
-#ifndef NDEBUG
-void ribi::kalman::KalmanFiltererMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  Container();
-  FixedLagSmootherKalmanFilterFactory();
-  GapsFilledWhiteNoiseSystemFactory();
-  KalmanFilterFactory();
-  //LaggedWhiteNoiseSystem(parameters);
-  Matrix();
-  //StandardKalmanFilter(calculation,parameters);
-  //StandardWhiteNoiseSystem(parameters);
-  //StandardWhiteNoiseSystemParameters();
-  //SteadyStateKalmanFilter(calculation,parameters);
-  //SteadyStateKalmanFilterParameters();
-  //WhiteNoiseSystem(parameters);
-  //StandardKalmanFilterParameters()
-
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif
