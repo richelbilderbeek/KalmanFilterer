@@ -30,13 +30,13 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
- - ./download_other_githubs.sh
- - ./build_other_githubs.sh
- - ./get_code_cov.sh
- - codecov
- #- ./clean.sh # Now build without -gcov
- - ./build_desktop.sh
- - ./build_console.sh
+  - ./download_other_githubs.sh
+  - ./build_other_githubs.sh
+  - ./get_code_cov.sh
+  - codecov
+  #- ./clean.sh # Now build without -gcov
+  - ./build_desktop.sh
+  - ./build_console.sh
   - ./do_oclint.sh
 
 after_success: 
