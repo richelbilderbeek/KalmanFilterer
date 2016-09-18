@@ -14,7 +14,6 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/numeric/ublas/io.hpp>
 #include "matrix.h"
-#include "trace.h"
 
 #pragma GCC diagnostic pop
 

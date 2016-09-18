@@ -6,10 +6,9 @@
 
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/vector_proxy.hpp>
+#include <boost/numeric/conversion/cast.hpp>
 
 #include "matrix.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "standardkalmanfilterfactory.h"
 #pragma GCC diagnostic pop
 
@@ -226,8 +225,6 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::SupplyMeasurementAndInput(
   //ps has length lag
   //P(i) has size state_size x state_size
   //P(i) = P . [ [F-KH]^T ]^i (where ^T denotes a transposition, where ^i denotes an exponent to the power of i
-  TRACE(m_standard_filter->GetLastStandardCalculation()->GetPreviousCovarianceEstimate());
-  TRACE(m_standard_filter->GetLastStandardCalculation()->GetKalmanGain());
   vector<matrix<double> > ps_complex(lag);
   for (int i=0; i!=lag; ++i)
   {
@@ -298,7 +295,6 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::SupplyMeasurementAndInput(
     + new_states_term_b
     + new_states_term_c;
 
-  TRACE("Store the calculation hiero");
   m_last_fixed_lag_smoother_calculation->SetStandardCalculationElement(this->m_standard_filter->GetLastStandardCalculation());
 }
 
@@ -310,7 +306,6 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::Test() noexcept
     if (is_tested) return;
     is_tested = true;
   }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
   try
   {
     boost::numeric_cast<std::size_t>(-1);

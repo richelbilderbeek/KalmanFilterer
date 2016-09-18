@@ -10,7 +10,6 @@
 #include "kalmanfilter.h"
 #include "kalmanfilterparameters.h"
 #include "steadystatekalmanfilterparameters.h"
-#include "trace.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::SteadyStateKalmanFilter::SteadyStateKalmanFilter(

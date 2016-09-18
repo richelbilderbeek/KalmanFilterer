@@ -2,10 +2,7 @@ INCLUDEPATH += \
     ../KalmanFilterer
 
 SOURCES += \
-    ../KalmanFilterer/kalmanfilterermenudialog.cpp
+    $$PWD/kalmanfilterermenudialog.cpp
 
 HEADERS += \
-    ../KalmanFilterer/kalmanfilterermenudialog.h
-
-OTHER_FILES += \
-    ../KalmanFilterer/LICENSE
+    $$PWD/kalmanfilterermenudialog.h

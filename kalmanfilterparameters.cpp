@@ -6,7 +6,6 @@
 #pragma GCC diagnostic pop
 
 #include <cassert>
-#include "trace.h"
 
 ribi::kalman::KalmanFilterParameters::KalmanFilterParameters(
   const boost::numeric::ublas::matrix<double>& control,

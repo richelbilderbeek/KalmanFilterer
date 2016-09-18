@@ -40,10 +40,6 @@ struct LaggedWhiteNoiseSystemParameters : public WhiteNoiseSystemParameters
 
   ///The lag (in timesteps) the lagged white noise system has
   const int m_lag;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

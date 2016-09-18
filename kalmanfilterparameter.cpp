@@ -8,14 +8,11 @@
 #include <stdexcept>
 #include <boost/numeric/conversion/cast.hpp>
 
-#include "testtimer.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::KalmanFilterParameter::KalmanFilterParameter()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
+
 }
 
 std::vector<ribi::kalman::KalmanFilterParameterType> ribi::kalman::KalmanFilterParameter::GetAll() const noexcept
@@ -129,27 +126,3 @@ std::string ribi::kalman::KalmanFilterParameter::ToSymbol(const KalmanFilterPara
   assert(!"Unimplemented type of KalmanFilterParameterType");
   throw std::logic_error(__func__);
 }
-
-#ifndef NDEBUG
-void ribi::kalman::KalmanFilterParameter::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    //Matrix();
-    //const boost::shared_ptr<LaggedWhiteNoiseSystem> my_system
-    //  = LaggedWhiteNoiseSystemFactory().Create(
-    //    Matrix::CreateMatrix(1,1, { 1.0 } ), //control
-    //    Matrix::CreateVector(     { 0.0 } ), //initial_state,
-    //    0,
-    //    Matrix::CreateVector(     { 0.0 } ), //real_measurement_noise
-    //    Matrix::CreateVector(     { 0.0 } ), //real_process_noise
-    //    Matrix::CreateMatrix(1,1, { 1.0 } )  //state_transition
-    //);
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif

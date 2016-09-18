@@ -10,8 +10,6 @@
 
 #include "ribi_random.h"
 #include "matrix.h"
-#include "trace.h"
-#include "testtimer.h"
 #include "gapsfilledwhitenoisesystem.h"
 #include "gapsfilledwhitenoisesystemfactory.h"
 #include "gapsfilledwhitenoisesystemparameters.h"
@@ -117,15 +115,6 @@ const boost::numeric::ublas::vector<double>&
 #ifndef NDEBUG
 void ribi::kalman::GapsFilledWhiteNoiseSystem::Test() noexcept
 {
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    ribi::Random();
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
   //Check if measurements are indeed lagged:
   //The system's real value should update immediatly, but this fresh measurement
   //must only be accessible after lag timesteps

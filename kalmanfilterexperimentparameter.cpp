@@ -12,8 +12,6 @@
 
 #include "kalmanfilterparameter.h"
 #include "whitenoisesystemparameter.h"
-#include "testtimer.h"
-#include "trace.h"
 
 const std::vector<std::pair<ribi::kalman::KalmanFilterParameterType,ribi::kalman::KalmanFilterExperimentParameterType> >
   ribi::kalman::KalmanFilterExperimentParameter::m_map_kalman_filter = CreateMapKalmanFilter();
@@ -365,7 +363,6 @@ void ribi::kalman::KalmanFilterExperimentParameter::Test() noexcept
     if (is_tested) return;
     is_tested = true;
   }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
   KalmanFilterExperimentParameter p;
   assert( p.IsMatrix(KalmanFilterExperimentParameterType::control));
   assert( p.IsMatrix(KalmanFilterExperimentParameterType::estimated_measurement_noise));

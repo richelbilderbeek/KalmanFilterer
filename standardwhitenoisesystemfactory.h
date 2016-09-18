@@ -29,11 +29,6 @@ struct StandardWhiteNoiseSystemFactory
     const boost::shared_ptr<WhiteNoiseSystemParameters>& parameters
   ) const noexcept;
 
-  private:
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

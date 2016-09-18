@@ -10,13 +10,11 @@
 #pragma GCC diagnostic pop
 
 #include "matrix.h"
-#include "trace.h"
 #include "laggedwhitenoisesystem.h"
 #include "laggedwhitenoisesystemfactory.h"
 #include "laggedwhitenoisesystemparameters.h"
 #include "standardwhitenoisesystemparameters.h"
 #include "standardwhitenoisesystemfactory.h"
-#include "testtimer.h"
 
 ribi::kalman::LaggedWhiteNoiseSystem::LaggedWhiteNoiseSystem(
   const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters)
@@ -92,7 +90,6 @@ void ribi::kalman::LaggedWhiteNoiseSystem::Test() noexcept
     if (is_tested) return;
     is_tested = true;
   }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
   //Check if measurements are indeed lagged:
   //The system's real value should update immediatly, but this fresh measurement
   //must only be accessible after lag timesteps

@@ -5,14 +5,11 @@
 #include "gapsfilledwhitenoisesystemfactory.h"
 
 #include "matrix.h"
-#include "testtimer.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::GapsFilledWhiteNoiseSystemFactory::GapsFilledWhiteNoiseSystemFactory()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
+
 }
 
 boost::shared_ptr<ribi::kalman::GapsFilledWhiteNoiseSystem> ribi::kalman::GapsFilledWhiteNoiseSystemFactory::Create(
@@ -65,25 +62,4 @@ boost::shared_ptr<ribi::kalman::GapsFilledWhiteNoiseSystem> ribi::kalman::GapsFi
 
   return my_system;
 }
-#ifndef NDEBUG
-void ribi::kalman::GapsFilledWhiteNoiseSystemFactory::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    Matrix();
-    GapsFilledWhiteNoiseSystemFactory().Create(
-      Matrix::CreateMatrix(1,1, { 1.0 } ), //control
-      Matrix::CreateVector(     { 0.0 } ), //initial_state,
-      Matrix::CreateVector(     {   1 } ), //measurement frequencies
-      Matrix::CreateVector(     { 0.0000001 } ), //real_measurement_noise
-      Matrix::CreateVector(     { 0.0000001 } ), //real_process_noise
-      Matrix::CreateMatrix(1,1, { 1.0 } )  //state_transition
-    );
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif
+

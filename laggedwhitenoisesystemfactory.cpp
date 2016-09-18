@@ -3,7 +3,6 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include "laggedwhitenoisesystemfactory.h"
-#include "testtimer.h"
 #include "matrix.h"
 #pragma GCC diagnostic pop
 
@@ -85,6 +84,5 @@ void ribi::kalman::LaggedWhiteNoiseSystemFactory::Test() noexcept
         Matrix::CreateMatrix(1,1, { 1.0 } )  //state_transition
     );
   }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
 }
 #endif

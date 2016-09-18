@@ -25,10 +25,6 @@ struct KalmanFilterCalculationElementsFactory
     const boost::shared_ptr<KalmanFilterCalculationElements>& elements
   ) const noexcept;
 
-  private:
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

@@ -10,7 +10,6 @@
 #include "kalmanfiltercalculationelementsfactory.h"
 #include "modelfunctionparser.h"
 #include "matrix.h"
-#include "trace.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::KalmanFilterExperiment::KalmanFilterExperiment(
@@ -182,9 +181,9 @@ std::vector<boost::numeric::ublas::vector<double> > ribi::kalman::KalmanFilterEx
       }
       catch (std::runtime_error& e)
       {
-        TRACE(e.what());
-        TRACE("Unparsable function (will be parsed against 't'):");
-        TRACE(s);
+        //TRACE(e.what());
+        //TRACE("Unparsable function (will be parsed against 't'):");
+        //TRACE(s);
         assert(!"Parsing the function should have succeeded, as the GUI takes this out");
         throw;
       }

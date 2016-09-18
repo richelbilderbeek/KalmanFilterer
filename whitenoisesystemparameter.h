@@ -37,10 +37,6 @@ struct WhiteNoiseSystemParameter
   ///Obtain the symbol of a type, e.g. 'A'
   std::string ToSymbol(const WhiteNoiseSystemParameterType type) const noexcept;
 
-  private:
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

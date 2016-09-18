@@ -7,7 +7,6 @@
 #include <boost/numeric/conversion/cast.hpp>
 
 #include "matrix.h"
-#include "trace.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::StandardKalmanFilter::StandardKalmanFilter(

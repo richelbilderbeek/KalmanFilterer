@@ -7,7 +7,6 @@
 #include <cassert>
 
 #include "standardwhitenoisesystemparameters.h"
-#include "trace.h"
 #pragma GCC diagnostic pop
 
 ribi::kalman::GapsFilledWhiteNoiseSystemParameters::GapsFilledWhiteNoiseSystemParameters(
@@ -27,7 +26,6 @@ ribi::kalman::GapsFilledWhiteNoiseSystemParameters::GapsFilledWhiteNoiseSystemPa
     m_measurement_frequency{measurement_frequency}
 {
   #ifndef NDEBUG
-  Test();
   assert(m_measurement_frequency.size() == initial_state.size());
   //Check measuring frequecies
   {
@@ -36,27 +34,8 @@ ribi::kalman::GapsFilledWhiteNoiseSystemParameters::GapsFilledWhiteNoiseSystemPa
     for (std::size_t i=0; i!=sz; ++i)
     {
       const int x = v[i];
-      if (x < 1)
-      {
-        TRACE(x);
-        TRACE("BREAK");
-      }
       assert(x >= 1 && "At least one out of one measurements is a real measurement");
     }
   }
   #endif
 }
-
-#ifndef NDEBUG
-void ribi::kalman::GapsFilledWhiteNoiseSystemParameters::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-
-  }
-}
-#endif

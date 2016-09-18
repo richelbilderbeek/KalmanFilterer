@@ -11,7 +11,6 @@
 #pragma GCC diagnostic pop
 
 #include "matrix.h"
-#include "trace.h"
 #include "standardwhitenoisesystemparameters.h"
 
 ribi::kalman::StandardWhiteNoiseSystem::StandardWhiteNoiseSystem(
