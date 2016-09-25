@@ -34,3 +34,5 @@ Makefile*
 ui_*
 debug/
 release/
+*.gcno
+*.gcna
