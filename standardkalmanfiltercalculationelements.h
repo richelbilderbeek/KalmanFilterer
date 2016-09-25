@@ -118,10 +118,6 @@ struct StandardKalmanFilterCalculationElements : public KalmanFilterCalculationE
   ///Calculated at step 7 of the algorithm:
   ///2) P_n = [...] P_predicted
   boost::numeric::ublas::matrix<double> m_updated_covariance;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

@@ -25,11 +25,6 @@ struct WhiteNoiseSystemTypes
   private:
   static boost::bimap<WhiteNoiseSystemType,std::string> m_map;
   static boost::bimap<WhiteNoiseSystemType,std::string> CreateMap() noexcept;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
 };
 
 } //~namespace kalman

@@ -62,7 +62,7 @@ include(../RibiClasses/CppTempLocale/CppTempLocale.pri)
 include(../RibiLibraries/Fparser.pri)
 
 include(KalmanFilter.pri)
-include(KalmanFilterTest.pri)
+include(KalmanFilterTestConsole.pri)
 
 SOURCES += main_test.cpp
 

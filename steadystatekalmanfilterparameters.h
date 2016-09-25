@@ -56,10 +56,6 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
 
   ///K: Estimated optimal Kalman gain
   const boost::numeric::ublas::matrix<double> m_estimated_optimal_kalman_gain;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

@@ -60,10 +60,6 @@ struct LaggedWhiteNoiseSystem : public WhiteNoiseSystem
 
   ///The standard white noise system used as an engine
   boost::shared_ptr<StandardWhiteNoiseSystem> m_system;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

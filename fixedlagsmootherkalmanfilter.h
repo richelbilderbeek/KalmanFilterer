@@ -204,65 +204,66 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
   static boost::numeric::ublas::vector<double> CreateInitialStates(
     const boost::shared_ptr<const FixedLagSmootherKalmanFilterParameters>& parameters);
 
-  ///         [ I ]
-  ///         [ 0 ]
-  ///term_a = [ 0 ], where I denotes an identity matrix with size input.size() x input.size()
-  ///                and where 0 denotes a null matrix with size input.size() x input.size()
-  ///The length of term_a is equal to the lag (3 in this example)
-  static boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> CreateComplexTermA(
-    const int lag,
-    const int state_size);
-
-  ///         [ 0  0  0]
-  ///         [ I  0  0]
-  ///term_b = [ 0  I  0], where I denotes an identity matrix with size input.size() x input.size()
-  ///                     and where 0 denotes a null matrix with size input.size() x input.size()
-  ///The size of term_b is lag x lag (3 in this example)
-  static boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double>> CreateComplexTermB(
-    const int lag,
-    const int state_size);
-
-  ///                  [ 1 0 ]
-  ///                  [ 0 1 ]
-  ///                  [ 0 0 ]
-  ///         [ I ]    [ 0 0 ]
-  ///         [ 0 ]    [ 0 0 ]
-  ///term_a = [ 0 ] => [ 0 0 ],
-  ///  where I denotes an identity matrix with size input.size() x input.size()
-  ///  and where 0 denotes a null matrix with size input.size() x input.size()
-  ///The size of term_a will be:
-  /// - number of rows   : lag (3) x input.size() (2) = 6
-  /// - number of columns:           input.size() (2) = 2
-  static boost::numeric::ublas::matrix<double> CreateTermA(
-    const int lag,
-    const int state_size);
-
-  ///                       [ 0 0 0 0 0 0 ]
-  ///                       [ 0 0 0 0 0 0 ]
-  ///                       [ 1 0 0 0 0 0 ]
-  ///         [ 0  0  0]    [ 0 1 0 0 0 0 ]
-  ///         [ I  0  0]    [ 0 0 1 0 0 0 ]
-  ///term_b = [ 0  I  0] => [ 0 0 0 1 0 0 ]
-  ///where I denotes an identity matrix with size input.size() x input.size()
-  ///                     and where 0 denotes a null matrix with size input.size() x input.size()
-  ///The size of term_b is lag x lag (3 in this example)
-  ///The size of term_b will be:
-  /// - number of rows   : lag (3) x input.size() (2) = 6
-  /// - number of columns: lag (3) x input.size() (2) = 6
-  static boost::numeric::ublas::matrix<double> CreateTermB(
-    const int lag,
-    const int state_size);
-
   static boost::shared_ptr<const FixedLagSmootherKalmanFilterParameters> DownCast(
     const boost::shared_ptr<const KalmanFilterParameters>& parameters);
 
   ///Obtain the (unlagged) Kalman filter
   boost::shared_ptr<const StandardKalmanFilter> GetStandardKalmanFilter() const { return m_standard_filter; }
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
+
+///         [ I ]
+///         [ 0 ]
+///term_a = [ 0 ], where I denotes an identity matrix with size input.size() x input.size()
+///                and where 0 denotes a null matrix with size input.size() x input.size()
+///The length of term_a is equal to the lag (3 in this example)
+boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> CreateComplexTermA(
+  const int lag,
+  const int state_size
+);
+
+///         [ 0  0  0]
+///         [ I  0  0]
+///term_b = [ 0  I  0], where I denotes an identity matrix with size input.size() x input.size()
+///                     and where 0 denotes a null matrix with size input.size() x input.size()
+///The size of term_b is lag x lag (3 in this example)
+boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double>>
+CreateComplexTermB(
+  const int lag,
+  const int state_size
+);
+
+///                  [ 1 0 ]
+///                  [ 0 1 ]
+///                  [ 0 0 ]
+///         [ I ]    [ 0 0 ]
+///         [ 0 ]    [ 0 0 ]
+///term_a = [ 0 ] => [ 0 0 ],
+///  where I denotes an identity matrix with size input.size() x input.size()
+///  and where 0 denotes a null matrix with size input.size() x input.size()
+///The size of term_a will be:
+/// - number of rows   : lag (3) x input.size() (2) = 6
+/// - number of columns:           input.size() (2) = 2
+boost::numeric::ublas::matrix<double> CreateTermA(
+  const int lag,
+  const int state_size
+);
+
+///                       [ 0 0 0 0 0 0 ]
+///                       [ 0 0 0 0 0 0 ]
+///                       [ 1 0 0 0 0 0 ]
+///         [ 0  0  0]    [ 0 1 0 0 0 0 ]
+///         [ I  0  0]    [ 0 0 1 0 0 0 ]
+///term_b = [ 0  I  0] => [ 0 0 0 1 0 0 ]
+///where I denotes an identity matrix with size input.size() x input.size()
+///                     and where 0 denotes a null matrix with size input.size() x input.size()
+///The size of term_b is lag x lag (3 in this example)
+///The size of term_b will be:
+/// - number of rows   : lag (3) x input.size() (2) = 6
+/// - number of columns: lag (3) x input.size() (2) = 6
+boost::numeric::ublas::matrix<double> CreateTermB(
+  const int lag,
+  const int state_size
+);
 
 } //~namespace kalman
 } //~namespace ribi

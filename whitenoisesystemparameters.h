@@ -82,10 +82,6 @@ struct WhiteNoiseSystemParameters
 
   ///The state transitions in the system, used in GoToNextState
   const boost::numeric::ublas::matrix<double> m_state_transition;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

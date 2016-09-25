@@ -20,12 +20,14 @@
 #include "laggedwhitenoisesystemfactory.h"
 #include "laggedwhitenoisesystemparameters.h"
 #include "matrix.h"
+#include "testtimer.h"
 #include "qtkalmanfiltererparameterdialog.h"
 #include "qtmatrix.h"
 #include "qtublasvectorintmodel.h"
 #include "standardwhitenoisesystem.h"
 #include "standardwhitenoisesystemfactory.h"
 #include "standardwhitenoisesystemparameters.h"
+#include "trace.h"
 #include "ui_qtwhitenoisesystemparametersdialog.h"
 #include "whitenoisesystemparameter.h"
 #include "whitenoisesystemparametertype.h"
@@ -200,3 +202,37 @@ void ribi::kalman::QtWhiteNoiseSystemParametersDialog::SetWhiteNoiseSystemType(c
   assert(this->GetWhiteNoiseSystemType() == type);
   assert(m_model->CreateWhiteNoiseSystemParameters()->GetType() == type);
 }
+
+
+#ifndef NDEBUG
+void ribi::kalman::QtWhiteNoiseSystemParametersDialog::Test() noexcept
+{
+  {
+    const boost::shared_ptr<QtKalmanFilterExperimentModel> model(new QtKalmanFilterExperimentModel);
+    assert(model);
+
+    QtWhiteNoiseSystemParametersDialog d(model);
+    d.ui->box_white_noise_system_type->setCurrentIndex(0);
+    assert(d.GetWhiteNoiseSystemType() == WhiteNoiseSystemType::standard);
+    assert(model->CreateWhiteNoiseSystemParameters()->GetType() == WhiteNoiseSystemType::standard);
+    assert(!d.Find(WhiteNoiseSystemParameterType::measurement_frequency)->isVisible());
+    assert(model->CreateWhiteNoiseSystemParameters());
+    assert(model->CreateWhiteNoiseSystem());
+
+    d.ui->box_white_noise_system_type->setCurrentIndex(1);
+    assert(d.GetWhiteNoiseSystemType() == WhiteNoiseSystemType::lagged);
+    assert(model->CreateWhiteNoiseSystemParameters()->GetType() == WhiteNoiseSystemType::lagged);
+    assert(!d.Find(WhiteNoiseSystemParameterType::measurement_frequency)->isVisible());
+    assert(model->CreateWhiteNoiseSystemParameters());
+    assert(model->CreateWhiteNoiseSystem());
+
+    d.ui->box_white_noise_system_type->setCurrentIndex(2);
+    //assert(d.Find(WhiteNoiseSystemParameterType::measurement_frequency)->isVisible());
+    assert(d.GetWhiteNoiseSystemType() == WhiteNoiseSystemType::gaps_filled);
+    assert(model->Find(KalmanFilterExperimentParameterType::measurement_frequency));
+    assert(model->CreateWhiteNoiseSystem());
+    assert(model->CreateWhiteNoiseSystemParameters());
+    assert(model->CreateWhiteNoiseSystemParameters()->GetType() == WhiteNoiseSystemType::gaps_filled);
+  }
+}
+#endif

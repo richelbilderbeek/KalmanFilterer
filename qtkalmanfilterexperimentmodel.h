@@ -189,10 +189,6 @@ struct QtKalmanFilterExperimentModel : public QObject
     const std::string& input,
     const char seperator
   );
-  #ifndef NDEBUG
-  ///Test this class
-  static void Test() noexcept;
-  #endif
 };
 
 bool operator==(const QtKalmanFilterExperimentModel& lhs, const QtKalmanFilterExperimentModel& rhs) noexcept;

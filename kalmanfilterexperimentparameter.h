@@ -73,10 +73,6 @@ struct KalmanFilterExperimentParameter
 
   private:
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
   static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType> > m_map_kalman_filter;
   static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType> > m_map_white_noise_system;
   static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType> > CreateMapKalmanFilter();

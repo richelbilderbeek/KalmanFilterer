@@ -31,10 +31,6 @@ struct SteadyStateKalmanFilterCalculationElements : public KalmanFilterCalculati
   ///Can only be deleted by boost::checked_delete
   ~SteadyStateKalmanFilterCalculationElements() noexcept {}
   friend void boost::checked_delete<>(SteadyStateKalmanFilterCalculationElements*);
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

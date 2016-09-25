@@ -1,51 +1,51 @@
-include(../KalmanFilterer/KalmanFiltererConsole.pri)
+include($$PWD/KalmanFiltererConsole.pri)
 
 SOURCES += \
-    ../KalmanFilterer/qtcopyalltableview.cpp \
-    ../KalmanFilterer/qtcopyalltablewidget.cpp \
-    ../KalmanFilterer/qtfixedlagsmootherkalmanfiltercalculationdialog.cpp \
-    ../KalmanFilterer/qtkalmanfiltercalculationdialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterdialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterermaindialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterermenudialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterermodel.cpp \
-    ../KalmanFilterer/qtkalmanfiltererparameterdialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterexamplesdialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterexperimentdialog.cpp \
-    ../KalmanFilterer/qtkalmanfilterexperimentmodel.cpp \
-    ../KalmanFilterer/qtstandardkalmanfiltercalculationdialog.cpp \
-    ../KalmanFilterer/qtsteadystatekalmanfiltercalculationdialog.cpp \
-    ../KalmanFilterer/qtwhitenoisesystemparametersdialog.cpp
+    $$PWD/qtcopyalltableview.cpp \
+    $$PWD/qtcopyalltablewidget.cpp \
+    $$PWD/qtfixedlagsmootherkalmanfiltercalculationdialog.cpp \
+    $$PWD/qtkalmanfiltercalculationdialog.cpp \
+    $$PWD/qtkalmanfilterdialog.cpp \
+    $$PWD/qtkalmanfilterermaindialog.cpp \
+    $$PWD/qtkalmanfilterermenudialog.cpp \
+    $$PWD/qtkalmanfilterermodel.cpp \
+    $$PWD/qtkalmanfiltererparameterdialog.cpp \
+    $$PWD/qtkalmanfilterexamplesdialog.cpp \
+    $$PWD/qtkalmanfilterexperimentdialog.cpp \
+    $$PWD/qtkalmanfilterexperimentmodel.cpp \
+    $$PWD/qtstandardkalmanfiltercalculationdialog.cpp \
+    $$PWD/qtsteadystatekalmanfiltercalculationdialog.cpp \
+    $$PWD/qtwhitenoisesystemparametersdialog.cpp
 
 HEADERS += \
-    ../KalmanFilterer/qtcopyalltableview.h \
-    ../KalmanFilterer/qtcopyalltablewidget.h \
-    ../KalmanFilterer/qtfixedlagsmootherkalmanfiltercalculationdialog.h \
-    ../KalmanFilterer/qtkalmanfiltercalculationdialog.h \
-    ../KalmanFilterer/qtkalmanfilterdialog.h \
-    ../KalmanFilterer/qtkalmanfilterermaindialog.h \
-    ../KalmanFilterer/qtkalmanfilterermenudialog.h \
-    ../KalmanFilterer/qtkalmanfilterermodel.h \
-    ../KalmanFilterer/qtkalmanfiltererparameterdialog.h \
-    ../KalmanFilterer/qtkalmanfilterexamplesdialog.h \
-    ../KalmanFilterer/qtkalmanfilterexperimentdialog.h \
-    ../KalmanFilterer/qtkalmanfilterexperimentmodel.h \
-    ../KalmanFilterer/qtstandardkalmanfiltercalculationdialog.h \
-    ../KalmanFilterer/qtsteadystatekalmanfiltercalculationdialog.h \
-    ../KalmanFilterer/qtwhitenoisesystemparametersdialog.h
+    $$PWD/qtcopyalltableview.h \
+    $$PWD/qtcopyalltablewidget.h \
+    $$PWD/qtfixedlagsmootherkalmanfiltercalculationdialog.h \
+    $$PWD/qtkalmanfiltercalculationdialog.h \
+    $$PWD/qtkalmanfilterdialog.h \
+    $$PWD/qtkalmanfilterermaindialog.h \
+    $$PWD/qtkalmanfilterermenudialog.h \
+    $$PWD/qtkalmanfilterermodel.h \
+    $$PWD/qtkalmanfiltererparameterdialog.h \
+    $$PWD/qtkalmanfilterexamplesdialog.h \
+    $$PWD/qtkalmanfilterexperimentdialog.h \
+    $$PWD/qtkalmanfilterexperimentmodel.h \
+    $$PWD/qtstandardkalmanfiltercalculationdialog.h \
+    $$PWD/qtsteadystatekalmanfiltercalculationdialog.h \
+    $$PWD/qtwhitenoisesystemparametersdialog.h
 
 FORMS += \
-    ../KalmanFilterer/qtfixedlagsmootherkalmanfiltercalculationdialog.ui \
-    ../KalmanFilterer/qtkalmanfiltercalculationdialog.ui \
-    ../KalmanFilterer/qtkalmanfilterdialog.ui \
-    ../KalmanFilterer/qtkalmanfilterermaindialog.ui \
-    ../KalmanFilterer/qtkalmanfilterermenudialog.ui \
-    ../KalmanFilterer/qtkalmanfiltererparameterdialog.ui \
-    ../KalmanFilterer/qtkalmanfilterexamplesdialog.ui \
-    ../KalmanFilterer/qtkalmanfilterexperimentdialog.ui \
-    ../KalmanFilterer/qtstandardkalmanfiltercalculationdialog.ui \
-    ../KalmanFilterer/qtsteadystatekalmanfiltercalculationdialog.ui \
-    ../KalmanFilterer/qtwhitenoisesystemparametersdialog.ui
+    $$PWD/qtfixedlagsmootherkalmanfiltercalculationdialog.ui \
+    $$PWD/qtkalmanfiltercalculationdialog.ui \
+    $$PWD/qtkalmanfilterdialog.ui \
+    $$PWD/qtkalmanfilterermaindialog.ui \
+    $$PWD/qtkalmanfilterermenudialog.ui \
+    $$PWD/qtkalmanfiltererparameterdialog.ui \
+    $$PWD/qtkalmanfilterexamplesdialog.ui \
+    $$PWD/qtkalmanfilterexperimentdialog.ui \
+    $$PWD/qtstandardkalmanfiltercalculationdialog.ui \
+    $$PWD/qtsteadystatekalmanfiltercalculationdialog.ui \
+    $$PWD/qtwhitenoisesystemparametersdialog.ui
 
 RESOURCES += \
-    ../KalmanFilterer/KalmanFilterer.qrc
+    $$PWD/KalmanFilterer.qrc

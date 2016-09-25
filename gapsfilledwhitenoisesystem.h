@@ -60,10 +60,6 @@ struct GapsFilledWhiteNoiseSystem : public WhiteNoiseSystem
 
   ///The current timestep: zero denotes a measurement will be done
   mutable int m_timestep;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

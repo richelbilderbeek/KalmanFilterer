@@ -11,7 +11,6 @@
 #include "kalmanfilterexample.h"
 #include "matrix.h"
 #include "qtaboutdialog.h"
-#include "testtimer.h"
 #include "qthideandshowdialog.h"
 #include "qtkalmanfilterermaindialog.h"
 #include "qtmatrix.h"
@@ -21,7 +20,6 @@
 #include "qtublasvectordoublemodel.h"
 #include "qtwhitenoisesystemparametersdialog.h"
 #include "standardwhitenoisesystemparameters.h"
-#include "trace.h"
 #include "ui_qtkalmanfilterermenudialog.h"
 #pragma GCC diagnostic pop
 
@@ -30,9 +28,6 @@ ribi::kalman::QtKalmanFiltererMenuDialog::QtKalmanFiltererMenuDialog(QWidget *pa
     ui(new Ui::QtKalmanFiltererMenuDialog)
 {
   ui->setupUi(this);
-  #ifndef NDEBUG
-  Test();
-  #endif
 }
 
 ribi::kalman::QtKalmanFiltererMenuDialog::~QtKalmanFiltererMenuDialog() noexcept
@@ -71,21 +66,3 @@ void ribi::kalman::QtKalmanFiltererMenuDialog::on_button_start_clicked()
   assert(d);
   ShowChild(d.get());
 }
-
-#ifndef NDEBUG
-void ribi::kalman::QtKalmanFiltererMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    Matrix::Test();
-    QtMatrix::Test();
-    KalmanFiltererMenuDialog();
-    QtKalmanFiltererMainDialog::Create();
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif

@@ -22,6 +22,7 @@
 #include "qtkalmanfilterermaindialog.h"
 #include "standardkalmanfilterparameters.h"
 #include "qtmatrix.h"
+#include "trace.h"
 #include "ui_qtkalmanfilterexamplesdialog.h"
 
 #pragma GCC diagnostic pop
@@ -64,6 +65,17 @@ void ribi::kalman::QtKalmanFilterExamplesDialog::keyPressEvent(QKeyEvent * event
   if (event->key() == Qt::Key_Escape) return;
   QDialog::keyPressEvent(event);
 }
+
+#ifndef NDEBUG
+void ribi::kalman::QtKalmanFilterExamplesDialog::Test() noexcept
+{
+  {
+    QtKalmanFilterExamplesDialog d;
+    const int max_index = boost::numeric_cast<int>(KalmanFilterExample::CreateExamples().size());
+    for (int i=0; i!=max_index; ++i) { d.EmitExample(i); }
+  }
+}
+#endif
 
 void ribi::kalman::QtKalmanFilterExamplesDialog::on_button_clicked()
 {

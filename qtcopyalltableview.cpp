@@ -16,7 +16,6 @@
 #include <QMimeData>
 
 #include "container.h"
-#include "trace.h"
 
 #pragma GCC diagnostic pop
 

@@ -15,8 +15,9 @@ include(../RibiClasses/CppQtModel/CppQtModel.pri)
 include(../RibiClasses/CppRibiRandom/CppRibiRandom.pri)
 include(../RibiClasses/CppTempLocale/CppTempLocale.pri)
 include(KalmanFiltererConsole.pri)
+include(KalmanFilterTestConsole.pri)
 
-SOURCES += main.cpp
+SOURCES += main_test.cpp
 
 # Thanks to Qt
 QMAKE_CXXFLAGS += -Wno-unused-variable
@@ -25,3 +26,5 @@ QMAKE_CXXFLAGS += -Wno-unused-variable
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 LIBS += -lgcov
 
+# Boost.Test
+LIBS += -lboost_unit_test_framework

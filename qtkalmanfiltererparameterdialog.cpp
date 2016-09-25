@@ -30,7 +30,6 @@
 #include "steadystatekalmanfilter.h"
 #include "qtkalmanfilterexperimentdialog.h"
 #include "steadystatekalmanfilterfactory.h"
-#include "trace.h"
 #include "ui_qtkalmanfiltererparameterdialog.h"
 #pragma GCC diagnostic pop
 

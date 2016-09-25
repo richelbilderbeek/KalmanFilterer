@@ -64,10 +64,6 @@ struct KalmanFilterParameters
 
   ///F: state transition matrix, containing the physics of the system
   const boost::numeric::ublas::matrix<double> m_state_transition;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

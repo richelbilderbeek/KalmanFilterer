@@ -6,9 +6,6 @@ boost::bimap<
 
 ribi::kalman::WhiteNoiseSystemTypes::WhiteNoiseSystemTypes()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
 }
 
 boost::bimap<ribi::kalman::WhiteNoiseSystemType,std::string>
@@ -38,24 +35,6 @@ std::vector<ribi::kalman::WhiteNoiseSystemType>
   );
   return v;
 }
-
-#ifndef NDEBUG
-void ribi::kalman::WhiteNoiseSystemTypes::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  for (const auto& t: WhiteNoiseSystemTypes().GetAllTypes())
-  {
-    const std::string s = WhiteNoiseSystemTypes().ToStr(t);
-    assert(!s.empty());
-    const auto u = WhiteNoiseSystemTypes().ToType(s);
-    assert(u == t);
-  }
-}
-#endif
 
 std::string ribi::kalman::WhiteNoiseSystemTypes::ToStr(
   const WhiteNoiseSystemType type

@@ -26,10 +26,6 @@ struct KalmanFilterTypes
   private:
   static boost::bimap<KalmanFilterType,std::string> m_map;
   static boost::bimap<KalmanFilterType,std::string> CreateMap() noexcept;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

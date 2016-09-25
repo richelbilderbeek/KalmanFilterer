@@ -93,10 +93,6 @@ struct StandardKalmanFilter : public KalmanFilter
 
   ///x: The (current prediction of the) state
   boost::numeric::ublas::vector<double> m_state_estimate;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

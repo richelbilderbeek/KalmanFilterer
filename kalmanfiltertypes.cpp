@@ -8,10 +8,6 @@ boost::bimap<
   ribi::kalman::KalmanFilterType,std::string
 > ribi::kalman::KalmanFilterTypes::CreateMap() noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
-
   boost::bimap<KalmanFilterType,std::string> m;
   m.insert(boost::bimap<KalmanFilterType,std::string>::value_type(
     KalmanFilterType::fixed_lag_smoother,"fixed lag smoother"));
@@ -35,28 +31,6 @@ std::vector<ribi::kalman::KalmanFilterType>
   assert(static_cast<int>(v.size()) == static_cast<int>(KalmanFilterType::n_types));
   return v;
 }
-
-#ifndef NDEBUG
-void ribi::kalman::KalmanFilterTypes::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const std::vector<KalmanFilterType> v = KalmanFilterTypes().GetAllTypes();
-  const std::size_t sz = v.size();
-  for (std::size_t i=0; i!=sz; ++i)
-  {
-    assert(i < v.size());
-    const KalmanFilterType t = v[i];
-    const std::string s = KalmanFilterTypes().ToStr(t);
-    assert(!s.empty());
-    const KalmanFilterType u = KalmanFilterTypes().ToType(s);
-    assert(u == t);
-  }
-}
-#endif
 
 std::string ribi::kalman::KalmanFilterTypes::ToStr(
   const KalmanFilterType type

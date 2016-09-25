@@ -31,9 +31,7 @@ const std::vector<
 
 ribi::kalman::KalmanFilterExperimentParameter::KalmanFilterExperimentParameter()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
+
 }
 
 bool ribi::kalman::KalmanFilterExperimentParameter::CanConvertToKalmanFilterParameter(
@@ -205,9 +203,6 @@ const std::vector<
 std::vector<ribi::kalman::KalmanFilterExperimentParameterType>
   ribi::kalman::KalmanFilterExperimentParameter::GetAll() const noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   const std::vector<KalmanFilterExperimentParameterType> v
     =
     {
@@ -237,9 +232,6 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsDouble(
   const KalmanFilterExperimentParameterType type
 ) const noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   switch (type)
   {
     case KalmanFilterExperimentParameterType::control:                            return true;
@@ -383,115 +375,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsVector(
   throw std::logic_error(__func__);
 }
 
-#ifndef NDEBUG
-void ribi::kalman::KalmanFilterExperimentParameter::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  KalmanFilterExperimentParameter p;
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::control));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::initial_state_real));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::real_process_noise));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::input));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::observation));
-  assert(!p.IsMatrix(KalmanFilterExperimentParameterType::state_names));
-  assert( p.IsMatrix(KalmanFilterExperimentParameterType::state_transition));
-
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::control));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::initial_state_real));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::real_process_noise));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::input));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::observation));
-  assert( p.IsVector(KalmanFilterExperimentParameterType::state_names));
-  assert(!p.IsVector(KalmanFilterExperimentParameterType::state_transition));
-
-  assert(!p.IsString(KalmanFilterExperimentParameterType::control));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::initial_state_real));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::real_process_noise));
-  assert( p.IsString(KalmanFilterExperimentParameterType::input));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::observation));
-  assert( p.IsString(KalmanFilterExperimentParameterType::state_names));
-  assert(!p.IsString(KalmanFilterExperimentParameterType::state_transition));
-
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::control));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::initial_state_real));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::real_process_noise));
-  assert( p.IsFunction(KalmanFilterExperimentParameterType::input));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::observation));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::state_names));
-  assert(!p.IsFunction(KalmanFilterExperimentParameterType::state_transition));
-
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::control));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::initial_state_real));
-  assert(!p.IsDouble(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::real_process_noise));
-  assert(!p.IsDouble(KalmanFilterExperimentParameterType::input));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::observation));
-  assert(!p.IsDouble(KalmanFilterExperimentParameterType::state_names));
-  assert( p.IsDouble(KalmanFilterExperimentParameterType::state_transition));
-
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::control));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::estimated_measurement_noise));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::estimated_optimal_kalman_gain));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::estimated_process_noise_covariance));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::initial_covariance_estimate));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::initial_state_estimate));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::initial_state_real));
-  assert( p.IsInt(KalmanFilterExperimentParameterType::measurement_frequency));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::real_measurement_noise));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::real_process_noise));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::input));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::observation));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::state_names));
-  assert(!p.IsInt(KalmanFilterExperimentParameterType::state_transition));
-
-}
-#endif
-
 std::string ribi::kalman::KalmanFilterExperimentParameter::ToDescription(
   const KalmanFilterExperimentParameterType type
 ) const noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   //Check for the subset
   if (CanConvertToKalmanFilterParameter(type))
   {
@@ -519,9 +406,6 @@ std::string ribi::kalman::KalmanFilterExperimentParameter::ToName(
   const KalmanFilterExperimentParameterType type
 ) const noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   //Check for the subset
   if (CanConvertToKalmanFilterParameter(type))
   {
@@ -549,9 +433,6 @@ std::string ribi::kalman::KalmanFilterExperimentParameter::ToSymbol(
   const KalmanFilterExperimentParameterType type
 ) const noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   //Check for the subset
   if (CanConvertToKalmanFilterParameter(type))
   {

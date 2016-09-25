@@ -23,6 +23,7 @@
 #include "fileio.h"
 #include "kalmanfilter.h"
 #include "kalmanfilterexample.h"
+#include "testtimer.h"
 #include "kalmanfilterexperiment.h"
 #include "kalmanfilterexperimentparameter.h"
 #include "kalmanfilterexperimentparametertype.h"
@@ -41,6 +42,7 @@
 #include "qtsteadystatekalmanfiltercalculationdialog.h"
 #include "qtwhitenoisesystemparametersdialog.h"
 #include "standardwhitenoisesystemparameters.h"
+#include "trace.h"
 #include "ui_qtkalmanfilterexperimentdialog.h"
 #include "ui_qtwhitenoisesystemparametersdialog.h"
 #include "whitenoisesystemparameter.h"
@@ -168,16 +170,21 @@ bool ribi::kalman::QtKalmanFilterExperimentDialog::IsValid() const
 {
   if (this->GetNumberOfTimesteps() != m_model->GetNumberOfTimesteps())
   {
+    TRACE("Different number of timesteps");
     return false;
   }
   if (GetNoiseParametersDialog()->GetWhiteNoiseSystemType()
     != m_model->CreateWhiteNoiseSystemParameters()->GetType())
   {
+    TRACE("Different white noise system type");
     return false;
   }
   if (GetFilterDialog()->GetKalmanFilterType()
     != m_model->CreateKalmanFilter()->GetType())
   {
+    TRACE("Different Kalman Filter types");
+    TRACE(KalmanFilterTypes().ToStr(GetFilterDialog()->GetKalmanFilterType()));
+    TRACE(KalmanFilterTypes().ToStr(m_model->CreateKalmanFilter()->GetType()));
     return false;
   }
   return true;
@@ -406,3 +413,108 @@ void ribi::kalman::QtKalmanFilterExperimentDialog::SetNumberOfTimesteps(const in
   //Everywhere in between this sequence, this dialog is in an invalid state
   //assert(IsValid());
 }
+
+#ifndef NDEBUG
+void ribi::kalman::QtKalmanFilterExperimentDialog::Test() noexcept
+{
+  //TRACE("Test QtWhiteNoiseSystemParametersDialog");
+  {
+    const boost::shared_ptr<QtKalmanFilterExperimentModel> model(
+      new QtKalmanFilterExperimentModel);
+    QtWhiteNoiseSystemParametersDialog d(model);
+  }
+  //TRACE("Test QtKalmanFilterExperimentModel");
+  {
+    const boost::shared_ptr<QtKalmanFilterExperimentModel> model(
+      new QtKalmanFilterExperimentModel);
+    const boost::shared_ptr<QtKalmanFilterExperimentDialog> d(
+      new QtKalmanFilterExperimentDialog(model)
+    );
+    //TRACE("Test DokuWiki conversion for all Kalman filter types with empty parameters")
+    const std::vector<KalmanFilterType> kalman_filter_types = KalmanFilterTypes().GetAllTypes();
+    const std::size_t n_kalman_filter_types = kalman_filter_types.size();
+    for (std::size_t i=0; i!=n_kalman_filter_types; ++i)
+    {
+      const KalmanFilterType kalman_filter_type = kalman_filter_types[i];
+      if (kalman_filter_type == KalmanFilterType::fixed_lag_smoother)
+      {
+        //TRACE("Fixed lag smoother not supported yet");
+        continue;
+      }
+
+      d->SetNumberOfTimesteps(2);
+      d->SetKalmanFilterType(kalman_filter_type);
+      const std::string s = model->ToDokuWiki();
+      assert(s == model->ToDokuWiki());
+      model->SetNumberOfTimesteps(3);
+      assert(s != model->ToDokuWiki());
+      model->FromDokuWiki(s);
+      assert(s == model->ToDokuWiki());
+
+
+      const std::vector<WhiteNoiseSystemType> white_noise_system_types = WhiteNoiseSystemTypes().GetAllTypes();
+      const std::size_t n_white_noise_system_types = white_noise_system_types.size();
+      for (std::size_t j=0; j!=n_white_noise_system_types; ++j)
+      {
+        const WhiteNoiseSystemType white_noise_system_type = white_noise_system_types[j];
+        d->SetNumberOfTimesteps(4);
+        d->SetKalmanFilterType(kalman_filter_type);
+        d->GetNoiseParametersDialog()->SetWhiteNoiseSystemType(white_noise_system_type);
+        const std::string s = model->ToDokuWiki();
+        assert(s == model->ToDokuWiki());
+        model->SetNumberOfTimesteps(5);
+        assert(s != model->ToDokuWiki());
+        model->FromDokuWiki(s);
+        assert(s == model->ToDokuWiki());
+      }
+    }
+    //TRACE("Test backwards compatibility in reading/writing DokuWiki")
+    {
+      QFile file(":/files/0.txt");
+      assert(file.size() > 0);
+      const std::string temp_filename = "tmp_0.txt";
+      file.copy(temp_filename.c_str());
+
+      assert(::ribi::fileio::FileIo().IsRegularFile(temp_filename));
+      d->LoadFromDokuWiki(temp_filename);
+    }
+    //TRACE("Test read/write of examples");
+    const std::vector<boost::shared_ptr<KalmanFilterExample> > examples
+      = KalmanFilterExample::CreateExamples();
+    int cnt = 1;
+    for(const boost::shared_ptr<KalmanFilterExample>& example: examples)
+    {
+      assert(model);
+      assert(example);
+      model->SetExample(example);
+      d->SaveToDokuWiki(boost::lexical_cast<std::string>(cnt) + ".txt");
+      ++cnt;
+      const std::string s = model->ToDokuWiki();
+      model->SetNumberOfTimesteps(999999999);
+      assert(s != model->ToDokuWiki());
+      model->FromDokuWiki(s);
+      if (s != model->ToDokuWiki())
+      {
+        TRACE(s);
+        TRACE(model->ToDokuWiki());
+        TRACE("BREAK");
+      }
+      assert(s == model->ToDokuWiki());
+    }
+    //TRACE("Test all white noise system types")
+    {
+      const int sz = d->m_noise_parameters_dialog->GetUi()->box_white_noise_system_type->count();
+      assert(sz > 0);
+      assert(sz == static_cast<int>(WhiteNoiseSystemType::n_types));
+      for (int i=0; i!=sz; ++i)
+      {
+        d->m_noise_parameters_dialog->GetUi()->box_white_noise_system_type->setCurrentIndex(i);
+        assert(model->CreateWhiteNoiseSystemParameters());
+      }
+    }
+  }
+}
+#endif
+
+
+

@@ -46,10 +46,6 @@ struct StandardWhiteNoiseSystem : public WhiteNoiseSystem
 
   ///The parameters for the white noise system
   const boost::shared_ptr<const StandardWhiteNoiseSystemParameters> m_parameters;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

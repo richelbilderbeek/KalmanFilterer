@@ -22,14 +22,10 @@ ribi::kalman::FixedLagSmootherKalmanFilter::FixedLagSmootherKalmanFilter(
     m_parameters{DownCast(parameters)},
     m_state_estimates{CreateInitialStates(DownCast(parameters))}
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   assert(m_last_fixed_lag_smoother_calculation);
   assert(m_parameters);
   assert(boost::numeric_cast<int>(m_state_estimates.size()) == m_parameters->GetLag() * m_standard_filter->GetStateSize());
 }
-
 
 boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> ribi::kalman::FixedLagSmootherKalmanFilter::CreateInitialGains(
   const int lag,
@@ -53,7 +49,7 @@ boost::numeric::ublas::vector<boost::numeric::ublas::vector<double>> ribi::kalma
 }
 
 boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> >
-  ribi::kalman::FixedLagSmootherKalmanFilter::CreateComplexTermA(
+  ribi::kalman::CreateComplexTermA(
   const int lag,
   const int state_size)
 {
@@ -71,7 +67,7 @@ boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> >
 }
 
 boost::numeric::ublas::matrix<double>
-  ribi::kalman::FixedLagSmootherKalmanFilter::CreateTermA(
+  ribi::kalman::CreateTermA(
   const int lag,
   const int state_size)
 {
@@ -85,7 +81,7 @@ boost::numeric::ublas::matrix<double>
 }
 
 boost::numeric::ublas::matrix<double >
-  ribi::kalman::FixedLagSmootherKalmanFilter::CreateTermB(
+  ribi::kalman::CreateTermB(
     const int lag,
     const int state_size)
 {
@@ -102,9 +98,10 @@ boost::numeric::ublas::matrix<double >
 
 
 boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double> >
-  ribi::kalman::FixedLagSmootherKalmanFilter::CreateComplexTermB(
+  ribi::kalman::CreateComplexTermB(
     const int lag,
-    const int state_size)
+    const int state_size
+)
 {
   //
   assert(lag > 0 && "Term B is not needed for a lag of zero");
@@ -297,64 +294,3 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::SupplyMeasurementAndInput(
 
   m_last_fixed_lag_smoother_calculation->SetStandardCalculationElement(this->m_standard_filter->GetLastStandardCalculation());
 }
-
-#ifndef NDEBUG
-void ribi::kalman::FixedLagSmootherKalmanFilter::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  try
-  {
-    boost::numeric_cast<std::size_t>(-1);
-    assert(!"Line above must fail, so shouldn't get here");
-  }
-  catch (boost::numeric::bad_numeric_cast& e)
-  {
-    //OK!
-  }
-
-  //CreateTermA
-  {
-    const int lag = 13;
-    const int state_size = 17;
-    const boost::numeric::ublas::matrix<double> v = CreateTermA(lag,state_size);
-    const int n_rows = lag * state_size;
-    const int n_cols =   1 * state_size;
-    assert(boost::numeric_cast<int>(v.size1()) == n_rows);
-    assert(boost::numeric_cast<int>(v.size2()) == n_cols);
-    for (int row = 0; row!=n_rows; ++row)
-    {
-      assert(row < boost::numeric_cast<int>(v.size1()));
-      for (int col = 0; col!=n_cols; ++col)
-      {
-        assert(col < boost::numeric_cast<int>(v.size2()));
-        const double expected = row == col ? 1.0 : 0.0;
-        assert(Matrix::IsAboutEqual(v(row,col),expected));
-      }
-    }
-  }
-  //CreateTermB
-  {
-    const int lag = 3;
-    const int state_size = 5;
-    const boost::numeric::ublas::matrix<double> v = CreateTermB(lag,state_size);
-    const int n_rows = lag * state_size;
-    const int n_cols = (lag - 1) * state_size;
-    assert(boost::numeric_cast<int>(v.size1()) == n_rows);
-    assert(boost::numeric_cast<int>(v.size2()) == n_cols);
-    for (int row = 0; row!=n_rows; ++row)
-    {
-      assert(row < boost::numeric_cast<int>(v.size1()));
-      for (int col = 0; col!=n_cols; ++col)
-      {
-        assert(col < boost::numeric_cast<int>(v.size2()));
-        const double expected = row - state_size == col ? 1.0 : 0.0;
-        assert(Matrix::IsAboutEqual(v(row,col),expected));
-      }
-    }
-  }
-}
-#endif

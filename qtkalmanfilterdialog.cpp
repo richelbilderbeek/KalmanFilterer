@@ -16,7 +16,6 @@
 
 #include "matrix.h"
 #include "qtmatrix.h"
-#include "testtimer.h"
 #include "standardkalmanfilter.h"
 #include "standardkalmanfilterfactory.h"
 #include "steadystatekalmanfilter.h"
@@ -25,7 +24,6 @@
 #include "fixedlagsmootherkalmanfilter.h"
 #include "steadystatekalmanfilterfactory.h"
 #include "kalmanfilterexperimentparameter.h"
-#include "trace.h"
 #include "ui_qtkalmanfilterdialog.h"
 
 #pragma GCC diagnostic pop
@@ -38,9 +36,6 @@ ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(const boost::shared_ptr
     m_model{model},
     m_parameters{}
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   assert(m_model);
   ui->setupUi(this);
 
@@ -95,7 +90,6 @@ ribi::kalman::KalmanFilterType ribi::kalman::QtKalmanFilterDialog::GetKalmanFilt
     case 1: return KalmanFilterType::steady_state;
     case 2: return KalmanFilterType::fixed_lag_smoother;
     default:
-      TRACE(ui->box_filter_type->currentIndex());
       assert(!"Unimplemented ComboBox index");
       throw std::logic_error(__func__);
   }
@@ -211,16 +205,3 @@ void ribi::kalman::QtKalmanFilterDialog::on_box_filter_type_currentIndexChanged(
   m_signal_kalman_filter_type_changed(this->GetKalmanFilterType());
 }
 
-#ifndef NDEBUG
-void ribi::kalman::QtKalmanFilterDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  KalmanFilterParameter();
-  KalmanFilterExperimentParameter();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif

@@ -47,7 +47,10 @@ public:
   ~QtKalmanFiltererMainDialog() noexcept;
 
   ///Get the dialog to set the experiment its parameters
-  const QtKalmanFilterExperimentDialog * GetExperimentDialog() const { return m_experiment_dialog; }
+  const QtKalmanFilterExperimentDialog * GetExperimentDialog() const noexcept { return m_experiment_dialog; }
+        QtKalmanFilterExperimentDialog * GetExperimentDialog()       noexcept { return m_experiment_dialog; }
+
+  boost::shared_ptr<QtKalmanFilterExperimentModel> GetModel() noexcept { return m_model; }
 
   ///Set the checkbox to show the calculation
   void SetShowCalculation(const bool do_show);
@@ -78,12 +81,12 @@ private:
 
   ///Contains the plots, these must be stored because deleting
   ///the layout that contains these does not work properly
-  std::vector<boost::shared_ptr<QwtPlot> > m_plots;
+  std::vector<boost::shared_ptr<QwtPlot>> m_plots;
 
   ///Contains the widgets that must be deleted at a new run
   ///these must be stored because deleting
   ///the layout that contains these does not work properly
-  std::vector<boost::shared_ptr<QWidget> > m_to_delete_at_new_run;
+  std::vector<boost::shared_ptr<QWidget>> m_to_delete_at_new_run;
 
 
   static const std::vector<std::vector<double> > CreateData(
@@ -114,12 +117,9 @@ private:
   ///Show the results of an experiment in a table
   void ShowTable(const boost::shared_ptr<const KalmanFilterExperiment>& experiment);
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
-private slots:
+public slots:
   void on_button_start_clicked();
+private slots:
   void on_button_save_graph_clicked();
   void on_tab_context_currentChanged(int index);
   void on_edit_context_textChanged();

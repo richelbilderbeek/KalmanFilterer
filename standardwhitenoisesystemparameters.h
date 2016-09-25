@@ -36,10 +36,6 @@ struct StandardWhiteNoiseSystemParameters : public WhiteNoiseSystemParameters
   ///Can only be deleted by boost::checked_delete
   ~StandardWhiteNoiseSystemParameters() noexcept {}
   friend void boost::checked_delete<>(StandardWhiteNoiseSystemParameters*);
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

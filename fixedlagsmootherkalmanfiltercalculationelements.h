@@ -41,9 +41,6 @@ struct FixedLagSmootherKalmanFilterCalculationElements : public KalmanFilterCalc
   ~FixedLagSmootherKalmanFilterCalculationElements() noexcept {}
   friend void boost::checked_delete<>(FixedLagSmootherKalmanFilterCalculationElements*);
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

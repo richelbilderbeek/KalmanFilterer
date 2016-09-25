@@ -36,7 +36,6 @@
 
 #include "kalmanfilter.h"
 #include "kalmanfilterexample.h"
-#include "testtimer.h"
 #include "kalmanfilterexperiment.h"
 #include "kalmanfilterexperimentparametertype.h"
 #include "kalmanfilterparameters.h"
@@ -52,7 +51,6 @@
 #include "qtsteadystatekalmanfiltercalculationdialog.h"
 #include "qtwhitenoisesystemparametersdialog.h"
 #include "standardwhitenoisesystemparameters.h"
-#include "trace.h"
 #include "ui_qtkalmanfilterermaindialog.h"
 
 //#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
@@ -73,11 +71,6 @@ ribi::kalman::QtKalmanFiltererMainDialog::QtKalmanFiltererMainDialog(
     m_plots{},
     m_to_delete_at_new_run{}
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
-
-
   ui->setupUi(this);
   assert(m_experiment_dialog);
   assert(m_model);
@@ -714,70 +707,6 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowTable(const boost::shared_ptr
     }
   }
 }
-
-#ifndef NDEBUG
-void ribi::kalman::QtKalmanFiltererMainDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    ribi::kalman::QtKalmanFiltererMainDialog::Create();
-  }
-  const TestTimer test_timer(__func__,__FILE__,2.0);
-  const bool verbose{false};
-  //TestTimer::SetMaxCnt(2);
-  {
-    if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: Create self"); }
-    {
-      //const TestTimer test_timer(boost::lexical_cast<std::string>(__LINE__),__FILE__,1.0);
-      const boost::shared_ptr<QtKalmanFiltererMainDialog> d
-        = ribi::kalman::QtKalmanFiltererMainDialog::Create();
-      assert(d);
-      assert(d->m_model);
-      d->m_model->SetNumberOfTimesteps(1); //Otherwise these tests take too long
-      d->SetShowCalculation(true);
-      d->SetShowGraph(true);
-      d->SetShowStatistics(true);
-      d->SetShowTable(true);
-      d->on_button_start_clicked();
-    }
-    if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: (1/2) Click on example x and write these to a DokuWiki file"); }
-    if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: (2/2) Click on example y and read the file from x"); }
-    {
-      //const TestTimer test_timer(boost::lexical_cast<std::string>(__LINE__),__FILE__,1.0);
-      const boost::shared_ptr<QtKalmanFiltererMainDialog> d
-        = ribi::kalman::QtKalmanFiltererMainDialog::Create();
-      assert(d);
-      assert(d->m_model);
-      assert(d->m_experiment_dialog);
-      d->m_model->SetNumberOfTimesteps(2); //Otherwise these tests take too long
-      const std::string filename = "TempQtKalmanFiltererMainDialogTest.txt";
-      const int n_examples = 1; //Can be changed to 6
-      for (int x = 0; x!= n_examples; ++x)
-      {
-        //1) Click on example x and write these to a DokuWiki file
-        {
-          d->m_experiment_dialog->GetExamplesDialog()->EmitExample(x);
-          d->m_model->SetNumberOfTimesteps(2); //Otherwise these tests take too long
-          d->m_experiment_dialog->SaveToDokuWiki(filename);
-        }
-        for (int y = 0; y!= n_examples; ++y)
-        {
-          //2) Click on example y and read the file from x
-          d->m_experiment_dialog->GetExamplesDialog()->EmitExample(y);
-          d->m_model->SetNumberOfTimesteps(2); //Otherwise these tests take too long
-          d->m_experiment_dialog->LoadFromDokuWiki(filename);
-        }
-      }
-      //Delete file
-      std::remove(filename.c_str());
-    }
-  }
-}
-#endif
 
 void ribi::kalman::QtKalmanFiltererMainDialog::on_tab_context_currentChanged(int index)
 {

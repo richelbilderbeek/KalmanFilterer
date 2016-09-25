@@ -12,6 +12,8 @@ before_install:
 install: 
   - sudo apt-get install -qq g++-5
   - ./install_oclint.sh
+  - ./download_other_githubs.sh
+  - ./build_other_githubs.sh
 
 addons:
   apt:
@@ -30,8 +32,10 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./download_other_githubs.sh
-  - ./build_other_githubs.sh
+  - ./build_test_console.sh
+  - ./KalmanFiltererTestConsole
+  - ./build_test_desktop.sh
+  - ./KalmanFiltererTestDesktop
   - ./get_code_cov.sh
   - codecov
   #- ./clean.sh # Now build without -gcov

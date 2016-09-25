@@ -110,10 +110,6 @@ struct KalmanFilterExperiment
 
   ///The white noise system
   const boost::shared_ptr<WhiteNoiseSystem> m_white_noise_system;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace kalman

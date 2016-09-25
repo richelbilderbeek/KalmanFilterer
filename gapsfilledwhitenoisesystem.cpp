@@ -25,8 +25,6 @@ ribi::kalman::GapsFilledWhiteNoiseSystem::GapsFilledWhiteNoiseSystem(
     >(parameters)},
     m_timestep{0}
 {
-  #ifndef NDEBUG
-  Test();
   assert(m_parameters);
   //Check measuring frequecies
   {
@@ -38,7 +36,6 @@ ribi::kalman::GapsFilledWhiteNoiseSystem::GapsFilledWhiteNoiseSystem(
       assert(x >= 1 && "At least one out of one measurements is a real measurement");
     }
   }
-  #endif
 }
 
 std::string ribi::kalman::GapsFilledWhiteNoiseSystem::GetVersion() noexcept
@@ -119,49 +116,4 @@ const boost::numeric::ublas::vector<double>&
   return this->GetCurrentState();
 }
 
-#ifndef NDEBUG
-void ribi::kalman::GapsFilledWhiteNoiseSystem::Test() noexcept
-{
-  //Check if measurements are indeed lagged:
-  //The system's real value should update immediatly, but this fresh measurement
-  //must only be accessible after lag timesteps
-  //Context: measuring the position of an object with constant velocity
-  {
-    const int f = 5;
-    const boost::shared_ptr<GapsFilledWhiteNoiseSystem> my_system
-      = GapsFilledWhiteNoiseSystemFactory().Create(
-        Matrix::CreateMatrix(1,1, { 1.0 } ), //control
-        Matrix::CreateVector(     { 0.0 } ), //initial_state,
-        Matrix::CreateVector(     {   f } ), //measurement frequencies
-        Matrix::CreateVector(     { 0.0000001 } ), //real_measurement_noise
-        Matrix::CreateVector(     { 0.0000001 } ), //real_process_noise
-        Matrix::CreateMatrix(1,1, { 1.0 } )  //state_transition
-    );
-    assert(my_system);
-    //Context: airhockey puck
-    const boost::numeric::ublas::vector<double> input = Matrix::CreateVector( { 1.0 } );
-
-    for (int i=0; i!= 3*f; ++i)
-    {
-      const boost::numeric::ublas::vector<double> measurements = my_system->Measure();
-      assert(!measurements.empty());
-      assert(measurements.size() == 1);
-      assert(measurements.size() == my_system->PeekAtRealState().size());
-      const double expected = static_cast<double>(i);
-      const double measured = measurements(0);
-      const double real = my_system->PeekAtRealState()(0);
-      assert(Matrix::IsAboutEqual(real,expected));
-      if (i % f == 0)
-      {
-        assert(Matrix::IsAboutEqual(measured,expected));
-      }
-      else
-      {
-        assert(!Matrix::IsAboutEqual(measured,expected));
-      }
-      my_system->GoToNextState(input);
-    }
-  }
-}
-#endif
 

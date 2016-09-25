@@ -33,8 +33,6 @@
 #include "standardwhitenoisesystemfactory.h"
 #include "standardwhitenoisesystemparameters.h"
 #include "templocale.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "whitenoisesystemfactory.h"
 #include "whitenoisesystemparameters.h"
 #include "whitenoisesystemtype.h"
@@ -62,9 +60,6 @@ boost::numeric::ublas::matrix<double> ConvertToUblasMatrixDouble(
       try { boost::lexical_cast<double>(v(row,col)); }
       catch (boost::bad_lexical_cast&)
       {
-        TRACE("ERBREAKROR");
-        TRACE(v(row,col));
-        TRACE("BREAK");
         assert(!"Should not get here");
       }
       #endif
@@ -162,7 +157,6 @@ ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(QObje
    m_white_noise_system_type(WhiteNoiseSystemType::standard)
 {
   #ifndef NDEBUG
-  Test();
   assert(IsValid());
 
   const int n_rows = Find(KalmanFilterExperimentParameterType::state_names)->rowCount();
@@ -813,12 +807,6 @@ void ribi::kalman::QtKalmanFilterExperimentModel::FromDokuWiki(const std::string
       QtKalmanFilterExperimentModel dummy_model;
       dummy_model.FromDokuWiki(new_str);
       assert(this->GetNumberOfTimesteps() == dummy_model.GetNumberOfTimesteps());
-      if (new_str != dummy_model.ToDokuWiki())
-      {
-        //Error in number of timesteps
-        TRACE(new_str);
-        TRACE(dummy_model.ToDokuWiki());
-      }
       assert(new_str == dummy_model.ToDokuWiki());
     }
     #endif
@@ -833,29 +821,22 @@ bool ribi::kalman::QtKalmanFilterExperimentModel::IsValid() const
 {
   if (m_lag_estimated < 0)
   {
-    TRACE("Estimated lag smaller than zero");
     return false;
   }
   if (m_lag_real < 0)
   {
-    TRACE("Real lag smaller than zero");
     return false;
   }
   if (m_number_of_timesteps < 0)
   {
-    TRACE("Number of timesteps smaller than zero");
     return false;
   }
   if (m_models.empty())
   {
-    TRACE("No tables in m_models");
     return false;
   }
   if (m_version != m_version_current)
   {
-    TRACE(m_version);
-    TRACE(m_version_current);
-    TRACE("Model not updated to latest version");
     return false;
   }
   typedef std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *>::const_iterator Iterator;
@@ -867,13 +848,11 @@ bool ribi::kalman::QtKalmanFilterExperimentModel::IsValid() const
     const QAbstractTableModel * const table = p.second;
     if (table == 0)
     {
-      TRACE("Uninitialized QAbstractTableModel");
       return false;
     }
     const KalmanFilterExperimentParameterType type = p.first;
     if (type == KalmanFilterExperimentParameterType::n_parameters)
     {
-      TRACE("Use of n_parameters");
       return false;
     }
     const int n_rows_expected = Find(KalmanFilterExperimentParameterType::state_names)->rowCount();
@@ -887,18 +866,10 @@ bool ribi::kalman::QtKalmanFilterExperimentModel::IsValid() const
 
     if (n_rows_expected != n_rows_found)
     {
-      TRACE(n_rows_expected);
-      TRACE(n_rows_found);
-      TRACE("Number of rows unexpected");
       return false;
     }
     if (n_cols_expected != n_cols_found)
     {
-      TRACE(n_rows_expected);
-      TRACE(n_rows_found);
-      TRACE(n_cols_expected);
-      TRACE(n_cols_found);
-      TRACE("Number of columns unexpected");
       return false;
     }
   }
@@ -968,7 +939,6 @@ void ribi::kalman::QtKalmanFilterExperimentModel::ReadContext(const std::vector<
   }
 
   this->SetContext(new_context.substr(0,new_context.size() - 1)); //Strip \n
-  //TRACE(m_context);
 }
 
 void ribi::kalman::QtKalmanFilterExperimentModel::ReadKalmanFilterType(const std::string& s)
@@ -1329,94 +1299,6 @@ void ribi::kalman::QtKalmanFilterExperimentModel::SetWhiteNoiseSystemType(const 
     m_signal_white_noise_system_type_changed(m_white_noise_system_type);
   }
 }
-
-#ifndef NDEBUG
-void ribi::kalman::QtKalmanFilterExperimentModel::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  Container();
-  Matrix();
-  KalmanFilterTypes();
-  KalmanFilterFactory();
-  KalmanFilterExperimentParameter();
-  WhiteNoiseSystemTypes();
-  QtKalmanFilterExperimentModel().CreateWhiteNoiseSystemParameters();
-  WhiteNoiseSystemFactory().Create(QtKalmanFilterExperimentModel().CreateWhiteNoiseSystemParameters());
-  QtKalmanFilterExperimentModel().CreateExperiment();
-  QtKalmanFilterExperimentModel().CreateKalmanFilter();
-  QtKalmanFilterExperimentModel().CreateKalmanFilterParameters();
-  QtKalmanFilterExperimentModel().CreateWhiteNoiseSystem();
-  QtKalmanFilterExperimentModel().CreateFixedLagSmootherKalmanFilterParameters();
-  QtKalmanFilterExperimentModel().CreateGapsFilledWhiteNoiseSystemParameters();
-  QtKalmanFilterExperimentModel().CreateLaggedWhiteNoiseSystemParameters();
-  QtKalmanFilterExperimentModel().CreateMap();
-  QtKalmanFilterExperimentModel().CreateLaggedWhiteNoiseSystemParameters();
-  ribi::Regex();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-
-  //Test some regexes
-  /*
-  {
-    const std::string s
-      =
-      "* Kalman filter type: discrete\n"
-      "* Lag estimated: 0\n"
-      "* Lag real: 0\n"
-      "* Number of timesteps: 1500\n"
-      "* White noise system type: standard\n"
-      "\n"
-      "^ Control ^^\n"
-      "^ V | 0 |\n"
-      "\n"
-      "^ Estimated measurement error covariance ^^\n"
-      "^ V | 0.10000000000000001 |\n"
-      "\n"
-      "^ Estimated optimal Kalman gain ^^\n"
-      "^ V | 0 |\n"
-      "\n"
-      "^ Estimated process noise covariance ^^\n"
-      "^ V | 0.0001 |\n"
-      "\n"
-      "^ Initial covariance estimate ^^\n"
-      "^ V | 1 |\n"
-      "\n"
-      "^ Initial state estimate ^^\n"
-      "^ V | 3 |\n"
-      "\n"
-      "^ Real initial state ^^\n"
-      "^ V | 1.25 |\n"
-      "\n"
-      "^ Real measurement noise ^^\n"
-      "^ V | 0.10000000000000001 |\n"
-      "\n"
-      "^ Real process noise ^^\n"
-      "^ V | 1.0000000000000001e-005 |\n"
-      "\n"
-      "^ Input ^^\n"
-      "^ V | 0.0 |\n"
-      "\n"
-      "^ Observation ^^\n"
-      "^ V | 1 |\n"
-      "\n"
-      "^ State names ^^\n"
-      "^ V | V |\n"
-      "\n"
-      "^ State transition ^^\n"
-      "^ V | 1 |\n";
-    boost::shared_ptr<QtKalmanFilterExperimentModel> m(new QtKalmanFilterExperimentModel);
-    m->FromDokuWiki(s);
-    const std::string t = m->ToDokuWiki();
-    boost::shared_ptr<QtKalmanFilterExperimentModel> n(new QtKalmanFilterExperimentModel);
-    n->FromDokuWiki(t);
-    assert(*m == *n);
-  }
-  */
-}
-#endif
 
 std::string ribi::kalman::QtKalmanFilterExperimentModel::ToDokuWiki() const noexcept
 {
