@@ -19,7 +19,9 @@ ribi::kalman::WhiteNoiseSystem::WhiteNoiseSystem(
   assert(m_parameters);
 }
 
-double ribi::kalman::WhiteNoiseSystem::GetRandomNormal(const double mean, const double sigma) noexcept
+double ribi::kalman::WhiteNoiseSystem::GetRandomNormal(
+  const double mean, const double sigma
+) noexcept
 {
   return Random().GetNormal(mean,sigma);
 }
@@ -36,7 +38,9 @@ std::vector<std::string> ribi::kalman::WhiteNoiseSystem::GetVersionHistory() noe
   };
 }
 
-void ribi::kalman::WhiteNoiseSystem::SetNewCurrentState(const boost::numeric::ublas::vector<double>& new_current_state)
+void ribi::kalman::WhiteNoiseSystem::SetNewCurrentState(
+  const boost::numeric::ublas::vector<double>& new_current_state
+)
 {
   assert(m_current_state.size() == new_current_state.size());
   m_current_state = new_current_state;

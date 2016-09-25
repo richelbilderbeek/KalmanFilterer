@@ -10,12 +10,16 @@ h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
   -- \
   -c -std=c++11 -fPIC \
   -I../RibiClasses/CppAbout \
+  -I../RibiClasses/CppContainer \
   -I../RibiClasses/CppHelp \
   -I../RibiClasses/CppTestTimer \
   -I../RibiClasses/CppFileIo \
+  -I../RibiClasses/CppMatrix \
   -I../RibiClasses/CppMenuDialog \
   -I../RibiClasses/CppQtAboutDialog \
   -I../RibiClasses/CppQtHideAndShowDialog \
+  -I../RibiClasses/CppQtModel \
+  -I../RibiClasses/CppRibiRandom \
   -I../RibiClasses/CppTrace \
   -I/usr/include/c++/5 \
   -I/usr/include/x86_64-linux-gnu/c++/5 \

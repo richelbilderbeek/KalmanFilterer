@@ -40,7 +40,8 @@ std::string ribi::kalman::StandardKalmanFilterParameters::GetVersion() noexcept
   return "1.1";
 }
 
-std::vector<std::string> ribi::kalman::StandardKalmanFilterParameters::GetVersionHistory() noexcept
+std::vector<std::string>
+ribi::kalman::StandardKalmanFilterParameters::GetVersionHistory() noexcept
 {
   return {
     "2013-04-28: version 1.0: initial version",
@@ -48,7 +49,9 @@ std::vector<std::string> ribi::kalman::StandardKalmanFilterParameters::GetVersio
   };
 }
 
-bool ribi::kalman::StandardKalmanFilterParameters::HasParameterType(const KalmanFilterParameterType type) noexcept
+bool ribi::kalman::StandardKalmanFilterParameters::HasParameterType(
+  const KalmanFilterParameterType type
+) noexcept
 {
   return
        type == KalmanFilterParameterType::control
@@ -60,14 +63,30 @@ bool ribi::kalman::StandardKalmanFilterParameters::HasParameterType(const Kalman
     || type == KalmanFilterParameterType::state_transition;
 }
 
-bool ribi::kalman::StandardKalmanFilterParameters::IsAboutEqual(const StandardKalmanFilterParameters& lhs, const StandardKalmanFilterParameters& rhs) noexcept
+bool ribi::kalman::StandardKalmanFilterParameters::IsAboutEqual(
+  const StandardKalmanFilterParameters& lhs,
+  const StandardKalmanFilterParameters& rhs
+) noexcept
 {
   return
        Matrix::MatricesAreAboutEqual(lhs.GetControl(),rhs.GetControl())
-    && Matrix::MatricesAreAboutEqual(lhs.GetEstimatedMeasurementNoise(),rhs.GetEstimatedMeasurementNoise())
-    && Matrix::MatricesAreAboutEqual(lhs.GetInitialCovarianceEstimate(),rhs.GetInitialCovarianceEstimate())
-    && Matrix::VectorsAreAboutEqual(lhs.GetInitialStateEstimate(),rhs.GetInitialStateEstimate())
-    && Matrix::MatricesAreAboutEqual(lhs.GetObservation(),rhs.GetObservation())
-    && Matrix::MatricesAreAboutEqual(lhs.GetEstimatedProcessNoiseCovariance(),rhs.GetEstimatedProcessNoiseCovariance())
-    && Matrix::MatricesAreAboutEqual(lhs.GetStateTransition(),rhs.GetStateTransition());
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetEstimatedMeasurementNoise(),rhs.GetEstimatedMeasurementNoise()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetInitialCovarianceEstimate(),rhs.GetInitialCovarianceEstimate()
+    )
+    && Matrix::VectorsAreAboutEqual(
+      lhs.GetInitialStateEstimate(),rhs.GetInitialStateEstimate()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetObservation(),rhs.GetObservation()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetEstimatedProcessNoiseCovariance(),
+      rhs.GetEstimatedProcessNoiseCovariance()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetStateTransition(),rhs.GetStateTransition()
+    );
 }

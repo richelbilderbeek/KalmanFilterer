@@ -8,7 +8,8 @@
 #include <cassert>
 #include "kalmanfiltercalculationelementsfactory.h"
 
-ribi::kalman::SteadyStateKalmanFilterCalculationElements::SteadyStateKalmanFilterCalculationElements(
+ribi::kalman::SteadyStateKalmanFilterCalculationElements
+  ::SteadyStateKalmanFilterCalculationElements(
   const boost::numeric::ublas::vector<double>& measurement,
   const boost::numeric::ublas::vector<double>& predicted_state,
   const boost::numeric::ublas::vector<double>& previous_state_estimate,
@@ -23,7 +24,8 @@ ribi::kalman::SteadyStateKalmanFilterCalculationElements::SteadyStateKalmanFilte
   //... nothing to check
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements> ribi::kalman::SteadyStateKalmanFilterCalculationElements::Clone() const
+boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements>
+ribi::kalman::SteadyStateKalmanFilterCalculationElements::Clone() const
 {
   const boost::shared_ptr<KalmanFilterCalculationElements> p {
     new SteadyStateKalmanFilterCalculationElements(

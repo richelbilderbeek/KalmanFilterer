@@ -31,22 +31,22 @@ ribi::kalman::FixedLagSmootherKalmanFilter::FixedLagSmootherKalmanFilter(
 }
 
 
-boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> > ribi::kalman::FixedLagSmootherKalmanFilter::CreateInitialGains(
+boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> ribi::kalman::FixedLagSmootherKalmanFilter::CreateInitialGains(
   const int lag,
   const StandardKalmanFilter& filter)
 {
 
   assert(filter.GetStateSize() == boost::numeric_cast<int>(filter.GetLastStandardCalculation()->GetKalmanGain().size1()));
   assert(filter.GetLastStandardCalculation()->GetKalmanGain().size1() == filter.GetLastStandardCalculation()->GetKalmanGain().size2());
-  boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> > v(lag,filter.GetLastStandardCalculation()->GetKalmanGain());
+  boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> v(lag,filter.GetLastStandardCalculation()->GetKalmanGain());
   return v;
 }
 
-boost::numeric::ublas::vector<boost::numeric::ublas::vector<double> > ribi::kalman::FixedLagSmootherKalmanFilter::CreateComplexInitialStates(
+boost::numeric::ublas::vector<boost::numeric::ublas::vector<double>> ribi::kalman::FixedLagSmootherKalmanFilter::CreateComplexInitialStates(
   const boost::shared_ptr<const FixedLagSmootherKalmanFilterParameters>& parameters)
 {
   assert(parameters);
-  boost::numeric::ublas::vector<boost::numeric::ublas::vector<double> > v(
+  boost::numeric::ublas::vector<boost::numeric::ublas::vector<double>> v(
     parameters->GetLag(),
     parameters->GetStandardParameters()->GetInitialStateEstimate());
   return v;
@@ -59,7 +59,7 @@ boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> >
 {
   //
   assert(lag > 0 && "Term A is not needed for a lag of zero");
-  boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double> > v(lag);
+  boost::numeric::ublas::vector<boost::numeric::ublas::matrix<double>> v(lag);
 
   v[0] = boost::numeric::ublas::identity_matrix<double>(state_size);
   for (int i=1; i!=lag; ++i)
@@ -110,7 +110,7 @@ boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double> >
   assert(lag > 0 && "Term B is not needed for a lag of zero");
   const int n_cols = lag - 1;
   const int n_rows = lag;
-  boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double> > v(n_rows,n_cols);
+  boost::numeric::ublas::matrix<boost::numeric::ublas::matrix<double>> v(n_rows,n_cols);
   for (int y=0; y!=n_rows; ++y)
   {
     for (int x=0; x!=n_cols; ++x)
@@ -186,7 +186,7 @@ boost::numeric::ublas::vector<double> ribi::kalman::FixedLagSmootherKalmanFilter
   assert(!m_state_estimates.empty());
   const std::size_t state_size = m_standard_filter->GetStateSize();
   assert(state_size <= m_state_estimates.size());
-  const vector_range<const vector<double> > state(m_state_estimates,range(0,state_size));
+  const vector_range<const vector<double>> state(m_state_estimates,range(0,state_size));
   return vector<double>(state);
 }
 
@@ -225,7 +225,7 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::SupplyMeasurementAndInput(
   //ps has length lag
   //P(i) has size state_size x state_size
   //P(i) = P . [ [F-KH]^T ]^i (where ^T denotes a transposition, where ^i denotes an exponent to the power of i
-  vector<matrix<double> > ps_complex(lag);
+  vector<matrix<double>> ps_complex(lag);
   for (int i=0; i!=lag; ++i)
   {
     //
@@ -251,7 +251,7 @@ void ribi::kalman::FixedLagSmootherKalmanFilter::SupplyMeasurementAndInput(
   //K(i) has size state_size x state_size
   //K(i) = P(i) . H^T . [H.P.H^T + R]^-1
   //
-  vector<matrix<double> > ks_complex(lag);
+  vector<matrix<double>> ks_complex(lag);
   for (int i=0; i!=lag; ++i)
   {
     const boost::numeric::ublas::matrix<double> term

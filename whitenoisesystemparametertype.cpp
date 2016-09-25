@@ -8,7 +8,10 @@
 #include <boost/numeric/conversion/cast.hpp>
 #pragma GCC diagnostic pop
 
-bool ribi::kalman::operator<(const WhiteNoiseSystemParameterType lhs, const WhiteNoiseSystemParameterType rhs)
+bool ribi::kalman::operator<(
+  const WhiteNoiseSystemParameterType lhs,
+  const WhiteNoiseSystemParameterType rhs
+)
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -16,7 +19,10 @@ bool ribi::kalman::operator<(const WhiteNoiseSystemParameterType lhs, const Whit
   return static_cast<int>(lhs) < static_cast<int>(rhs);
 }
 
-bool ribi::kalman::operator==(const WhiteNoiseSystemParameterType lhs, const WhiteNoiseSystemParameterType rhs)
+bool ribi::kalman::operator==(
+  const WhiteNoiseSystemParameterType lhs,
+  const WhiteNoiseSystemParameterType rhs
+)
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -24,7 +30,10 @@ bool ribi::kalman::operator==(const WhiteNoiseSystemParameterType lhs, const Whi
   return static_cast<int>(lhs) == static_cast<int>(rhs);
 }
 
-bool ribi::kalman::operator!=(const WhiteNoiseSystemParameterType lhs, const WhiteNoiseSystemParameterType rhs)
+bool ribi::kalman::operator!=(
+  const WhiteNoiseSystemParameterType lhs,
+  const WhiteNoiseSystemParameterType rhs
+)
 {
   return !(lhs == rhs);
 }

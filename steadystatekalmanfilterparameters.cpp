@@ -24,7 +24,8 @@ ribi::kalman::SteadyStateKalmanFilterParameters::SteadyStateKalmanFilterParamete
   #endif
 }
 
-boost::numeric::ublas::matrix<double> ribi::kalman::SteadyStateKalmanFilterParameters::CalculateOptimalKalmanGain(
+boost::numeric::ublas::matrix<double>
+ribi::kalman::SteadyStateKalmanFilterParameters::CalculateOptimalKalmanGain(
   const boost::numeric::ublas::matrix<double>& initial_covariance,
   const boost::numeric::ublas::matrix<double>& measurement_noise,
   const boost::numeric::ublas::matrix<double>& observation,
@@ -53,7 +54,8 @@ std::string ribi::kalman::SteadyStateKalmanFilterParameters::GetVersion() noexce
   return "1.1";
 }
 
-std::vector<std::string> ribi::kalman::SteadyStateKalmanFilterParameters::GetVersionHistory() noexcept
+std::vector<std::string>
+ribi::kalman::SteadyStateKalmanFilterParameters::GetVersionHistory() noexcept
 {
   return {
     "2013-05-01: version 1.0: initial version"
@@ -61,7 +63,9 @@ std::vector<std::string> ribi::kalman::SteadyStateKalmanFilterParameters::GetVer
   };
 }
 
-bool ribi::kalman::SteadyStateKalmanFilterParameters::HasParameterType(const KalmanFilterParameterType type)
+bool ribi::kalman::SteadyStateKalmanFilterParameters::HasParameterType(
+  const KalmanFilterParameterType type
+)
 {
   return
        type == KalmanFilterParameterType::control
@@ -75,10 +79,24 @@ bool ribi::kalman::SteadyStateKalmanFilterParameters::IsAboutEqual(
   const SteadyStateKalmanFilterParameters& lhs,
   const SteadyStateKalmanFilterParameters& rhs)
 {
-  return
-       Matrix::MatricesAreAboutEqual(lhs.GetControl(),rhs.GetControl())
-    && Matrix::MatricesAreAboutEqual(lhs.GetEstimatedOptimalKalmanGain(),rhs.GetEstimatedOptimalKalmanGain())
-    && Matrix::VectorsAreAboutEqual(lhs.GetInitialStateEstimate(),rhs.GetInitialStateEstimate())
-    && Matrix::MatricesAreAboutEqual(lhs.GetObservation(),rhs.GetObservation())
-    && Matrix::MatricesAreAboutEqual(lhs.GetStateTransition(),rhs.GetStateTransition());
+  return Matrix::MatricesAreAboutEqual(
+       lhs.GetControl(),
+       rhs.GetControl()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetEstimatedOptimalKalmanGain(),
+      rhs.GetEstimatedOptimalKalmanGain()
+    )
+    && Matrix::VectorsAreAboutEqual(
+      lhs.GetInitialStateEstimate(),
+      rhs.GetInitialStateEstimate()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetObservation(),
+      rhs.GetObservation()
+    )
+    && Matrix::MatricesAreAboutEqual(
+      lhs.GetStateTransition(),
+      rhs.GetStateTransition()
+    );
 }

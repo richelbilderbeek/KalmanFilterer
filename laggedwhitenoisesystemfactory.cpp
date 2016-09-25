@@ -41,7 +41,8 @@ boost::shared_ptr<ribi::kalman::LaggedWhiteNoiseSystem>
   return system;
 }
 
-boost::shared_ptr<ribi::kalman::LaggedWhiteNoiseSystem> ribi::kalman::LaggedWhiteNoiseSystemFactory::Create(
+boost::shared_ptr<ribi::kalman::LaggedWhiteNoiseSystem>
+ribi::kalman::LaggedWhiteNoiseSystemFactory::Create(
   const boost::shared_ptr<WhiteNoiseSystemParameters>& parameters
 ) const noexcept
 {

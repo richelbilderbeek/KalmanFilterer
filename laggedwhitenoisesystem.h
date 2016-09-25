@@ -53,7 +53,7 @@ struct LaggedWhiteNoiseSystem : public WhiteNoiseSystem
 
   ///The front one is the one that can be read,
   ///the back one is the freshest measurement
-  mutable std::queue<boost::numeric::ublas::vector<double> > m_measuments;
+  mutable std::queue<boost::numeric::ublas::vector<double>> m_measuments;
 
   ///The lagged white noise system parameters
   const boost::shared_ptr<const LaggedWhiteNoiseSystemParameters> m_parameters;

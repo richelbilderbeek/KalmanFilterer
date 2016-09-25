@@ -13,7 +13,8 @@ ribi::kalman::FixedLagSmootherKalmanFilterFactory::FixedLagSmootherKalmanFilterF
 
 }
 
-boost::shared_ptr<ribi::kalman::FixedLagSmootherKalmanFilter> ribi::kalman::FixedLagSmootherKalmanFilterFactory::Create(
+boost::shared_ptr<ribi::kalman::FixedLagSmootherKalmanFilter>
+ribi::kalman::FixedLagSmootherKalmanFilterFactory::Create(
   const boost::shared_ptr<const KalmanFilterParameters>& parameters) const noexcept
 {
   assert(parameters);

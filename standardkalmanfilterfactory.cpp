@@ -13,7 +13,8 @@ ribi::kalman::StandardKalmanFilterFactory::StandardKalmanFilterFactory()
 
 }
 
-boost::shared_ptr<ribi::kalman::StandardKalmanFilter> ribi::kalman::StandardKalmanFilterFactory::Create(
+boost::shared_ptr<ribi::kalman::StandardKalmanFilter>
+ribi::kalman::StandardKalmanFilterFactory::Create(
   const boost::shared_ptr<const KalmanFilterParameters>& parameters) const noexcept
 {
   assert(parameters);

@@ -15,7 +15,8 @@ ribi::kalman::WhiteNoiseSystemFactory::WhiteNoiseSystemFactory()
 
 }
 
-boost::shared_ptr<ribi::kalman::WhiteNoiseSystem> ribi::kalman::WhiteNoiseSystemFactory::Create(
+boost::shared_ptr<ribi::kalman::WhiteNoiseSystem>
+ribi::kalman::WhiteNoiseSystemFactory::Create(
   const boost::shared_ptr<WhiteNoiseSystemParameters>& parameters) const noexcept
 {
   boost::shared_ptr<WhiteNoiseSystem> p;

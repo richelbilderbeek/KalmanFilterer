@@ -11,7 +11,8 @@
 #include "steadystatekalmanfiltercalculationelements.h"
 #include "fixedlagsmootherkalmanfiltercalculationelements.h"
 
-ribi::kalman::KalmanFilterCalculationElementsFactory::KalmanFilterCalculationElementsFactory()
+ribi::kalman::KalmanFilterCalculationElementsFactory
+  ::KalmanFilterCalculationElementsFactory()
 {
 
 }
@@ -40,12 +41,14 @@ boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements>
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements> ribi::kalman::KalmanFilterCalculationElementsFactory::DeepCopy(
+boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements>
+ribi::kalman::KalmanFilterCalculationElementsFactory::DeepCopy(
   const boost::shared_ptr<KalmanFilterCalculationElements>& original) const noexcept
 {
   assert(original);
 
-  const boost::shared_ptr<KalmanFilterCalculationElements> my_copy = original->Clone();
+  const boost::shared_ptr<KalmanFilterCalculationElements> my_copy
+    = original->Clone();
 
   assert(my_copy);
   assert(original->GetType() == my_copy->GetType());

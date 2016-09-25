@@ -31,7 +31,9 @@ ribi::kalman::KalmanFilterParameters::KalmanFilterParameters(
   #endif
 }
 
-bool ribi::kalman::KalmanFilterParameters::HasParameterType(const KalmanFilterParameterType type)
+bool ribi::kalman::KalmanFilterParameters::HasParameterType(
+  const KalmanFilterParameterType type
+)
 {
   return
        type == KalmanFilterParameterType::control

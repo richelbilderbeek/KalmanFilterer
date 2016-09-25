@@ -1,8 +1,12 @@
 #include "kalmanfiltertypes.h"
 
-boost::bimap<ribi::kalman::KalmanFilterType,std::string> ribi::kalman::KalmanFilterTypes::m_map;
+boost::bimap<
+  ribi::kalman::KalmanFilterType,std::string
+> ribi::kalman::KalmanFilterTypes::m_map;
 
-boost::bimap<ribi::kalman::KalmanFilterType,std::string> ribi::kalman::KalmanFilterTypes::CreateMap() noexcept
+boost::bimap<
+  ribi::kalman::KalmanFilterType,std::string
+> ribi::kalman::KalmanFilterTypes::CreateMap() noexcept
 {
   #ifndef NDEBUG
   Test();
@@ -54,7 +58,9 @@ void ribi::kalman::KalmanFilterTypes::Test() noexcept
 }
 #endif
 
-std::string ribi::kalman::KalmanFilterTypes::ToStr(const KalmanFilterType type) const noexcept
+std::string ribi::kalman::KalmanFilterTypes::ToStr(
+  const KalmanFilterType type
+) const noexcept
 {
   if (m_map.left.empty()) m_map = CreateMap();
   assert(!m_map.left.empty());
@@ -63,7 +69,9 @@ std::string ribi::kalman::KalmanFilterTypes::ToStr(const KalmanFilterType type) 
   return s;
 }
 
-ribi::kalman::KalmanFilterType ribi::kalman::KalmanFilterTypes::ToType(const std::string& s) const
+ribi::kalman::KalmanFilterType ribi::kalman::KalmanFilterTypes::ToType(
+  const std::string& s
+) const
 {
   if (m_map.right.empty()) m_map = CreateMap();
   assert(!m_map.right.empty());

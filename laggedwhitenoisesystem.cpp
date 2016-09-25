@@ -20,7 +20,9 @@ ribi::kalman::LaggedWhiteNoiseSystem::LaggedWhiteNoiseSystem(
   const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters)
   : WhiteNoiseSystem{parameters},
     m_measuments{},
-    m_parameters{boost::dynamic_pointer_cast<const LaggedWhiteNoiseSystemParameters>(parameters)},
+    m_parameters{boost::dynamic_pointer_cast<
+      const LaggedWhiteNoiseSystemParameters
+    >(parameters)},
     m_system{
       StandardWhiteNoiseSystemFactory().Create(
         parameters->GetControl(),
@@ -52,19 +54,23 @@ std::string ribi::kalman::LaggedWhiteNoiseSystem::GetVersion() noexcept
   return "1.0";
 }
 
-std::vector<std::string> ribi::kalman::LaggedWhiteNoiseSystem::GetVersionHistory() noexcept
+std::vector<std::string>
+ribi::kalman::LaggedWhiteNoiseSystem::GetVersionHistory() noexcept
 {
   return {
     "2013-05-03: version 1.0: initial version"
   };
 }
 
-void ribi::kalman::LaggedWhiteNoiseSystem::GoToNextState(const boost::numeric::ublas::vector<double>& input)
+void ribi::kalman::LaggedWhiteNoiseSystem::GoToNextState(
+  const boost::numeric::ublas::vector<double>& input
+)
 {
   m_system->GoToNextState(input);
 }
 
-boost::numeric::ublas::vector<double> ribi::kalman::LaggedWhiteNoiseSystem::Measure() const noexcept
+boost::numeric::ublas::vector<double>
+ribi::kalman::LaggedWhiteNoiseSystem::Measure() const noexcept
 {
   assert(m_parameters->GetLag() == boost::numeric_cast<int>(m_measuments.size()));
   m_measuments.push(m_system->Measure());
@@ -77,7 +83,8 @@ boost::numeric::ublas::vector<double> ribi::kalman::LaggedWhiteNoiseSystem::Meas
   return result;
 }
 
-const boost::numeric::ublas::vector<double>& ribi::kalman::LaggedWhiteNoiseSystem::PeekAtRealState() const noexcept
+const boost::numeric::ublas::vector<double>&
+ribi::kalman::LaggedWhiteNoiseSystem::PeekAtRealState() const noexcept
 {
   return m_system->PeekAtRealState();
 }
@@ -117,7 +124,9 @@ void ribi::kalman::LaggedWhiteNoiseSystem::Test() noexcept
     {
       const double expected = boost::numeric_cast<double>(i);
       assert(Matrix::IsAboutEqual( my_system->Measure()(0), expected));
-      assert(Matrix::IsAboutEqual( my_system->PeekAtRealState()(0), boost::numeric_cast<double>(lag + i) ) );
+      assert(Matrix::IsAboutEqual(
+        my_system->PeekAtRealState()(0), boost::numeric_cast<double>(lag + i) )
+      );
       my_system->GoToNextState(input);
     }
   }

@@ -9,7 +9,8 @@
 #include "standardwhitenoisesystemparameters.h"
 #pragma GCC diagnostic pop
 
-ribi::kalman::GapsFilledWhiteNoiseSystemParameters::GapsFilledWhiteNoiseSystemParameters(
+ribi::kalman::GapsFilledWhiteNoiseSystemParameters
+  ::GapsFilledWhiteNoiseSystemParameters(
     const boost::numeric::ublas::matrix<double>& control,
     const boost::numeric::ublas::vector<double>& initial_state,
     const boost::numeric::ublas::vector<int>& measurement_frequency,

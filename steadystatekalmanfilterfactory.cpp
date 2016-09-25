@@ -14,8 +14,10 @@ ribi::kalman::SteadyStateKalmanFilterFactory::SteadyStateKalmanFilterFactory()
 
 }
 
-boost::shared_ptr<ribi::kalman::SteadyStateKalmanFilter> ribi::kalman::SteadyStateKalmanFilterFactory::Create(
-  const boost::shared_ptr<const KalmanFilterParameters>& parameters) const noexcept
+boost::shared_ptr<ribi::kalman::SteadyStateKalmanFilter>
+ribi::kalman::SteadyStateKalmanFilterFactory::Create(
+  const boost::shared_ptr<const KalmanFilterParameters>& parameters
+) const noexcept
 {
   assert(parameters);
   assert(parameters->GetType() == KalmanFilterType::steady_state);

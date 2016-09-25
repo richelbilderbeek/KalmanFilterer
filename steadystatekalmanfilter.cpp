@@ -16,9 +16,15 @@ ribi::kalman::SteadyStateKalmanFilter::SteadyStateKalmanFilter(
   const boost::shared_ptr<KalmanFilterCalculationElements>& calculation,
   const boost::shared_ptr<const KalmanFilterParameters>& parameters)
   : KalmanFilter{},
-    m_last_calculation{boost::dynamic_pointer_cast<SteadyStateKalmanFilterCalculationElements>(calculation)},
-    m_parameters{boost::dynamic_pointer_cast<const SteadyStateKalmanFilterParameters>(parameters)},
-    m_state_estimate{dynamic_cast<const SteadyStateKalmanFilterParameters*>(parameters.get())->GetInitialStateEstimate()}
+    m_last_calculation{boost::dynamic_pointer_cast<
+      SteadyStateKalmanFilterCalculationElements
+    >(calculation)},
+    m_parameters{boost::dynamic_pointer_cast<
+      const SteadyStateKalmanFilterParameters
+    >(parameters)},
+    m_state_estimate{dynamic_cast<
+      const SteadyStateKalmanFilterParameters*
+    >(parameters.get())->GetInitialStateEstimate()}
 {
   assert(m_last_calculation);
   assert(m_parameters
@@ -57,7 +63,8 @@ std::string ribi::kalman::SteadyStateKalmanFilter::GetVersion() noexcept
   return "1.1";
 }
 
-std::vector<std::string> ribi::kalman::SteadyStateKalmanFilter::GetVersionHistory() noexcept
+std::vector<std::string>
+ribi::kalman::SteadyStateKalmanFilter::GetVersionHistory() noexcept
 {
   return {
     "2013-05-01: version 1.0: initial version",
@@ -81,7 +88,10 @@ boost::numeric::ublas::vector<double> ribi::kalman::SteadyStateKalmanFilter::Pre
   const boost::numeric::ublas::vector<double> state_prediction
     = Matrix::Prod(term_a,this->GetStateEstimate())
     + Matrix::Prod(m_parameters->GetControl(),input)
-    + Matrix::Prod(m_parameters->GetEstimatedOptimalKalmanGain(),m_last_calculation->GetMeasurement());
+    + Matrix::Prod(
+        m_parameters->GetEstimatedOptimalKalmanGain(),
+        m_last_calculation->GetMeasurement()
+      );
   return state_prediction;
 }
 

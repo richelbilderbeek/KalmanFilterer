@@ -103,7 +103,7 @@ struct KalmanFilterExperiment
   const boost::shared_ptr<KalmanFilter> m_kalman_filter;
 
   ///The real state, that is, the values that would be measured without noise
-  std::vector<boost::numeric::ublas::vector<double> > m_real_states;
+  std::vector<boost::numeric::ublas::vector<double>> m_real_states;
 
   ///State names
   const std::vector<std::string> m_state_names;

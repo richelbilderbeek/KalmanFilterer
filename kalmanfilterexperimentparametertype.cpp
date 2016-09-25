@@ -5,7 +5,10 @@
 //#include <cassert>
 //#include <boost/numeric/conversion/cast.hpp>
 
-bool ribi::kalman::operator<(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs)
+bool ribi::kalman::operator<(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+)
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -13,7 +16,10 @@ bool ribi::kalman::operator<(const KalmanFilterExperimentParameterType lhs, cons
   return static_cast<int>(lhs) < static_cast<int>(rhs);
 }
 
-bool ribi::kalman::operator==(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs)
+bool ribi::kalman::operator==(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+)
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -21,7 +27,10 @@ bool ribi::kalman::operator==(const KalmanFilterExperimentParameterType lhs, con
   return static_cast<int>(lhs) == static_cast<int>(rhs);
 }
 
-bool ribi::kalman::operator!=(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs)
+bool ribi::kalman::operator!=(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+)
 {
   return !(lhs == rhs);
 }

@@ -9,7 +9,8 @@
 
 #include "standardkalmanfiltercalculationelements.h"
 
-ribi::kalman::FixedLagSmootherKalmanFilterCalculationElements::FixedLagSmootherKalmanFilterCalculationElements(
+ribi::kalman::FixedLagSmootherKalmanFilterCalculationElements
+  ::FixedLagSmootherKalmanFilterCalculationElements(
   const boost::numeric::ublas::vector<double>& measurement,
   const boost::numeric::ublas::vector<double>& predicted_state,
   const boost::numeric::ublas::vector<double>& previous_state_estimate,
@@ -33,7 +34,8 @@ void ribi::kalman::FixedLagSmootherKalmanFilterCalculationElements::Clear()
   //m_updated_covariance = boost::numeric::ublas::matrix<double>();
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements> ribi::kalman::FixedLagSmootherKalmanFilterCalculationElements::Clone() const
+boost::shared_ptr<ribi::kalman::KalmanFilterCalculationElements>
+ribi::kalman::FixedLagSmootherKalmanFilterCalculationElements::Clone() const
 {
   boost::shared_ptr<KalmanFilterCalculationElements> p;
   assert(p);

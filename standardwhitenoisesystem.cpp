@@ -16,7 +16,9 @@
 ribi::kalman::StandardWhiteNoiseSystem::StandardWhiteNoiseSystem(
   const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters)
   : WhiteNoiseSystem{parameters},
-    m_parameters{boost::dynamic_pointer_cast<const StandardWhiteNoiseSystemParameters>(parameters)}
+    m_parameters{boost::dynamic_pointer_cast<
+      const StandardWhiteNoiseSystemParameters
+    >(parameters)}
 {
   assert(m_parameters);
 }
@@ -26,7 +28,8 @@ std::string ribi::kalman::StandardWhiteNoiseSystem::GetVersion() noexcept
   return "1.0";
 }
 
-std::vector<std::string> ribi::kalman::StandardWhiteNoiseSystem::GetVersionHistory() noexcept
+std::vector<std::string>
+ribi::kalman::StandardWhiteNoiseSystem::GetVersionHistory() noexcept
 {
   return {
     "2013-04-28: version 1.0: initial version"
@@ -41,7 +44,9 @@ void ribi::kalman::StandardWhiteNoiseSystem::GoToNextState()
   return GoToNextState(input);
 }
 
-void ribi::kalman::StandardWhiteNoiseSystem::GoToNextState(const boost::numeric::ublas::vector<double>& input)
+void ribi::kalman::StandardWhiteNoiseSystem::GoToNextState(
+  const boost::numeric::ublas::vector<double>& input
+)
 {
   //First do a perfect transition
   assert(input.size() == GetCurrentState().size());
@@ -63,14 +68,17 @@ void ribi::kalman::StandardWhiteNoiseSystem::GoToNextState(const boost::numeric:
   SetNewCurrentState(new_state);
 }
 
-boost::numeric::ublas::vector<double> ribi::kalman::StandardWhiteNoiseSystem::Measure() const noexcept
+boost::numeric::ublas::vector<double>
+ribi::kalman::StandardWhiteNoiseSystem::Measure() const noexcept
 {
   const auto sz = GetCurrentState().size();
   assert(GetCurrentState().size() == m_parameters->GetMeasurementNoise().size());
   boost::numeric::ublas::vector<double> measured(sz);
   for (std::size_t i = 0; i!=sz; ++i)
   {
-    measured(i) = GetRandomNormal(GetCurrentState()(i),m_parameters->GetMeasurementNoise()(i));
+    measured(i) = GetRandomNormal(GetCurrentState()(i),
+      m_parameters->GetMeasurementNoise()(i)
+    );
   }
   return measured;
 }

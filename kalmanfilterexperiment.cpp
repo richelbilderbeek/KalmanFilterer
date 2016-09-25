@@ -117,9 +117,10 @@ void ribi::kalman::KalmanFilterExperiment::AppendRealState(const boost::numeric:
   this->m_real_states.push_back(real_state);
 }
 
-std::vector<boost::numeric::ublas::vector<double> > ribi::kalman::KalmanFilterExperiment::GetMeasuredStates() const
+std::vector<boost::numeric::ublas::vector<double>>
+ribi::kalman::KalmanFilterExperiment::GetMeasuredStates() const
 {
-  std::vector<boost::numeric::ublas::vector<double> > v;
+  std::vector<boost::numeric::ublas::vector<double>> v;
   v.reserve(m_calculation_elements.size());
   const auto j = m_calculation_elements.end();
   for (auto i = m_calculation_elements.begin(); i!=j; ++i)
@@ -129,9 +130,10 @@ std::vector<boost::numeric::ublas::vector<double> > ribi::kalman::KalmanFilterEx
   return v;
 }
 
-std::vector<boost::numeric::ublas::vector<double> > ribi::kalman::KalmanFilterExperiment::GetPredictedStates() const
+std::vector<boost::numeric::ublas::vector<double>>
+ribi::kalman::KalmanFilterExperiment::GetPredictedStates() const
 {
-  std::vector<boost::numeric::ublas::vector<double> > v;
+  std::vector<boost::numeric::ublas::vector<double>> v;
   v.reserve(m_calculation_elements.size());
   const auto j = m_calculation_elements.end();
   for (auto i = m_calculation_elements.begin(); i!=j; ++i)
@@ -155,13 +157,14 @@ bool ribi::kalman::KalmanFilterExperiment::IsValid() const
       && n_real_states == n_measured_states;
 }
 
-std::vector<boost::numeric::ublas::vector<double> > ribi::kalman::KalmanFilterExperiment::ParseInput(
+std::vector<boost::numeric::ublas::vector<double>>
+ribi::kalman::KalmanFilterExperiment::ParseInput(
   const std::vector<std::string>& input,
   const int n_timesteps)
 {
   const int n_rows = n_timesteps;
   const int n_cols = input.size();
-  std::vector<boost::numeric::ublas::vector<double> > m(n_rows,
+  std::vector<boost::numeric::ublas::vector<double>> m(n_rows,
     boost::numeric::ublas::vector<double>(n_cols));
 
   for (int row=0; row!=n_rows; ++row)

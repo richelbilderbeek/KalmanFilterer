@@ -19,7 +19,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 {
   ///The augmented estimation error covariances, that is the estimation error covariance for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -36,7 +36,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The last augmented Kalman gains, that is the gain for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -48,7 +48,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
   ///The last predicted augmented estimation error covariances,
   ///that is the estimation error covariance for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -59,7 +59,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The last predicted augmented states
   ///Use boost::numeric::ublas::vector<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///  Complex       Simplified
   /// [ [ A ] ]
   /// [ [ B ] ]        [ A ]
@@ -76,7 +76,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The augmented states, that is the state for each lag timestep
   ///Use boost::numeric::ublas::vector<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///  Complex       Simplified
   /// [ [ A ] ]
   /// [ [ B ] ]        [ A ]
@@ -126,7 +126,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The augmented estimation error covariances, that is the estimation error covariance for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -137,7 +137,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The augmented Kalman gains, that is the gain for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -148,7 +148,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The augmented Kalman gains, that is the gain for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -160,7 +160,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
   ///The last predicted augmented estimation error covariances,
   ///that is the estimation error covariance for each lag timestep
   ///Use boost::numeric::ublas::matrix<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///   Complex        Simplified
   /// [ [ A B ] ]
   /// [ [ C D ] ]       [ A B ]
@@ -171,7 +171,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The last predicted augmented states
   ///Use boost::numeric::ublas::vector<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///  Complex       Simplified
   /// [ [ A ] ]
   /// [ [ B ] ]        [ A ]
@@ -185,7 +185,7 @@ struct FixedLagSmootherKalmanFilter : public KalmanFilter
 
   ///The augmented states, that is the state for each lag timestep
   ///Use boost::numeric::ublas::vector<double> instead of
-  ///std::vector<boost::numeric::ublas::vector<double> > to allow for matrix operation
+  ///std::vector<boost::numeric::ublas::vector<double>> to allow for matrix operation
   ///  Complex       Simplified
   /// [ [ A ] ]
   /// [ [ B ] ]        [ A ]

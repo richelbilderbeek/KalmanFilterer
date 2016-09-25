@@ -20,7 +20,9 @@ ribi::kalman::GapsFilledWhiteNoiseSystem::GapsFilledWhiteNoiseSystem(
   const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters)
   : WhiteNoiseSystem{parameters},
     m_last_measument{parameters->GetInitialState().size(),0.0},
-    m_parameters{boost::dynamic_pointer_cast<const GapsFilledWhiteNoiseSystemParameters>(parameters)},
+    m_parameters{boost::dynamic_pointer_cast<
+      const GapsFilledWhiteNoiseSystemParameters
+    >(parameters)},
     m_timestep{0}
 {
   #ifndef NDEBUG
@@ -51,7 +53,9 @@ std::vector<std::string> ribi::kalman::GapsFilledWhiteNoiseSystem::GetVersionHis
   };
 }
 
-void ribi::kalman::GapsFilledWhiteNoiseSystem::GoToNextState(const boost::numeric::ublas::vector<double>& input)
+void ribi::kalman::GapsFilledWhiteNoiseSystem::GoToNextState(
+  const boost::numeric::ublas::vector<double>& input
+)
 {
   //Standard transition
   assert(input.size() == GetCurrentState().size());
@@ -94,7 +98,10 @@ boost::numeric::ublas::vector<double> ribi::kalman::GapsFilledWhiteNoiseSystem::
       assert(state < m_last_measument.size());
       assert(state < GetCurrentState().size());
       assert(state < m_parameters->GetMeasurementNoise().size());
-      m_last_measument(state) = GetRandomNormal(GetCurrentState()(state),m_parameters->GetMeasurementNoise()(state));
+      m_last_measument(state) = GetRandomNormal(
+        GetCurrentState()(state),
+        m_parameters->GetMeasurementNoise()(state)
+      );
     }
     else
     {

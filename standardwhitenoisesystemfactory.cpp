@@ -20,7 +20,9 @@ boost::shared_ptr<ribi::kalman::StandardWhiteNoiseSystem>
     const boost::numeric::ublas::matrix<double>& state_transition
   ) const noexcept
 {
-  boost::shared_ptr<const ribi::kalman::StandardWhiteNoiseSystemParameters> parameters{
+  boost::shared_ptr<
+    const ribi::kalman::StandardWhiteNoiseSystemParameters
+  > parameters{
     new StandardWhiteNoiseSystemParameters(
       control,
       initial_state,

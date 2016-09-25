@@ -14,10 +14,18 @@ ribi::kalman::StandardKalmanFilter::StandardKalmanFilter(
   const boost::shared_ptr<const KalmanFilterParameters>& parameters
   )
   : KalmanFilter{},
-    m_covariance_estimate{boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(parameters)->GetInitialCovarianceEstimate()},
-    m_last_standard_calculation{boost::dynamic_pointer_cast<StandardKalmanFilterCalculationElements>(calculation)},
-    m_standard_parameters{boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(parameters)},
-    m_state_estimate{boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(parameters)->GetInitialStateEstimate()}
+    m_covariance_estimate{boost::dynamic_pointer_cast<
+      const StandardKalmanFilterParameters
+    >(parameters)->GetInitialCovarianceEstimate()},
+    m_last_standard_calculation{boost::dynamic_pointer_cast<
+      StandardKalmanFilterCalculationElements
+    >(calculation)},
+    m_standard_parameters{boost::dynamic_pointer_cast<
+      const StandardKalmanFilterParameters
+    >(parameters)},
+    m_state_estimate{boost::dynamic_pointer_cast<
+      const StandardKalmanFilterParameters
+    >(parameters)->GetInitialStateEstimate()}
 {
   assert(m_last_standard_calculation);
   assert(m_standard_parameters);
@@ -106,18 +114,23 @@ void ribi::kalman::StandardKalmanFilter::SupplyMeasurementAndInput(
   ///Debug statements to keep code below clean
   assert(measurements.size() == input.size());
   
-  assert(m_standard_parameters->GetStateTransition().size2() == m_covariance_estimate.size1());
+  assert(m_standard_parameters->GetStateTransition().size2()
+    == m_covariance_estimate.size1()
+  );
   
-  assert(Matrix::Prod(m_standard_parameters->GetStateTransition(),m_covariance_estimate).size2()
+  assert(Matrix::Prod(m_standard_parameters->GetStateTransition(),
+    m_covariance_estimate).size2()
     ==  trans(m_standard_parameters->GetStateTransition()).size1() );
   
   assert(matrix<double>(Matrix::Prod(
-      matrix<double>(Matrix::Prod(m_standard_parameters->GetStateTransition(),m_covariance_estimate)),
+      matrix<double>(Matrix::Prod(m_standard_parameters->GetStateTransition(),
+        m_covariance_estimate)),
       trans(m_standard_parameters->GetStateTransition()))).size1()
     == m_standard_parameters->GetEstimatedProcessNoiseCovariance().size1());
   
   assert(matrix<double>(Matrix::Prod(
-      matrix<double>(Matrix::Prod(m_standard_parameters->GetStateTransition(),m_covariance_estimate)),
+      matrix<double>(Matrix::Prod(m_standard_parameters->GetStateTransition(),
+        m_covariance_estimate)),
       trans(m_standard_parameters->GetStateTransition()))).size2()
     == m_standard_parameters->GetEstimatedProcessNoiseCovariance().size2());
   
@@ -137,10 +150,13 @@ void ribi::kalman::StandardKalmanFilter::SupplyMeasurementAndInput(
   // 2/7) Covariance prediction
   const matrix<double> covariance_prediction = PredictCovariance();
   // 3/7) Innovation (y with a squiggle above it)
-  const vector<double> innovation = measurements - Matrix::Prod(m_standard_parameters->GetObservation(),state_prediction);
+  const vector<double> innovation = measurements
+    - Matrix::Prod(m_standard_parameters->GetObservation(),state_prediction);
   // 4/7) Innovation covariance (S)
   const matrix<double> innovation_covariance
-    = Matrix::MultiProd(m_standard_parameters->GetObservation(),covariance_prediction,trans(m_standard_parameters->GetObservation()))
+    = Matrix::MultiProd(m_standard_parameters->GetObservation(),
+      covariance_prediction,trans(m_standard_parameters->GetObservation())
+    )
     + m_standard_parameters->GetEstimatedMeasurementNoise();
   // 5/7) Kalman gain (K)
   
@@ -150,7 +166,9 @@ void ribi::kalman::StandardKalmanFilter::SupplyMeasurementAndInput(
   }
   
   const matrix<double> kalman_gain
-    = Matrix::MultiProd(covariance_prediction,trans(m_standard_parameters->GetObservation()),Matrix::Inverse(innovation_covariance));
+    = Matrix::MultiProd(covariance_prediction,trans(
+      m_standard_parameters->GetObservation()),Matrix::Inverse(innovation_covariance)
+    );
   // 6/7) Update state prediction
   m_state_estimate = state_prediction + Matrix::Prod(kalman_gain,innovation);
   // 7/7) Update covariance prediction

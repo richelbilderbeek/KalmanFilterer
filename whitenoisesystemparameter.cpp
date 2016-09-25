@@ -27,8 +27,10 @@ std::vector<ribi::kalman::WhiteNoiseSystemParameterType>
     WhiteNoiseSystemParameterType::state_transition,
   };
 
-  assert(boost::numeric_cast<int>(v.size()) == static_cast<int>(WhiteNoiseSystemParameterType::n_parameters)
-    && "All parameters must be in");
+  assert(boost::numeric_cast<int>(v.size())
+    == static_cast<int>(WhiteNoiseSystemParameterType::n_parameters
+    ) && "All parameters must be in"
+  );
   return v;
 }
 
@@ -73,7 +75,8 @@ std::string ribi::kalman::WhiteNoiseSystemParameter::ToDescription(
     case WhiteNoiseSystemParameterType::real_process_noise:
       return "Vector with the real standard deviations of the process noise per state";
     case WhiteNoiseSystemParameterType::state_transition:
-      return "Matrix that contains the internal physics of the system; the effect of current state on the next state";
+      return "Matrix that contains the internal physics of the system; "
+        "the effect of current state on the next state";
     case WhiteNoiseSystemParameterType::n_parameters:
       assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
       throw std::logic_error(__func__);

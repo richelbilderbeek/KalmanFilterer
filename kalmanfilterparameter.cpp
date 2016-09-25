@@ -15,7 +15,8 @@ ribi::kalman::KalmanFilterParameter::KalmanFilterParameter()
 
 }
 
-std::vector<ribi::kalman::KalmanFilterParameterType> ribi::kalman::KalmanFilterParameter::GetAll() const noexcept
+std::vector<ribi::kalman::KalmanFilterParameterType>
+ribi::kalman::KalmanFilterParameter::GetAll() const noexcept
 {
   const std::vector<KalmanFilterParameterType> v {
     KalmanFilterParameterType::control,
@@ -28,22 +29,29 @@ std::vector<ribi::kalman::KalmanFilterParameterType> ribi::kalman::KalmanFilterP
     KalmanFilterParameterType::state_transition
   };
 
-  assert(boost::numeric_cast<int>(v.size()) == static_cast<int>(KalmanFilterParameterType::n_parameters)
+  assert(boost::numeric_cast<int>(v.size())
+    == static_cast<int>(KalmanFilterParameterType::n_parameters)
     && "All parameters must be in");
   return v;
 }
 
-bool ribi::kalman::KalmanFilterParameter::IsMatrix(const KalmanFilterParameterType type) const noexcept
+bool ribi::kalman::KalmanFilterParameter::IsMatrix(
+  const KalmanFilterParameterType type
+) const noexcept
 {
   return !ribi::kalman::KalmanFilterParameter::IsVector(type);
 }
 
-bool ribi::kalman::KalmanFilterParameter::IsVector(const KalmanFilterParameterType type) const noexcept
+bool ribi::kalman::KalmanFilterParameter::IsVector(
+  const KalmanFilterParameterType type
+) const noexcept
 {
   return type == KalmanFilterParameterType::initial_state_estimate;
 }
 
-std::string ribi::kalman::KalmanFilterParameter::ToDescription(const KalmanFilterParameterType type) const noexcept
+std::string ribi::kalman::KalmanFilterParameter::ToDescription(
+  const KalmanFilterParameterType type
+) const noexcept
 {
   switch (type)
   {
@@ -62,7 +70,8 @@ std::string ribi::kalman::KalmanFilterParameter::ToDescription(const KalmanFilte
     case KalmanFilterParameterType::observation:
       return "Matrix that with effect of a measurement on a state change";
     case KalmanFilterParameterType::state_transition:
-      return "Matrix that contains the internal physics of the system; the effect of current state on the next state";
+      return "Matrix that contains the internal physics of the system; "
+        "the effect of current state on the next state";
     case KalmanFilterParameterType::n_parameters:
       assert(!"Unimplemented type of KalmanFilterParameterType");
       throw std::logic_error(__func__);
@@ -71,7 +80,9 @@ std::string ribi::kalman::KalmanFilterParameter::ToDescription(const KalmanFilte
   throw std::logic_error(__func__);
 }
 
-std::string ribi::kalman::KalmanFilterParameter::ToName(const KalmanFilterParameterType type) const noexcept
+std::string ribi::kalman::KalmanFilterParameter::ToName(
+  const KalmanFilterParameterType type
+) const noexcept
 {
   switch (type)
   {
@@ -99,7 +110,9 @@ std::string ribi::kalman::KalmanFilterParameter::ToName(const KalmanFilterParame
   throw std::logic_error(__func__);
 }
 
-std::string ribi::kalman::KalmanFilterParameter::ToSymbol(const KalmanFilterParameterType type) const noexcept
+std::string ribi::kalman::KalmanFilterParameter::ToSymbol(
+  const KalmanFilterParameterType type
+) const noexcept
 {
   switch (type)
   {
