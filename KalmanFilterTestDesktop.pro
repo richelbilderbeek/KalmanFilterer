@@ -92,3 +92,6 @@ LIBS += \
 
 # QResources give this error
 QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# QtConcurrent::ThreadEngineStarter gives this error
+QMAKE_CXXFLAGS += -Wno-unused-local-typedefs
