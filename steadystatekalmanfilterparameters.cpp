@@ -75,7 +75,7 @@ bool ribi::kalman::SteadyStateKalmanFilterParameters::HasParameterType(
     || type == KalmanFilterParameterType::state_transition;
 }
 
-bool ribi::kalman::SteadyStateKalmanFilterParameters::IsAboutEqual(
+bool ribi::kalman::IsAboutEqual(
   const SteadyStateKalmanFilterParameters& lhs,
   const SteadyStateKalmanFilterParameters& rhs)
 {

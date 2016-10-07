@@ -19,23 +19,23 @@ ribi::kalman::WhiteNoiseSystem::WhiteNoiseSystem(
   assert(m_parameters);
 }
 
+const boost::numeric::ublas::vector<double>&
+ribi::kalman::WhiteNoiseSystem::GetCurrentState() const noexcept
+{
+  return m_current_state;
+}
+
+const boost::shared_ptr<const ribi::kalman::WhiteNoiseSystemParameters>&
+ribi::kalman::WhiteNoiseSystem::GetParameters() const noexcept
+{
+  return m_parameters;
+}
+
 double ribi::kalman::WhiteNoiseSystem::GetRandomNormal(
   const double mean, const double sigma
 ) noexcept
 {
   return Random().GetNormal(mean,sigma);
-}
-
-std::string ribi::kalman::WhiteNoiseSystem::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string> ribi::kalman::WhiteNoiseSystem::GetVersionHistory() noexcept
-{
-  return {
-    "2013-05-03: version 1.0: initial version"
-  };
 }
 
 void ribi::kalman::WhiteNoiseSystem::SetNewCurrentState(
@@ -44,4 +44,10 @@ void ribi::kalman::WhiteNoiseSystem::SetNewCurrentState(
 {
   assert(m_current_state.size() == new_current_state.size());
   m_current_state = new_current_state;
+}
+
+const boost::numeric::ublas::vector<double>&
+ribi::kalman::WhiteNoiseSystem::PeekAtRealState() const noexcept
+{
+  return m_current_state;
 }

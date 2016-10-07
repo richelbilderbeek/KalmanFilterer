@@ -15,13 +15,23 @@ unix:!macx{
   # Linux only
   message("Console application, built for Linux")
 
-  CONFIG += c++11
-  QMAKE_CXX = g++-5
-  QMAKE_LINK = g++-5
-  QMAKE_CC = gcc-5
-  QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++11
+  message(Host name: $$QMAKE_HOST.name)
+  contains(QMAKE_HOST.name,pc-157-103) {
+    message("Host is student computer")
+    QMAKE_CXX = g++-4.8
+    QMAKE_LINK = g++-4.8
+    QMAKE_CC = gcc-4.8
+  }
+  !contains(QMAKE_HOST.name,pc-157-103) {
+    message("Host is not student computer")
+    QMAKE_CXX = g++-5
+    QMAKE_LINK = g++-5
+    QMAKE_CC = gcc-5
+  }
 
+  CONFIG += c++11
   # Cannot use -Weffc++ due to function parser
+  QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++11
 }
 
 # Go ahead and use Qt.Core: it is about as platform-independent as

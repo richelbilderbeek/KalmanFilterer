@@ -23,9 +23,10 @@ struct WhiteNoiseSystemTypes
   WhiteNoiseSystemType ToType(const std::string& s) const;
 
   private:
-  static boost::bimap<WhiteNoiseSystemType,std::string> m_map;
-  static boost::bimap<WhiteNoiseSystemType,std::string> CreateMap() noexcept;
+  const boost::bimap<WhiteNoiseSystemType,std::string> m_map;
 };
+
+boost::bimap<WhiteNoiseSystemType,std::string> CreateWhiteNoiseSystemTypeMap() noexcept;
 
 } //~namespace kalman
 } //~namespace ribi

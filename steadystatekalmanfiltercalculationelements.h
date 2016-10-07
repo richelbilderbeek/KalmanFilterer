@@ -13,10 +13,15 @@ namespace kalman {
 struct SteadyStateKalmanFilterCalculationElements : public KalmanFilterCalculationElements
 {
   explicit SteadyStateKalmanFilterCalculationElements(
-    const boost::numeric::ublas::vector<double>& measurement = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& predicted_state = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& previous_state_estimate = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& updated_state = boost::numeric::ublas::vector<double>());
+    const boost::numeric::ublas::vector<double>& measurement
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& predicted_state
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& prev_state_est
+      = boost::numeric::ublas::vector<double>(), //previous_state_estimate
+    const boost::numeric::ublas::vector<double>& updated_state
+      = boost::numeric::ublas::vector<double>()
+  );
 
   ///Produce a deep copy of the derived class
   boost::shared_ptr<KalmanFilterCalculationElements> Clone() const;

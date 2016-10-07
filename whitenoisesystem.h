@@ -22,7 +22,7 @@ struct WhiteNoiseSystem
   virtual ~WhiteNoiseSystem() noexcept {}
 
   ///The parameters
-  const boost::shared_ptr<const WhiteNoiseSystemParameters>& GetParameters() const noexcept { return m_parameters; }
+  const boost::shared_ptr<const WhiteNoiseSystemParameters>& GetParameters() const noexcept;
 
   ///Obtain the type as an enum
   virtual WhiteNoiseSystemType GetType() const noexcept = 0;
@@ -40,7 +40,7 @@ struct WhiteNoiseSystem
   virtual boost::numeric::ublas::vector<double> Measure() const = 0;
 
   ///Peek what the real value is
-  virtual const boost::numeric::ublas::vector<double>& PeekAtRealState() const noexcept { return m_current_state; }
+  virtual const boost::numeric::ublas::vector<double>& PeekAtRealState() const noexcept;
 
   protected:
   ///An ABC can only be constructed by derived classes
@@ -51,7 +51,7 @@ struct WhiteNoiseSystem
   static double GetRandomNormal(const double mean = 0.0, const double sigma = 1.0) noexcept;
 
   ///The real state of the system
-  const boost::numeric::ublas::vector<double>& GetCurrentState() const noexcept { return m_current_state; }
+  const boost::numeric::ublas::vector<double>& GetCurrentState() const noexcept;
 
   ///Set the new current state
   void SetNewCurrentState(const boost::numeric::ublas::vector<double>& new_current_state);

@@ -1,15 +1,12 @@
 #include "whitenoisesystemtypes.h"
 
-boost::bimap<
-  ribi::kalman::WhiteNoiseSystemType,std::string
-> ribi::kalman::WhiteNoiseSystemTypes::m_map;
-
 ribi::kalman::WhiteNoiseSystemTypes::WhiteNoiseSystemTypes()
+  : m_map{CreateWhiteNoiseSystemTypeMap()}
 {
 }
 
 boost::bimap<ribi::kalman::WhiteNoiseSystemType,std::string>
-ribi::kalman::WhiteNoiseSystemTypes::CreateMap() noexcept
+ribi::kalman::CreateWhiteNoiseSystemTypeMap() noexcept
 {
 
   boost::bimap<WhiteNoiseSystemType,std::string> m;
@@ -40,7 +37,6 @@ std::string ribi::kalman::WhiteNoiseSystemTypes::ToStr(
   const WhiteNoiseSystemType type
 ) const noexcept
 {
-  if (m_map.left.empty()) { m_map = CreateMap(); }
   assert(!m_map.left.empty());
   assert(m_map.left.count(type) == 1);
   const std::string s = m_map.left.find(type)->second;
@@ -51,7 +47,6 @@ ribi::kalman::WhiteNoiseSystemType ribi::kalman::WhiteNoiseSystemTypes::ToType(
   const std::string& s
 ) const
 {
-  if (m_map.right.empty()) { m_map = CreateMap(); }
   assert(!m_map.right.empty());
   assert(m_map.right.count(s) == 1);
   const auto t = m_map.right.find(s)->second;

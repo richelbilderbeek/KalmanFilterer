@@ -16,8 +16,8 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
 {
   explicit SteadyStateKalmanFilterParameters(
     const boost::numeric::ublas::matrix<double>& control,
-    const boost::numeric::ublas::matrix<double>& estimated_optimal_kalman_gain,
-    const boost::numeric::ublas::vector<double>& initial_state_estimate,
+    const boost::numeric::ublas::matrix<double>& est_opt_kalman_gain, //estimated_optimal_kalman_gain
+    const boost::numeric::ublas::vector<double>& initial_state_est, //initial_state_estimate
     const boost::numeric::ublas::matrix<double>& observation,
     const boost::numeric::ublas::matrix<double>& state_transition
   );
@@ -37,9 +37,6 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
   ///Obtain the Kalman filter type as an enum
   KalmanFilterType GetType() const { return KalmanFilterType::steady_state; }
 
-  ///Check if two parameter sets are equal with a fuzzy compare
-  static bool IsAboutEqual(const SteadyStateKalmanFilterParameters& lhs, const SteadyStateKalmanFilterParameters& rhs);
-
   ///Obtain the version of this class
   static std::string GetVersion() noexcept;
 
@@ -57,6 +54,12 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
   ///K: Estimated optimal Kalman gain
   const boost::numeric::ublas::matrix<double> m_estimated_optimal_kalman_gain;
 };
+
+///Check if two parameter sets are equal with a fuzzy compare
+bool IsAboutEqual(
+  const SteadyStateKalmanFilterParameters& lhs,
+  const SteadyStateKalmanFilterParameters& rhs
+);
 
 } //~namespace kalman
 } //~namespace ribi

@@ -48,23 +48,15 @@ struct WhiteNoiseSystemParameters
   ///Obtain the type as an enum
   virtual WhiteNoiseSystemType GetType() const noexcept = 0;
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
-  ///Check two parameter sets for equality using a fuzzy comparison
-  static bool IsAboutEqual(const WhiteNoiseSystemParameters& lhs, const WhiteNoiseSystemParameters& rhs) noexcept;
-
   protected:
   ///An ABC can only be constructed by derived classes
   explicit WhiteNoiseSystemParameters(
     const boost::numeric::ublas::matrix<double>& control,
     const boost::numeric::ublas::vector<double>& initial_state,
-    const boost::numeric::ublas::vector<double>& real_measurement_noise,
+    const boost::numeric::ublas::vector<double>& real_measure_noise, //real_measurement_noise
     const boost::numeric::ublas::vector<double>& real_process_noise,
-    const boost::numeric::ublas::matrix<double>& state_transition);
+    const boost::numeric::ublas::matrix<double>& state_transition
+  );
 
   private:
   ///The control matrix to determine the influence of the input (in GoToNextState)
@@ -83,6 +75,12 @@ struct WhiteNoiseSystemParameters
   ///The state transitions in the system, used in GoToNextState
   const boost::numeric::ublas::matrix<double> m_state_transition;
 };
+
+///Check two parameter sets for equality using a fuzzy comparison
+bool IsAboutEqual(
+  const WhiteNoiseSystemParameters& lhs,
+  const WhiteNoiseSystemParameters& rhs
+) noexcept;
 
 } //~namespace kalman
 } //~namespace ribi
