@@ -12,17 +12,27 @@ struct StandardKalmanFilterCalculationElements : public KalmanFilterCalculationE
 {
   explicit StandardKalmanFilterCalculationElements(
     //Base
-    const boost::numeric::ublas::vector<double>& measurement = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& predicted_state = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& previous_state_estimate = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& updated_state = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& measurement
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& predicted_state
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& prev_state_est //previous_state_estimate
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& updated_state
+      = boost::numeric::ublas::vector<double>(),
     //This class
-    const boost::numeric::ublas::vector<double>& innovation = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::matrix<double>& innovation_covariance = boost::numeric::ublas::matrix<double>(),
-    const boost::numeric::ublas::matrix<double>& kalman_gain = boost::numeric::ublas::matrix<double>(),
-    const boost::numeric::ublas::matrix<double>& predicted_covariance = boost::numeric::ublas::matrix<double>(),
-    const boost::numeric::ublas::matrix<double>& previous_covariance_estimate = boost::numeric::ublas::matrix<double>(),
-    const boost::numeric::ublas::matrix<double>& updated_covariance = boost::numeric::ublas::matrix<double>());
+    const boost::numeric::ublas::vector<double>& innovation
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::matrix<double>& innovation_cov //innovation_covariance
+      = boost::numeric::ublas::matrix<double>(),
+    const boost::numeric::ublas::matrix<double>& kalman_gain
+      = boost::numeric::ublas::matrix<double>(),
+    const boost::numeric::ublas::matrix<double>& pred_cov //predicted_covariance
+      = boost::numeric::ublas::matrix<double>(),
+    const boost::numeric::ublas::matrix<double>& prev_cov_est //previous_covariance_estimate
+      = boost::numeric::ublas::matrix<double>(),
+    const boost::numeric::ublas::matrix<double>& updated_covariance
+      = boost::numeric::ublas::matrix<double>());
 
   ///Clear the calculation, will set IsComplete to false
   void Clear();
@@ -66,7 +76,10 @@ struct StandardKalmanFilterCalculationElements : public KalmanFilterCalculationE
 
   ///Set the innovation covariance ('S')
   ///Fails if already set
-  void SetInnovationCovariance(const boost::numeric::ublas::matrix<double>& innovation_covariance);
+  ///@param innovation_cov innovation covariance
+  void SetInnovationCovariance(
+    const boost::numeric::ublas::matrix<double>& innovation_cov
+  );
 
   ///Set the Kalman gain ('K')
   ///Fails if already set
@@ -82,7 +95,10 @@ struct StandardKalmanFilterCalculationElements : public KalmanFilterCalculationE
   ///Is read at step 2 of the algorithm:
   ///2) P_predicted = [...] P_n-1 [...]
   ///Fails if already set
-  void SetPreviousCovarianceEstimate(const boost::numeric::ublas::matrix<double>& previous_covariance_estimate);
+  ///@param prev_cov_est the previous covariance estimate
+  void SetPreviousCovarianceEstimate(
+    const boost::numeric::ublas::matrix<double>& prev_cov_est
+  );
 
   ///Set the updated error estimation covariance (in the end of each timestep)
   ///Calculated at step 7 of the algorithm:

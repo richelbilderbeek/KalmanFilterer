@@ -20,15 +20,18 @@ namespace kalman {
 struct StandardKalmanFilter : public KalmanFilter
 {
   ///Obtain the estimation error covariance ('P'), which is updated during SupplyMeasurementAndInput
-  const boost::numeric::ublas::matrix<double>& GetEstimationErrorCovariance() const noexcept
+  const boost::numeric::ublas::matrix<double>& GetEstimationErrorCovariance()
+  const noexcept
     { return m_covariance_estimate; }
 
   ///Get the Kalman filter last calculation elements
-  boost::shared_ptr<KalmanFilterCalculationElements> GetLastCalculation() const noexcept
+  boost::shared_ptr<KalmanFilterCalculationElements>
+  GetLastCalculation() const noexcept
   { return m_last_standard_calculation; }
 
   ///Obtain the (downcasted) calculation
-  const boost::shared_ptr<StandardKalmanFilterCalculationElements> GetLastStandardCalculation() const noexcept
+  const boost::shared_ptr<StandardKalmanFilterCalculationElements>
+  GetLastStandardCalculation() const noexcept
     { return m_last_standard_calculation; }
 
   ///Obtain the Kalman filter parameters
@@ -43,16 +46,10 @@ struct StandardKalmanFilter : public KalmanFilter
   int GetStateSize() const noexcept;
 
   ///Obtain the current prediction of the state ('x')
-  const boost::numeric::ublas::vector<double>& GetStateEstimate() const noexcept { return m_state_estimate; }
+  const auto& GetStateEstimate() const noexcept { return m_state_estimate; }
 
   ///Obtain the Kalman filter type as an enum
   KalmanFilterType GetType() const noexcept { return KalmanFilterType::standard; }
-
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
 
   ///Give the filter a measurement and input, and it will update its predictions
   ///Also logs the calculation

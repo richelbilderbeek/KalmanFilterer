@@ -18,10 +18,14 @@ struct StandardKalmanFilterParameters : public KalmanFilterParameters
 {
   explicit StandardKalmanFilterParameters(
     const boost::numeric::ublas::matrix<double>& control,
-    const boost::numeric::ublas::matrix<double>& estimated_measurement_noise,
-    const boost::numeric::ublas::matrix<double>& estimated_process_noise_covariance,
-    const boost::numeric::ublas::matrix<double>& initial_covariance_estimate,
-    const boost::numeric::ublas::vector<double>& initial_state_estimate,
+    const boost::numeric::ublas::matrix<double>&
+      est_msm_noise, //estimated_measurement_noise
+    const boost::numeric::ublas::matrix<double>&
+      est_process_noise_cov, //estimated_process_noise_covariance
+    const boost::numeric::ublas::matrix<double>&
+      init_cov_est, //initial_covariance_estimate
+    const boost::numeric::ublas::vector<double>&
+      init_state_est, //initial_state_estimate
     const boost::numeric::ublas::matrix<double>& observation,
     const boost::numeric::ublas::matrix<double>& state_transition
   );

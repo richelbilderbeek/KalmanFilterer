@@ -51,10 +51,8 @@ ribi::About ribi::kalman::KalmanFiltererMenuDialog::GetAbout() const noexcept
   a.AddLibrary("StandardKalmanFilter version: " + StandardKalmanFilter::GetVersion());
   a.AddLibrary("StandardKalmanFilterParameters version: " + StandardKalmanFilterParameters::GetVersion());
   a.AddLibrary("StandardWhiteNoiseSystem version: " + StandardWhiteNoiseSystem::GetVersion());
-  a.AddLibrary("StandardWhiteNoiseSystemParameters version: " + StandardWhiteNoiseSystemParameters::GetVersion());
   a.AddLibrary("SteadyStateKalmanFilter version: " + SteadyStateKalmanFilter::GetVersion());
   a.AddLibrary("SteadyStateKalmanFilterParameters version: " + SteadyStateKalmanFilterParameters::GetVersion());
-  a.AddLibrary("WhiteNoiseSystem version: " + WhiteNoiseSystem::GetVersion());
   return a;
 }
 

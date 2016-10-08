@@ -73,10 +73,10 @@ struct KalmanFilterExperimentParameter
 
   private:
 
-  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType> > m_map_kalman_filter;
-  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType> > m_map_white_noise_system;
-  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType> > CreateMapKalmanFilter();
-  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType> > CreateMapWhiteNoiseSystem();
+  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>> m_map_kalman_filter;
+  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>> m_map_white_noise_system;
+  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>> CreateMapKalmanFilter();
+  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>> CreateMapWhiteNoiseSystem();
 
 };
 

@@ -67,18 +67,6 @@ int ribi::kalman::StandardKalmanFilter::GetStateSize() const noexcept
   return sz;
 }
 
-std::string ribi::kalman::StandardKalmanFilter::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string> ribi::kalman::StandardKalmanFilter::GetVersionHistory() noexcept
-{
-  return {
-    "2013-04-28: version 1.0: initial version"
-  };
-}
-
 boost::numeric::ublas::vector<double> ribi::kalman::StandardKalmanFilter::PredictState(
   const boost::numeric::ublas::vector<double>& input) const
 {

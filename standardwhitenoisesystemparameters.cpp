@@ -21,25 +21,10 @@ ribi::kalman::StandardWhiteNoiseSystemParameters::StandardWhiteNoiseSystemParame
       real_process_noise,
       state_transition)
 {
-  #ifndef NDEBUG
-  #endif
 
 }
 
-std::string ribi::kalman::StandardWhiteNoiseSystemParameters::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string>
-ribi::kalman::StandardWhiteNoiseSystemParameters::GetVersionHistory() noexcept
-{
-  return {
-    "2013-04-28: version 1.0: initial version"
-  };
-}
-
-bool ribi::kalman::StandardWhiteNoiseSystemParameters::IsAboutEqual(
+bool ribi::kalman::IsAboutEqual(
   const StandardWhiteNoiseSystemParameters& lhs,
   const StandardWhiteNoiseSystemParameters& rhs
 ) noexcept

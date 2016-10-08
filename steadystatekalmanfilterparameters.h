@@ -16,8 +16,10 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
 {
   explicit SteadyStateKalmanFilterParameters(
     const boost::numeric::ublas::matrix<double>& control,
-    const boost::numeric::ublas::matrix<double>& est_opt_kalman_gain, //estimated_optimal_kalman_gain
-    const boost::numeric::ublas::vector<double>& initial_state_est, //initial_state_estimate
+    const boost::numeric::ublas::matrix<double>&
+      est_opt_kalman_gain, //estimated_optimal_kalman_gain
+    const boost::numeric::ublas::vector<double>&
+      initial_state_est, //initial_state_estimate
     const boost::numeric::ublas::matrix<double>& observation,
     const boost::numeric::ublas::matrix<double>& state_transition
   );
