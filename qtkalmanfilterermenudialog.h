@@ -15,7 +15,7 @@ namespace kalman {
 
 class QtKalmanFiltererMenuDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
+    Q_OBJECT //!OCLINT
 
 public:
   explicit QtKalmanFiltererMenuDialog(QWidget *parent = 0);

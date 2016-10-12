@@ -19,8 +19,8 @@ namespace kalman {
 ///Dialog for a parameter, stores a QtKalmanFiltererParameterDialog::ValueType
 class QtKalmanFiltererParameterDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtKalmanFiltererParameterDialog(const QtKalmanFiltererParameterDialog&) = delete;
   QtKalmanFiltererParameterDialog& operator=(const QtKalmanFiltererParameterDialog&) = delete;

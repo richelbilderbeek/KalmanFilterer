@@ -21,8 +21,8 @@ namespace kalman {
 
 class QtStandardKalmanFilterCalculationDialog : public QtKalmanFilterCalculationDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtStandardKalmanFilterCalculationDialog(const QtStandardKalmanFilterCalculationDialog&) = delete;
   QtStandardKalmanFilterCalculationDialog operator=(const QtStandardKalmanFilterCalculationDialog&) = delete;

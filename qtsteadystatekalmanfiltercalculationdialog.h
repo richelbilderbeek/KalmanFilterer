@@ -22,7 +22,7 @@ namespace kalman {
 
 class QtSteadyStateKalmanFilterCalculationDialog : public QtKalmanFilterCalculationDialog
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
   
 public:
   QtSteadyStateKalmanFilterCalculationDialog(const QtSteadyStateKalmanFilterCalculationDialog&) = delete;

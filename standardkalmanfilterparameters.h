@@ -21,7 +21,7 @@ struct StandardKalmanFilterParameters : public KalmanFilterParameters
     const boost::numeric::ublas::matrix<double>&
       est_msm_noise, //estimated_measurement_noise
     const boost::numeric::ublas::matrix<double>&
-      est_process_noise_cov, //estimated_process_noise_covariance
+      est_prcs_noise_cov, //estimated_process_noise_covariance
     const boost::numeric::ublas::matrix<double>&
       init_cov_est, //initial_covariance_estimate
     const boost::numeric::ublas::vector<double>&

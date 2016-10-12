@@ -24,8 +24,8 @@ namespace kalman {
 
 class QtFixedLagSmootherKalmanFilterCalculationDialog : public QtKalmanFilterCalculationDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtFixedLagSmootherKalmanFilterCalculationDialog(const QtFixedLagSmootherKalmanFilterCalculationDialog&) = delete;
   QtFixedLagSmootherKalmanFilterCalculationDialog operator=(const QtFixedLagSmootherKalmanFilterCalculationDialog&) = delete;

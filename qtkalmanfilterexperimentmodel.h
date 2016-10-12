@@ -26,7 +26,7 @@ namespace kalman {
 ///Contains all parameters and QAbstractTableModels for these
 struct QtKalmanFilterExperimentModel : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT //!OCLINT
 
   public:
 

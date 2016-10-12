@@ -35,20 +35,6 @@ ribi::kalman::StandardKalmanFilterParameters::StandardKalmanFilterParameters(
   #endif
 }
 
-std::string ribi::kalman::StandardKalmanFilterParameters::GetVersion() noexcept
-{
-  return "1.1";
-}
-
-std::vector<std::string>
-ribi::kalman::StandardKalmanFilterParameters::GetVersionHistory() noexcept
-{
-  return {
-    "2013-04-28: version 1.0: initial version",
-    "2013-05-03: version 1.1: inhertic from KalmanFilterParameters"
-  };
-}
-
 bool ribi::kalman::StandardKalmanFilterParameters::HasParameterType(
   const KalmanFilterParameterType type
 ) noexcept

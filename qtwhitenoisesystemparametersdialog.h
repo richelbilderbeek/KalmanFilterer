@@ -32,7 +32,7 @@ namespace kalman {
 
 class QtWhiteNoiseSystemParametersDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
   
 public:
   QtWhiteNoiseSystemParametersDialog(const QtWhiteNoiseSystemParametersDialog&) = delete;
@@ -42,6 +42,10 @@ public:
     const boost::shared_ptr<QtKalmanFilterExperimentModel> model,
     QWidget *parent = 0);
   ~QtWhiteNoiseSystemParametersDialog() noexcept;
+
+  ///Find a WhiteNoiseSystemParameterType its corresponding table
+  QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type);
+  const QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type) const;
 
   ///Read the lag (in timesteps) from the dialog
   int GetLag() const;
@@ -72,10 +76,6 @@ private:
   std::map<WhiteNoiseSystemParameterType,QtKalmanFiltererParameterDialog *> m_parameters;
 
 private slots:
-
-  ///Find a WhiteNoiseSystemParameterType its corresponding table
-  QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type);
-  const QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type) const;
 
   void on_box_white_noise_system_type_currentIndexChanged(int index);
 

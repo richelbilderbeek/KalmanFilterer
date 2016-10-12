@@ -23,19 +23,6 @@ ribi::kalman::StandardWhiteNoiseSystem::StandardWhiteNoiseSystem(
   assert(m_parameters);
 }
 
-std::string ribi::kalman::StandardWhiteNoiseSystem::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string>
-ribi::kalman::StandardWhiteNoiseSystem::GetVersionHistory() noexcept
-{
-  return {
-    "2013-04-28: version 1.0: initial version"
-  };
-}
-
 void ribi::kalman::StandardWhiteNoiseSystem::GoToNextState()
 {
   //Create a no-input vector

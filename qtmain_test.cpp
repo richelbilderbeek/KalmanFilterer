@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "qtkalmanfilterermaindialog_test.h"
+#include "qtwhitenoisesystemparametersdialog_test.h"
 
 #include <QtTest/QtTest>
 

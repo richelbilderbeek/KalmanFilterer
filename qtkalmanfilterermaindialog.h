@@ -35,8 +35,8 @@ namespace kalman {
 
 class QtKalmanFiltererMainDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtKalmanFiltererMainDialog(const QtKalmanFiltererMainDialog&) = delete;
   QtKalmanFiltererMainDialog& operator=(const QtKalmanFiltererMainDialog&) = delete;

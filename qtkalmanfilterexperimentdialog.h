@@ -34,8 +34,8 @@ namespace kalman {
 ///the KalmanFilterExperiment parameters
 class QtKalmanFilterExperimentDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtKalmanFilterExperimentDialog(const QtKalmanFilterExperimentDialog&) = delete;
   QtKalmanFilterExperimentDialog& operator=(const QtKalmanFilterExperimentDialog&) = delete;

@@ -20,8 +20,8 @@ namespace kalman {
 
 class QtKalmanFilterExamplesDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
-  
+    Q_OBJECT //!OCLINT
+
 public:
   QtKalmanFilterExamplesDialog(const QtKalmanFilterExamplesDialog&) = delete;
   QtKalmanFilterExamplesDialog& operator=(const QtKalmanFilterExamplesDialog&) = delete;
