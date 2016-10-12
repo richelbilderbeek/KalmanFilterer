@@ -21,17 +21,22 @@ unix:!macx{
     QMAKE_CXX = g++-4.8
     QMAKE_LINK = g++-4.8
     QMAKE_CC = gcc-4.8
+
+    CONFIG += c++1y
+    # Cannot use -Weffc++ due to function parser
+    QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++1y
   }
   !contains(QMAKE_HOST.name,pc-157-103) {
     message("Host is not student computer")
     QMAKE_CXX = g++-5
     QMAKE_LINK = g++-5
     QMAKE_CC = gcc-5
+
+    CONFIG += c++14
+    # Cannot use -Weffc++ due to function parser
+    QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++14
   }
 
-  CONFIG += c++11
-  # Cannot use -Weffc++ due to function parser
-  QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++11
 }
 
 # Go ahead and use Qt.Core: it is about as platform-independent as

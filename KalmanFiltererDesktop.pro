@@ -26,8 +26,8 @@ unix:!macx{
   QMAKE_CC = gcc-5
   QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++14
 
-  equals(QT_MAJOR_VERSION, 4): LIBS +=  -lQtSvg
-  greaterThan(QT_MAJOR_VERSION, 4): QT +=  concurrent opengl printsupport svg
+  #equals(QT_MAJOR_VERSION, 4): LIBS +=  -lQtSvg
+  #greaterThan(QT_MAJOR_VERSION, 4): QT +=  concurrent opengl printsupport svg
 }
 
 cross_compile {

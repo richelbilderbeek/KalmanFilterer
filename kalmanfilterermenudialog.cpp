@@ -36,23 +36,12 @@ ribi::About ribi::kalman::KalmanFiltererMenuDialog::GetAbout() const noexcept
     "Richel Bilderbeek",
     "KalmanFilterer",
     "tool to work with Kalman filters",
-    "November 21st of 2015",
-    "2013-2015",
+    "[date unknown]",
+    "2013-2016",
     "http://www.richelbilderbeek.nl/ToolKalmanFilterer.htm",
     GetVersion(),
     GetVersionHistory()
   );
-  a.AddLibrary("Container version: " + Container().GetVersion());
-  a.AddLibrary("FixedLagSmootherKalmanFilter version: " + FixedLagSmootherKalmanFilter::GetVersion());
-  a.AddLibrary("GapsFilledWhiteNoiseSystem version: " + GapsFilledWhiteNoiseSystem::GetVersion());
-  a.AddLibrary("KalmanFilter version: " + KalmanFilter::GetVersion());
-  a.AddLibrary("LaggedWhiteNoiseSystem version: " + LaggedWhiteNoiseSystem::GetVersion());
-  a.AddLibrary("Matrix version: " + Matrix::GetVersion());
-  a.AddLibrary("StandardKalmanFilter version: " + StandardKalmanFilter::GetVersion());
-  a.AddLibrary("StandardKalmanFilterParameters version: " + StandardKalmanFilterParameters::GetVersion());
-  a.AddLibrary("StandardWhiteNoiseSystem version: " + StandardWhiteNoiseSystem::GetVersion());
-  a.AddLibrary("SteadyStateKalmanFilter version: " + SteadyStateKalmanFilter::GetVersion());
-  a.AddLibrary("SteadyStateKalmanFilterParameters version: " + SteadyStateKalmanFilterParameters::GetVersion());
   return a;
 }
 
@@ -72,7 +61,7 @@ ribi::Help ribi::kalman::KalmanFiltererMenuDialog::GetHelp() const noexcept
 
 std::string ribi::kalman::KalmanFiltererMenuDialog::GetVersion() const noexcept
 {
-  return "2.0";
+  return "2.1";
 }
 
 std::vector<std::string> ribi::kalman::KalmanFiltererMenuDialog::GetVersionHistory() const noexcept
@@ -97,6 +86,7 @@ std::vector<std::string> ribi::kalman::KalmanFiltererMenuDialog::GetVersionHisto
     "2014-08-10: version 1.16: increased use of TDD",
     "2015-01-03: version 1.17: set locale to English in Desktop version", //SET_LOCALE_TO_ENGLISH_MODELFUNCTIONPARSER
     "2015-01-04: version 1.18: made locale local",
-    "2015-11-21: version 2.0: moved to own GitHub"
+    "2015-11-21: version 2.0: moved to own GitHub",
+    "201x-xx-xx: version 2.1: use of Boost.Test, clean OCLint"
   };
 }

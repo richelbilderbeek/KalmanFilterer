@@ -39,12 +39,6 @@ struct SteadyStateKalmanFilterParameters : public KalmanFilterParameters
   ///Obtain the Kalman filter type as an enum
   KalmanFilterType GetType() const { return KalmanFilterType::steady_state; }
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   ///Check if this parameter set has a certain type of KalmanFilterParameter
   static bool HasParameterType(const KalmanFilterParameterType type);
 

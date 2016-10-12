@@ -158,19 +158,6 @@ boost::shared_ptr<const ribi::kalman::FixedLagSmootherKalmanFilterParameters> ri
   return p;
 }
 
-
-std::string ribi::kalman::FixedLagSmootherKalmanFilter::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string> ribi::kalman::FixedLagSmootherKalmanFilter::GetVersionHistory() noexcept
-{
-  return {
-    "2013-05-03: version 1.0: initial version"
-  };
-}
-
 boost::numeric::ublas::vector<double> ribi::kalman::FixedLagSmootherKalmanFilter::PredictState(
   const boost::numeric::ublas::vector<double>& input) const
 {

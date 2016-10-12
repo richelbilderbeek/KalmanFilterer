@@ -50,12 +50,6 @@ struct StandardKalmanFilterParameters : public KalmanFilterParameters
     const StandardKalmanFilterParameters& lhs,
     const StandardKalmanFilterParameters& rhs) noexcept;
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   ///Check if this parameter set has a certain type of KalmanFilterParameter
   static bool HasParameterType(const KalmanFilterParameterType type) noexcept;
 

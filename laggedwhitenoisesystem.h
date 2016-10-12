@@ -27,12 +27,6 @@ struct LaggedWhiteNoiseSystem : public WhiteNoiseSystem
   ///Obtain the type as an enum
   WhiteNoiseSystemType GetType() const noexcept { return WhiteNoiseSystemType::lagged; }
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   ///Update reality, that is, let the real system (i.e. reality) go to its next state
   void GoToNextState(const boost::numeric::ublas::vector<double>& input);
 

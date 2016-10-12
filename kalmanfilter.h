@@ -32,12 +32,6 @@ struct KalmanFilter
   ///Obtain the Kalman filter parameters
   virtual boost::shared_ptr<const KalmanFilterParameters> GetParameters() const = 0;
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   virtual void SupplyMeasurementAndInput(
     const boost::numeric::ublas::vector<double>& measurements,
     const boost::numeric::ublas::vector<double>& input

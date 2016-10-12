@@ -43,12 +43,6 @@ struct SteadyStateKalmanFilter : public KalmanFilter
   ///Obtain the Kalman filter type as an enum
   KalmanFilterType GetType() const noexcept { return KalmanFilterType::steady_state; }
 
-  ///Obtain the version of this class
-  static std::string GetVersion() noexcept;
-
-  ///Obtain the version history of this class
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   ///Give the filter a measurement and input, and it will update its predictions
   void SupplyMeasurementAndInput(
     const boost::numeric::ublas::vector<double>& measurements,

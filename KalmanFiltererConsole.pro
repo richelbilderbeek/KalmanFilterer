@@ -1,5 +1,5 @@
 # Qwt does not go well with -Weffc++
-include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
+include(../RibiLibraries/ConsoleApplicationNoWeffcpp.pri)
 
 include(../RibiLibraries/Boost.pri)
 include(../RibiLibraries/Fparser.pri)

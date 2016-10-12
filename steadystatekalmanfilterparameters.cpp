@@ -49,20 +49,6 @@ ribi::kalman::SteadyStateKalmanFilterParameters::CalculateOptimalKalmanGain(
 
 }
 
-std::string ribi::kalman::SteadyStateKalmanFilterParameters::GetVersion() noexcept
-{
-  return "1.1";
-}
-
-std::vector<std::string>
-ribi::kalman::SteadyStateKalmanFilterParameters::GetVersionHistory() noexcept
-{
-  return {
-    "2013-05-01: version 1.0: initial version"
-    "2013-05-03: version 1.1: inherit from KalmanFilterParameters"
-  };
-}
-
 bool ribi::kalman::SteadyStateKalmanFilterParameters::HasParameterType(
   const KalmanFilterParameterType type
 )
@@ -72,7 +58,8 @@ bool ribi::kalman::SteadyStateKalmanFilterParameters::HasParameterType(
     || type == KalmanFilterParameterType::estimated_optimal_kalman_gain
     || type == KalmanFilterParameterType::initial_state_estimate
     || type == KalmanFilterParameterType::observation
-    || type == KalmanFilterParameterType::state_transition;
+    || type == KalmanFilterParameterType::state_transition
+  ;
 }
 
 bool ribi::kalman::IsAboutEqual(

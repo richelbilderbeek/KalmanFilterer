@@ -38,18 +38,6 @@ ribi::kalman::GapsFilledWhiteNoiseSystem::GapsFilledWhiteNoiseSystem(
   }
 }
 
-std::string ribi::kalman::GapsFilledWhiteNoiseSystem::GetVersion() noexcept
-{
-  return "1.0";
-}
-
-std::vector<std::string> ribi::kalman::GapsFilledWhiteNoiseSystem::GetVersionHistory() noexcept
-{
-  return {
-    "2013-06-25: version 1.0: initial version"
-  };
-}
-
 void ribi::kalman::GapsFilledWhiteNoiseSystem::GoToNextState(
   const boost::numeric::ublas::vector<double>& input
 )
