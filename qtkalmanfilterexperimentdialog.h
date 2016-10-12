@@ -56,8 +56,15 @@ public:
   const QtKalmanFilterDialog * GetFilterDialog() const { return m_filter_dialog; }
 
   ///Obtain the dialog to set the white noise system parameters with
-  const QtWhiteNoiseSystemParametersDialog * GetNoiseParametersDialog() const { return m_noise_parameters_dialog; }
-        QtWhiteNoiseSystemParametersDialog * GetNoiseParametersDialog()       { return m_noise_parameters_dialog; }
+  const QtWhiteNoiseSystemParametersDialog * GetNoiseParametersDialog() const
+  {
+    return m_noise_parameters_dialog;
+  }
+
+  QtWhiteNoiseSystemParametersDialog * GetNoiseParametersDialog()
+  {
+    return m_noise_parameters_dialog;
+  }
 
   ///Get the number of timesteps in the sim
   int GetNumberOfTimesteps() const;

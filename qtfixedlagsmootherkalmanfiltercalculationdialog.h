@@ -27,8 +27,13 @@ class QtFixedLagSmootherKalmanFilterCalculationDialog : public QtKalmanFilterCal
     Q_OBJECT //!OCLINT
 
 public:
-  QtFixedLagSmootherKalmanFilterCalculationDialog(const QtFixedLagSmootherKalmanFilterCalculationDialog&) = delete;
-  QtFixedLagSmootherKalmanFilterCalculationDialog operator=(const QtFixedLagSmootherKalmanFilterCalculationDialog&) = delete;
+  QtFixedLagSmootherKalmanFilterCalculationDialog(
+    const QtFixedLagSmootherKalmanFilterCalculationDialog&
+  ) = delete;
+
+  QtFixedLagSmootherKalmanFilterCalculationDialog operator=(
+    const QtFixedLagSmootherKalmanFilterCalculationDialog&
+  ) = delete;
 
   explicit QtFixedLagSmootherKalmanFilterCalculationDialog(QWidget *parent = 0);
   ~QtFixedLagSmootherKalmanFilterCalculationDialog() noexcept;
@@ -37,7 +42,10 @@ public:
   KalmanFilterType GetType() const { return KalmanFilterType::fixed_lag_smoother; }
 
   ///Display the calculation of an experiment at a certain timestep
-  void ShowCalculation(const int t, const boost::shared_ptr<const KalmanFilterExperiment>& experiment);
+  void ShowCalculation(
+    const int t,
+    const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+  );
 
 protected:
   void SetTime(const int t);
@@ -45,7 +53,11 @@ protected:
 private:
   Ui::QtFixedLagSmootherKalmanFilterCalculationDialog *ui;
 
-  void SetFixedLagSmootherCalculationElements(const boost::shared_ptr<const FixedLagSmootherKalmanFilterCalculationElements>& calculation_elements);
+  void SetFixedLagSmootherCalculationElements(
+    const boost::shared_ptr<
+      const FixedLagSmootherKalmanFilterCalculationElements
+    >& calculation_elements
+  );
 
   void SetControl(const boost::numeric::ublas::matrix<double>& m);
   void SetEstimatedOptimalKalmanGain(const boost::numeric::ublas::matrix<double>& m);

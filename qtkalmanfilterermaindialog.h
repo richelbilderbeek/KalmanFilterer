@@ -47,8 +47,15 @@ public:
   ~QtKalmanFiltererMainDialog() noexcept;
 
   ///Get the dialog to set the experiment its parameters
-  const QtKalmanFilterExperimentDialog * GetExperimentDialog() const noexcept { return m_experiment_dialog; }
-        QtKalmanFilterExperimentDialog * GetExperimentDialog()       noexcept { return m_experiment_dialog; }
+  const QtKalmanFilterExperimentDialog * GetExperimentDialog() const noexcept
+  {
+    return m_experiment_dialog;
+  }
+
+  QtKalmanFilterExperimentDialog * GetExperimentDialog() noexcept
+  {
+    return m_experiment_dialog;
+  }
 
   boost::shared_ptr<QtKalmanFilterExperimentModel> GetModel() noexcept { return m_model; }
 
@@ -96,8 +103,10 @@ private:
     const std::vector<boost::numeric::ublas::vector<double> >& d
     );
 
-  const boost::shared_ptr<QtKalmanFilterCalculationDialog> CreateKalmanFilterCalculationDialog(
-    const KalmanFilterType type) const;
+  const boost::shared_ptr<QtKalmanFilterCalculationDialog>
+    CreateKalmanFilterCalculationDialog(
+    const KalmanFilterType type
+  ) const;
 
   const std::vector<double> ExtractAverageSquaredError(
     const boost::shared_ptr<const KalmanFilterExperiment>& experiment);

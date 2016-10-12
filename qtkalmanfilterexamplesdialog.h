@@ -36,7 +36,9 @@ public:
   void SetShowNoExample();
 
   //Never emit a boost::shared_ptr [1]
-  mutable boost::signals2::signal<void(const KalmanFilterExample * const example)> m_signal_example;
+  mutable boost::signals2::signal<
+    void(const KalmanFilterExample * const example)
+  > m_signal_example;
 
 protected:
   void keyPressEvent(QKeyEvent * event);

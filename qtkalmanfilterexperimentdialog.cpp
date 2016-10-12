@@ -106,8 +106,10 @@ ribi::kalman::QtKalmanFilterExperimentDialog::QtKalmanFilterExperimentDialog(
       this->layout()->addWidget(dialog);
 
     }
-    assert(boost::numeric_cast<int>(v.size()) == static_cast<int>(KalmanFilterExperimentParameterType::n_parameters)
-      && "All parameters must be in");
+    assert(boost::numeric_cast<int>(v.size())
+      == static_cast<int>(KalmanFilterExperimentParameterType::n_parameters
+      ) && "All parameters must be in"
+    );
   }
 
   layout()->addWidget(new QLabel("Kalman filter parameters"));
@@ -120,13 +122,26 @@ ribi::kalman::QtKalmanFilterExperimentDialog::QtKalmanFilterExperimentDialog(
 
   //Connect clicking on the example buttons to setting (and showing) these
   m_examples_dialog->m_signal_example.connect(
-    boost::bind(&ribi::kalman::QtKalmanFilterExperimentDialog::SetExample,this,boost::lambda::_1));
+    boost::bind(
+      &ribi::kalman::QtKalmanFilterExperimentDialog::SetExample,this,boost::lambda::_1
+    )
+  );
   //When the model changes its number of timesteps, also display this new number
   m_model->m_signal_number_of_timesteps_changed.connect(
-    boost::bind(&ribi::kalman::QtKalmanFilterExperimentDialog::SetNumberOfTimesteps,this,boost::lambda::_1));
+    boost::bind(
+      &ribi::kalman::QtKalmanFilterExperimentDialog::SetNumberOfTimesteps,
+      this,
+      boost::lambda::_1
+    )
+  );
   //Make the white noise system parameters follow the possible tab changes in parameters
   this->GetFilterDialog()->m_signal_kalman_filter_type_changed.connect(
-    boost::bind(&ribi::kalman::QtKalmanFilterExperimentDialog::SetKalmanFilterType,this,boost::lambda::_1));
+    boost::bind(
+      &ribi::kalman::QtKalmanFilterExperimentDialog::SetKalmanFilterType,
+      this,
+      boost::lambda::_1
+    )
+  );
   ui->box_n_timesteps->setValue(5);
 
   assert(IsValid());
@@ -146,13 +161,15 @@ void ribi::kalman::QtKalmanFilterExperimentDialog::ClickExample(const int i)
   assert(IsValid());
 }
 
-const ribi::kalman::QtKalmanFilterExamplesDialog * ribi::kalman::QtKalmanFilterExperimentDialog::GetExamplesDialog() const
+const ribi::kalman::QtKalmanFilterExamplesDialog *
+  ribi::kalman::QtKalmanFilterExperimentDialog::GetExamplesDialog() const
 {
   assert(m_examples_dialog);
   return m_examples_dialog;
 }
 
-ribi::kalman::QtKalmanFilterExamplesDialog * ribi::kalman::QtKalmanFilterExperimentDialog::GetExamplesDialog()
+ribi::kalman::QtKalmanFilterExamplesDialog *
+  ribi::kalman::QtKalmanFilterExperimentDialog::GetExamplesDialog()
 {
   assert(m_examples_dialog);
   return m_examples_dialog;
@@ -191,7 +208,9 @@ void ribi::kalman::QtKalmanFilterExperimentDialog::keyPressEvent(QKeyEvent * eve
 }
 
 
-void ribi::kalman::QtKalmanFilterExperimentDialog::LoadFromDokuWiki(const std::string& filename)
+void ribi::kalman::QtKalmanFilterExperimentDialog::LoadFromDokuWiki(
+  const std::string& filename
+)
 {
   assert(QFile::exists(filename.c_str()));
   std::string text;
@@ -350,7 +369,9 @@ void ribi::kalman::QtKalmanFilterExperimentDialog::on_button_save_clicked()
   }
 }
 
-void ribi::kalman::QtKalmanFilterExperimentDialog::SetExample(const KalmanFilterExample * const example_raw)
+void ribi::kalman::QtKalmanFilterExperimentDialog::SetExample(
+  const KalmanFilterExample * const example_raw
+)
 {
   assert(example_raw);
   const boost::shared_ptr<const KalmanFilterExample> example(example_raw);
@@ -364,12 +385,20 @@ void ribi::kalman::QtKalmanFilterExperimentDialog::SetExample(const KalmanFilter
   assert(experiment);
   assert(experiment->GetKalmanFilter());
   assert(experiment->GetStateNames() == example->GetStateNames());
-  assert(experiment->GetKalmanFilter()->GetParameters()->GetType() == example->GetKalmanFilterParameters()->GetType());
-  if (const boost::shared_ptr<const StandardKalmanFilterParameters> p_experiment = boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(experiment->GetKalmanFilter()->GetParameters()))
+  assert(experiment->GetKalmanFilter()->GetParameters()->GetType()
+    == example->GetKalmanFilterParameters()->GetType()
+  );
+  if (const boost::shared_ptr<const StandardKalmanFilterParameters> p_experiment
+     = boost::dynamic_pointer_cast<
+       const StandardKalmanFilterParameters
+     >(experiment->GetKalmanFilter()->GetParameters())
+  )
   {
     assert(p_experiment);
     const boost::shared_ptr<const StandardKalmanFilterParameters> p_example
-      = boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(example->GetKalmanFilterParameters());
+      = boost::dynamic_pointer_cast<const StandardKalmanFilterParameters>(
+        example->GetKalmanFilterParameters()
+      );
     assert(p_example);
     assert(Matrix::MatricesAreEqual( p_experiment->GetControl(), p_example->GetControl() ) );
     assert(StandardKalmanFilterParameters::IsAboutEqual(*p_experiment,*p_example));

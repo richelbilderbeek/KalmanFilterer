@@ -25,7 +25,9 @@ class QtStandardKalmanFilterCalculationDialog : public QtKalmanFilterCalculation
 
 public:
   QtStandardKalmanFilterCalculationDialog(const QtStandardKalmanFilterCalculationDialog&) = delete;
-  QtStandardKalmanFilterCalculationDialog operator=(const QtStandardKalmanFilterCalculationDialog&) = delete;
+  QtStandardKalmanFilterCalculationDialog operator=(
+    const QtStandardKalmanFilterCalculationDialog&
+  ) = delete;
 
   explicit QtStandardKalmanFilterCalculationDialog(QWidget *parent = 0);
   ~QtStandardKalmanFilterCalculationDialog() noexcept;

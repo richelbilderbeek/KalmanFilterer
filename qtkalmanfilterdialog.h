@@ -50,7 +50,9 @@ public:
   ///Set the tab to the correct index
   void SetKalmanFilterType(const KalmanFilterType new_type);
 
-  mutable boost::signals2::signal<void(const KalmanFilterType)> m_signal_kalman_filter_type_changed;
+  mutable boost::signals2::signal<
+    void(const KalmanFilterType)
+  > m_signal_kalman_filter_type_changed;
 
 protected:
   void keyPressEvent(QKeyEvent * event);

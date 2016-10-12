@@ -36,7 +36,10 @@ public:
   virtual void SetTime(const int t) = 0;
 
   ///Display the calculation of an experiment at a certain timestep
-  virtual void ShowCalculation(const int t, const boost::shared_ptr<const KalmanFilterExperiment>& experiment) = 0;
+  virtual void ShowCalculation(
+    const int t,
+    const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+  ) = 0;
 
 private:
   Ui::QtKalmanFilterCalculationDialog *ui;

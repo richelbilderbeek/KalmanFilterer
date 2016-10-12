@@ -25,8 +25,12 @@ class QtSteadyStateKalmanFilterCalculationDialog : public QtKalmanFilterCalculat
   Q_OBJECT //!OCLINT
   
 public:
-  QtSteadyStateKalmanFilterCalculationDialog(const QtSteadyStateKalmanFilterCalculationDialog&) = delete;
-  QtSteadyStateKalmanFilterCalculationDialog& operator=(const QtSteadyStateKalmanFilterCalculationDialog&) = delete;
+  QtSteadyStateKalmanFilterCalculationDialog(
+    const QtSteadyStateKalmanFilterCalculationDialog&
+  ) = delete;
+  QtSteadyStateKalmanFilterCalculationDialog& operator=(
+    const QtSteadyStateKalmanFilterCalculationDialog&
+  ) = delete;
 
   explicit QtSteadyStateKalmanFilterCalculationDialog(QWidget *parent = 0);
   ~QtSteadyStateKalmanFilterCalculationDialog() noexcept;
@@ -35,7 +39,10 @@ public:
   KalmanFilterType GetType() const { return KalmanFilterType::steady_state; }
 
   ///Display the calculation of an experiment at a certain timestep
-  void ShowCalculation(const int t, const boost::shared_ptr<const KalmanFilterExperiment>& experiment);
+  void ShowCalculation(
+    const int t,
+    const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+  );
 
 protected:
   void SetTime(const int t);
@@ -43,7 +50,9 @@ protected:
 private:
   Ui::QtSteadyStateKalmanFilterCalculationDialog *ui;
 
-  void SetSteadyStateCalculationElements(const boost::shared_ptr<const SteadyStateKalmanFilterCalculationElements>& calculation_elements);
+  void SetSteadyStateCalculationElements(
+    const boost::shared_ptr<const SteadyStateKalmanFilterCalculationElements>& calculation_elements
+  );
 
   void SetControl(const boost::numeric::ublas::matrix<double>& m);
   void SetEstimatedOptimalKalmanGain(const boost::numeric::ublas::matrix<double>& m);

@@ -28,9 +28,10 @@
 
 #pragma GCC diagnostic pop
 
-ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(const boost::shared_ptr<QtKalmanFilterExperimentModel> model,
-  QWidget *parent)
-  : QtHideAndShowDialog(parent),
+ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(
+  const boost::shared_ptr<QtKalmanFilterExperimentModel> model,
+  QWidget *parent
+) : QtHideAndShowDialog(parent),
     m_signal_kalman_filter_type_changed{},
     ui(new Ui::QtKalmanFilterDialog),
     m_model{model},
@@ -53,7 +54,9 @@ ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(const boost::shared_ptr
         = new QtKalmanFiltererParameterDialog(
           KalmanFilterParameter().ToName(type),
           KalmanFilterParameter().ToDescription(type),
-          m_model->Find( KalmanFilterExperimentParameter().ConvertToKalmanFilterExperimentParameter(v[i]) )
+          m_model->Find(
+            KalmanFilterExperimentParameter().ConvertToKalmanFilterExperimentParameter(v[i])
+          )
         );
       assert(dialog);
 
@@ -65,8 +68,9 @@ ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(const boost::shared_ptr
       this->layout()->addWidget(dialog);
 
     }
-    assert(boost::numeric_cast<int>(v.size()) == static_cast<int>(KalmanFilterParameterType::n_parameters)
-      && "All parameters must be in");
+    assert(boost::numeric_cast<int>(v.size())
+      == static_cast<int>(KalmanFilterParameterType::n_parameters
+      ) && "All parameters must be in");
   }
 
   this->setFocusPolicy(Qt::NoFocus);
@@ -96,7 +100,8 @@ ribi::kalman::KalmanFilterType ribi::kalman::QtKalmanFilterDialog::GetKalmanFilt
 }
 
 
-const std::vector<ribi::kalman::KalmanFilterParameterType> ribi::kalman::QtKalmanFilterDialog::GetParameterTypes() const
+const std::vector<ribi::kalman::KalmanFilterParameterType>
+ribi::kalman::QtKalmanFilterDialog::GetParameterTypes() const
 {
   const std::vector<KalmanFilterParameterType> v
     =
@@ -149,7 +154,8 @@ void ribi::kalman::QtKalmanFilterDialog::SetKalmanFilterType(const KalmanFilterT
   assert(this->GetKalmanFilterType() == new_type);
 }
 
-void ribi::kalman::QtKalmanFilterDialog::on_button_calculate_optimal_kalman_gain_steady_state_clicked()
+void ribi::kalman::QtKalmanFilterDialog
+  ::on_button_calculate_optimal_kalman_gain_steady_state_clicked()
 {
   m_model->CalculateOptimalEstimatedKalmanGain();
 }

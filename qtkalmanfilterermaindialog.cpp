@@ -126,7 +126,8 @@ ribi::kalman::QtKalmanFiltererMainDialog::~QtKalmanFiltererMainDialog() noexcept
   delete m_experiment_dialog;
 }
 
-boost::shared_ptr<ribi::kalman::QtKalmanFiltererMainDialog> ribi::kalman::QtKalmanFiltererMainDialog::Create()
+boost::shared_ptr<ribi::kalman::QtKalmanFiltererMainDialog>
+  ribi::kalman::QtKalmanFiltererMainDialog::Create()
 {
 
   const boost::shared_ptr<QtKalmanFilterExperimentModel> model{
@@ -199,7 +200,8 @@ const std::vector<std::vector<double> > ribi::kalman::QtKalmanFiltererMainDialog
   return v;
 }
 
-const boost::shared_ptr<ribi::kalman::QtKalmanFilterCalculationDialog> ribi::kalman::QtKalmanFiltererMainDialog::CreateKalmanFilterCalculationDialog(
+const boost::shared_ptr<ribi::kalman::QtKalmanFilterCalculationDialog>
+  ribi::kalman::QtKalmanFiltererMainDialog::CreateKalmanFilterCalculationDialog(
   const KalmanFilterType type) const
 {
   boost::shared_ptr<QtKalmanFilterCalculationDialog> p;
@@ -231,8 +233,12 @@ const boost::shared_ptr<ribi::kalman::QtKalmanFilterCalculationDialog> ribi::kal
 const std::vector<double> ribi::kalman::QtKalmanFiltererMainDialog::ExtractAverageSquaredError(
   const boost::shared_ptr<const KalmanFilterExperiment>& experiment)
 {
-  const std::vector<boost::numeric::ublas::vector<double> > predictions = experiment->GetPredictedStates();
-  const std::vector<boost::numeric::ublas::vector<double> > real_states = experiment->GetRealStates();
+  const std::vector<boost::numeric::ublas::vector<double>> predictions{
+    experiment->GetPredictedStates()
+  };
+  const std::vector<boost::numeric::ublas::vector<double>> real_states{
+    experiment->GetRealStates()
+  };
   assert(real_states.size() == predictions.size());
   const std::size_t n_timesteps = real_states.size();
   if (n_timesteps == 0) return std::vector<double>();
@@ -358,7 +364,9 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowCalculation(
 
   //n_timesteps may differ from n_timesteps_desired, because in the actual simulation
   //the innovation variance may become degenerate
-  const int n_timesteps = boost::numeric_cast<int>(experiment->GetCalculationElements().size()); //Number of rows
+  const int n_timesteps{ //Number of rows
+    boost::numeric_cast<int>(experiment->GetCalculationElements().size())
+  };
 
   for (int i=0; i!=n_timesteps; ++i)
   {
@@ -392,7 +400,9 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowCalculation(
   }
 }
 
-void ribi::kalman::QtKalmanFiltererMainDialog::ShowGraph(const boost::shared_ptr<const KalmanFilterExperiment>& experiment)
+void ribi::kalman::QtKalmanFiltererMainDialog::ShowGraph(
+  const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+)
 {
   assert(experiment);
   assert(experiment->IsValid());
@@ -464,8 +474,12 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowGraph(const boost::shared_ptr
     assert(ui->scroll_area_graph_contents->layout());
     ui->scroll_area_graph_contents->layout()->addWidget(plot.get());
   }
-  assert(state_size * 1 == boost::numeric_cast<int>(m_plots.size() ) && "One plot per state element");
-  assert(state_size * 4 == boost::numeric_cast<int>(curves.size()) && "Four curves per state element");
+  assert(state_size * 1 == boost::numeric_cast<int>(m_plots.size() )
+    && "One plot per state element"
+  );
+  assert(state_size * 4 == boost::numeric_cast<int>(curves.size())
+    && "Four curves per state element"
+  );
 
   //n_timesteps may differ from n_timesteps_desired, because in the actual experiment
   //the innovation variance may become degenerate
@@ -550,7 +564,9 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowGraph(const boost::shared_ptr
   }
 }
 
-void ribi::kalman::QtKalmanFiltererMainDialog::ShowStatistics(const boost::shared_ptr<const KalmanFilterExperiment>& experiment)
+void ribi::kalman::QtKalmanFiltererMainDialog::ShowStatistics(
+  const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+)
 {
   assert(experiment);
   assert(experiment->IsValid());
@@ -618,7 +634,9 @@ void ribi::kalman::QtKalmanFiltererMainDialog::ShowStatistics(const boost::share
 }
 
 
-void ribi::kalman::QtKalmanFiltererMainDialog::ShowTable(const boost::shared_ptr<const KalmanFilterExperiment>& experiment)
+void ribi::kalman::QtKalmanFiltererMainDialog::ShowTable(
+  const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+)
 {
   assert(experiment);
   assert(experiment->IsValid());

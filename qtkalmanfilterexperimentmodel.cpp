@@ -69,7 +69,9 @@ boost::numeric::ublas::matrix<double> ConvertToUblasMatrixDouble(
   return w;
 }
 
-boost::numeric::ublas::vector<int> ConvertToUblasVectorInt(const boost::numeric::ublas::matrix<std::string>& v) noexcept
+boost::numeric::ublas::vector<int> ConvertToUblasVectorInt(
+  const boost::numeric::ublas::matrix<std::string>& v
+) noexcept
 {
   boost::numeric::ublas::vector<int> w(v.size1());
   const std::size_t n_rows = v.size1();
@@ -93,7 +95,9 @@ boost::numeric::ublas::vector<int> ConvertToUblasVectorInt(const boost::numeric:
   return w;
 }
 
-boost::numeric::ublas::vector<double> ConvertToUblasVectorDouble(const boost::numeric::ublas::matrix<std::string>& v) noexcept
+boost::numeric::ublas::vector<double> ConvertToUblasVectorDouble(
+  const boost::numeric::ublas::matrix<std::string>& v
+) noexcept
 {
   boost::numeric::ublas::vector<double> w(v.size1());
   const std::size_t n_rows = v.size1();
@@ -117,7 +121,9 @@ boost::numeric::ublas::vector<double> ConvertToUblasVectorDouble(const boost::nu
   return w;
 }
 
-std::vector<std::string> ConvertToVectorString(const boost::numeric::ublas::matrix<std::string>& v)
+std::vector<std::string> ConvertToVectorString(
+  const boost::numeric::ublas::matrix<std::string>& v
+)
 {
   std::vector<std::string> w(v.size1());
   const std::size_t n_rows = v.size1();
@@ -141,7 +147,9 @@ std::vector<std::string> ConvertToVectorString(const boost::numeric::ublas::matr
 
 const int ribi::kalman::QtKalmanFilterExperimentModel::m_version_current = 2;
 
-ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(QObject *parent) noexcept
+ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(
+  QObject *parent
+) noexcept
  : QObject(parent),
    m_signal_context_changed{},
    m_signal_kalman_filter_type_changed{},
@@ -208,7 +216,8 @@ ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(QObje
   }
 }
 
-std::map<ribi::kalman::KalmanFilterExperimentParameterType,QAbstractTableModel *> ribi::kalman::QtKalmanFilterExperimentModel::CreateMap() noexcept
+std::map<ribi::kalman::KalmanFilterExperimentParameterType,QAbstractTableModel *>
+  ribi::kalman::QtKalmanFilterExperimentModel::CreateMap() noexcept
 {
   std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *> m;
 
@@ -222,7 +231,9 @@ std::map<ribi::kalman::KalmanFilterExperimentParameterType,QAbstractTableModel *
     assert(model);
     m.insert(std::make_pair(type,model));
   }
-  assert(static_cast<int>(KalmanFilterExperimentParameterType::n_parameters) == boost::numeric_cast<int>(m.size()));
+  assert(static_cast<int>(KalmanFilterExperimentParameterType::n_parameters)
+    == boost::numeric_cast<int>(m.size())
+  );
   return m;
 }
 
@@ -265,7 +276,8 @@ void ribi::kalman::QtKalmanFilterExperimentModel::CalculateOptimalEstimatedKalma
   )->SetRawData(m);
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterExperiment> ribi::kalman::QtKalmanFilterExperimentModel::CreateExperiment() const noexcept
+boost::shared_ptr<ribi::kalman::KalmanFilterExperiment>
+  ribi::kalman::QtKalmanFilterExperimentModel::CreateExperiment() const noexcept
 {
 
   boost::shared_ptr<KalmanFilterExperiment> experiment;
@@ -288,7 +300,9 @@ boost::shared_ptr<ribi::kalman::KalmanFilterExperiment> ribi::kalman::QtKalmanFi
   }
 
   assert(kalman_filter->GetParameters());
-  assert(input.size() == kalman_filter->GetParameters()->GetInitialStateEstimate().size());
+  assert(input.size()
+    == kalman_filter->GetParameters()->GetInitialStateEstimate().size()
+  );
 
   const std::vector<std::string> state_names
     = dynamic_cast<const StateNamesModel*>(
@@ -329,7 +343,9 @@ boost::shared_ptr<ribi::kalman::KalmanFilterExperiment> ribi::kalman::QtKalmanFi
 }
 
 
-boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateFixedLagSmootherKalmanFilterParameters() const noexcept
+boost::shared_ptr<ribi::kalman::KalmanFilterParameters>
+  ribi::kalman::QtKalmanFilterExperimentModel
+    ::CreateFixedLagSmootherKalmanFilterParameters() const noexcept
 {
   const boost::shared_ptr<StandardKalmanFilterParameters> standard_parameters
     = CreateStandardKalmanFilterParameters();
@@ -346,9 +362,12 @@ boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFi
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilter> ribi::kalman::QtKalmanFilterExperimentModel::CreateKalmanFilter() const
+boost::shared_ptr<ribi::kalman::KalmanFilter>
+ribi::kalman::QtKalmanFilterExperimentModel::CreateKalmanFilter() const
 {
-  const boost::shared_ptr<const KalmanFilterParameters> parameters = CreateKalmanFilterParameters();
+  const boost::shared_ptr<const KalmanFilterParameters> parameters{
+    CreateKalmanFilterParameters()
+  };
   assert(parameters);
   const boost::shared_ptr<KalmanFilter> kalman_filter = KalmanFilterFactory().Create(parameters);
   assert(kalman_filter);
@@ -356,7 +375,8 @@ boost::shared_ptr<ribi::kalman::KalmanFilter> ribi::kalman::QtKalmanFilterExperi
   return kalman_filter;
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateKalmanFilterParameters() const noexcept
+boost::shared_ptr<ribi::kalman::KalmanFilterParameters>
+ribi::kalman::QtKalmanFilterExperimentModel::CreateKalmanFilterParameters() const noexcept
 {
   boost::shared_ptr<KalmanFilterParameters> parameters;
   switch (m_kalman_filter_type)
@@ -379,7 +399,9 @@ boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFi
   return parameters;
 }
 
-boost::shared_ptr<ribi::kalman::StandardKalmanFilterParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateStandardKalmanFilterParameters() const noexcept
+boost::shared_ptr<ribi::kalman::StandardKalmanFilterParameters>
+ribi::kalman::QtKalmanFilterExperimentModel
+  ::CreateStandardKalmanFilterParameters() const noexcept
 {
   const auto control =
     dynamic_cast<const ControlModel*>(
@@ -407,7 +429,10 @@ boost::shared_ptr<ribi::kalman::StandardKalmanFilterParameters> ribi::kalman::Qt
     )->GetRawData();
 
   assert(this->Find(KalmanFilterExperimentParameterType::observation));
-  assert(dynamic_cast<const ObservationModel*>(this->Find(KalmanFilterExperimentParameterType::observation)));
+  assert(dynamic_cast<const ObservationModel*>(
+      this->Find(KalmanFilterExperimentParameterType::observation)
+    )
+  );
 
   const auto observation =
     dynamic_cast<const ObservationModel*>(
@@ -445,7 +470,9 @@ boost::shared_ptr<ribi::kalman::StandardKalmanFilterParameters> ribi::kalman::Qt
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateSteadyStateKalmanFilterParameters() const noexcept
+boost::shared_ptr<ribi::kalman::KalmanFilterParameters>
+ribi::kalman::QtKalmanFilterExperimentModel
+  ::CreateSteadyStateKalmanFilterParameters() const noexcept
 {
   const auto control =
     dynamic_cast<const ControlModel*>(
@@ -485,7 +512,9 @@ boost::shared_ptr<ribi::kalman::KalmanFilterParameters> ribi::kalman::QtKalmanFi
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateLaggedWhiteNoiseSystemParameters() const noexcept
+boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters>
+ribi::kalman::QtKalmanFilterExperimentModel
+  ::CreateLaggedWhiteNoiseSystemParameters() const noexcept
 {
   const auto control =
     dynamic_cast<const ControlModel*>(
@@ -528,7 +557,9 @@ boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalm
 }
 
 
-QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel::CreateModel(const KalmanFilterExperimentParameterType type) noexcept
+QAbstractTableModel * ribi::kalman::CreateModel(
+  const KalmanFilterExperimentParameterType type
+) noexcept
 {
   switch (type)
   {
@@ -577,7 +608,9 @@ QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel::CreateModel(c
   throw std::logic_error("QtKalmanFiltererParameterDialog::ToModel");
 }
 
-boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateGapsFilledWhiteNoiseSystemParameters() const noexcept
+boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters>
+ribi::kalman::QtKalmanFilterExperimentModel
+  ::CreateGapsFilledWhiteNoiseSystemParameters() const noexcept
 {
   const auto control =
     dynamic_cast<const ControlModel*>(
@@ -631,7 +664,9 @@ boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalm
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::StandardWhiteNoiseSystemParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateStandardWhiteNoiseSystemParameters() const noexcept
+boost::shared_ptr<ribi::kalman::StandardWhiteNoiseSystemParameters>
+  ribi::kalman::QtKalmanFilterExperimentModel
+    ::CreateStandardWhiteNoiseSystemParameters() const noexcept
 {
   const auto control =
     dynamic_cast<const ControlModel*>(
@@ -676,7 +711,8 @@ boost::shared_ptr<ribi::kalman::StandardWhiteNoiseSystemParameters> ribi::kalman
   return p;
 }
 
-boost::shared_ptr<ribi::kalman::WhiteNoiseSystem> ribi::kalman::QtKalmanFilterExperimentModel::CreateWhiteNoiseSystem() const noexcept
+boost::shared_ptr<ribi::kalman::WhiteNoiseSystem>
+  ribi::kalman::QtKalmanFilterExperimentModel::CreateWhiteNoiseSystem() const noexcept
 {
   const boost::shared_ptr<WhiteNoiseSystemParameters> parameters
     = CreateWhiteNoiseSystemParameters();
@@ -689,7 +725,9 @@ boost::shared_ptr<ribi::kalman::WhiteNoiseSystem> ribi::kalman::QtKalmanFilterEx
   return my_system;
 }
 
-boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalmanFilterExperimentModel::CreateWhiteNoiseSystemParameters() const noexcept
+boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters>
+  ribi::kalman::QtKalmanFilterExperimentModel
+    ::CreateWhiteNoiseSystemParameters() const noexcept
 {
   boost::shared_ptr<WhiteNoiseSystemParameters> parameters;
   switch (m_white_noise_system_type)
@@ -717,16 +755,20 @@ boost::shared_ptr<ribi::kalman::WhiteNoiseSystemParameters> ribi::kalman::QtKalm
   return parameters;
 }
 
-QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel::Find(const KalmanFilterExperimentParameterType type)
+QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel
+  ::Find(const KalmanFilterExperimentParameterType type)
 {
   //Calls the const version of Find
   //To avoid duplication in const and non-const member functions
   // * Herb Sutter, Andrei Alexandrescu. C++ coding standards: 101 rules, guidelines,
   //   and best practices. 2005. ISBN: 0-32-111358-6. Chapter 94: 'Avoid casting away const', item 'Exceptions'
-  return const_cast<QAbstractTableModel *>(const_cast<const QtKalmanFilterExperimentModel&>(*this).Find(type));
+  return const_cast<QAbstractTableModel *>(const_cast<
+    const QtKalmanFilterExperimentModel&
+  >(*this).Find(type));
 }
 
-const QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel::Find(const KalmanFilterExperimentParameterType type) const
+const QAbstractTableModel * ribi::kalman::QtKalmanFilterExperimentModel
+  ::Find(const KalmanFilterExperimentParameterType type) const
 {
   assert(m_models.find(type) != m_models.end());
   const QAbstractTableModel * const model = (*m_models.find(type)).second;
@@ -759,7 +801,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::FromDokuWiki(const std::string
 
   //Go through all m_models
   {
-    typedef std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *>::const_iterator ConstIterator;
+    typedef std::map<
+      KalmanFilterExperimentParameterType,QAbstractTableModel *
+    >::const_iterator ConstIterator;
     const ConstIterator j = m_models.end();
     for (ConstIterator i = m_models.begin(); i!=j; ++i)
     {
@@ -770,7 +814,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::FromDokuWiki(const std::string
       assert(model);
 
       //version 0 did not support measurement_frequency
-      if (m_version == 0 && type == KalmanFilterExperimentParameterType::measurement_frequency) continue;
+      if (m_version == 0 && type
+        == KalmanFilterExperimentParameterType::measurement_frequency
+      ) continue;
 
       const std::string name = KalmanFilterExperimentParameter().ToName(type);
       Read(lines,name,model);
@@ -839,7 +885,9 @@ bool ribi::kalman::QtKalmanFilterExperimentModel::IsValid() const
   {
     return false;
   }
-  typedef std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *>::const_iterator Iterator;
+  typedef std::map<
+    KalmanFilterExperimentParameterType,QAbstractTableModel *
+  >::const_iterator Iterator;
   const Iterator j = m_models.end();
   for (Iterator i = m_models.begin(); i!=j; ++i)
   {
@@ -893,28 +941,37 @@ void ribi::kalman::QtKalmanFilterExperimentModel::OnStateNamesChanged()
     const KalmanFilterExperimentParameterType type = p.first;
     QAbstractTableModel * const abstract_model = p.second;
 
-    if (QtStdVectorStringModel * const svs_model = dynamic_cast<QtStdVectorStringModel *>(abstract_model))
+    if (QtStdVectorStringModel * const svs_model
+      = dynamic_cast<QtStdVectorStringModel *>(abstract_model)
+    )
     {
       const std::string title = KalmanFilterExperimentParameter().ToSymbol(type);
       svs_model->SetHeaderData(title,state_names);
     }
-    else if (QtStdVectorFunctionModel * const svf_model = dynamic_cast<QtStdVectorFunctionModel *>(abstract_model))
+    else if (QtStdVectorFunctionModel * const svf_model
+      = dynamic_cast<QtStdVectorFunctionModel *>(abstract_model)
+    )
     {
       const std::string title = KalmanFilterExperimentParameter().ToSymbol(type);
       svf_model->SetHeaderData(title,state_names);
     }
-    else if (QtUblasMatrixDoubleModel * const umd_model = dynamic_cast<QtUblasMatrixDoubleModel *>(abstract_model))
+    else if (QtUblasMatrixDoubleModel * const umd_model
+      = dynamic_cast<QtUblasMatrixDoubleModel *>(abstract_model)
+    )
     {
       umd_model->SetHeaderData(state_names,state_names);
     }
-    else if (QtUblasVectorDoubleModel * const uvd_model = dynamic_cast<QtUblasVectorDoubleModel *>(abstract_model))
+    else if (QtUblasVectorDoubleModel * const uvd_model
+      = dynamic_cast<QtUblasVectorDoubleModel *>(abstract_model)
+    )
     {
       const std::string title = KalmanFilterExperimentParameter().ToSymbol(type);
       uvd_model->SetHeaderData(title,state_names);
     }
     else
     {
-      QtUblasVectorIntModel * const uvi_model = dynamic_cast<QtUblasVectorIntModel *>(abstract_model);
+      QtUblasVectorIntModel * const uvi_model
+        = dynamic_cast<QtUblasVectorIntModel *>(abstract_model);
       assert(uvi_model);
       const std::string title = KalmanFilterExperimentParameter().ToSymbol(type);
       uvi_model->SetHeaderData(title,state_names);
@@ -923,7 +980,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::OnStateNamesChanged()
 
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::ReadContext(const std::vector<std::string>& v)
+void ribi::kalman::QtKalmanFilterExperimentModel::ReadContext(
+  const std::vector<std::string>& v
+)
 {
   const auto begin = std::find(v.begin(),v.end(),"<html>");
   if (begin == v.end()) return;
@@ -941,7 +1000,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::ReadContext(const std::vector<
   this->SetContext(new_context.substr(0,new_context.size() - 1)); //Strip \n
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::ReadKalmanFilterType(const std::string& s)
+void ribi::kalman::QtKalmanFilterExperimentModel::ReadKalmanFilterType(
+  const std::string& s
+)
 {
   if (s.find("Kalman filter type") != std::string::npos)
   {
@@ -1067,24 +1128,34 @@ void ribi::kalman::QtKalmanFilterExperimentModel::Read(
     }
   }
   #else
-  if (QtStdVectorStringModel * const svs_model = dynamic_cast<QtStdVectorStringModel *>(model))
+  if (QtStdVectorStringModel * const svs_model
+    = dynamic_cast<QtStdVectorStringModel *>(model)
+  )
   {
     const std::vector<std::string> w = ConvertToVectorString(v);
     svs_model->SetRawData(w);
   }
-  else if (QtStdVectorFunctionModel * const svf_model = dynamic_cast<QtStdVectorFunctionModel *>(model))
+  else if (QtStdVectorFunctionModel * const svf_model
+    = dynamic_cast<QtStdVectorFunctionModel *>(model)
+  )
   {
     const std::vector<std::string> w = ConvertToVectorString(v);
     svf_model->SetRawData(w);
   }
-  else if (QtUblasMatrixDoubleModel * const umd_model = dynamic_cast<QtUblasMatrixDoubleModel *>(model))
+  else if (QtUblasMatrixDoubleModel * const umd_model
+    = dynamic_cast<QtUblasMatrixDoubleModel *>(model)
+  )
   {
-    const boost::numeric::ublas::matrix<double> w = ConvertToUblasMatrixDouble(v);
+    const boost::numeric::ublas::matrix<double> w
+     = ConvertToUblasMatrixDouble(v);
     umd_model->SetRawData(w);
   }
-  else if (QtUblasVectorDoubleModel * const uvd_model = dynamic_cast<QtUblasVectorDoubleModel *>(model))
+  else if (QtUblasVectorDoubleModel * const uvd_model
+    = dynamic_cast<QtUblasVectorDoubleModel *>(model)
+  )
   {
-    const boost::numeric::ublas::vector<double> w = ConvertToUblasVectorDouble(v);
+    const boost::numeric::ublas::vector<double> w
+      = ConvertToUblasVectorDouble(v);
     uvd_model->SetRawData(w);
   }
   else
@@ -1099,7 +1170,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::Read(
 
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::Read(const std::string& line,const std::string& sub, int& value_to_change)
+void ribi::kalman::QtKalmanFilterExperimentModel::Read(
+  const std::string& line,const std::string& sub, int& value_to_change
+)
 {
   if (line.find(sub) != std::string::npos)
   {
@@ -1144,17 +1217,6 @@ void ribi::kalman::QtKalmanFilterExperimentModel::ReadWhiteNoiseSystemType(const
   }
 }
 
-std::vector<std::string> ribi::kalman::QtKalmanFilterExperimentModel::SeperateString(
-  const std::string& input,
-  const char seperator)
-{
-  std::vector<std::string> v;
-  boost::algorithm::split(v,input,
-    std::bind2nd(std::equal_to<char>(),seperator),
-    boost::algorithm::token_compress_on);
-  return v;
-}
-
 void ribi::kalman::QtKalmanFilterExperimentModel::SetContext(const std::string& context)
 {
   if (m_context != context)
@@ -1165,7 +1227,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::SetContext(const std::string& 
   assert(m_context == context);
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::SetExample(const boost::shared_ptr<const KalmanFilterExample>& example) noexcept
+void ribi::kalman::QtKalmanFilterExperimentModel::SetExample(
+  const boost::shared_ptr<const KalmanFilterExample>& example
+) noexcept
 {
   //Set the state names first, as it resizes the tables
   assert(example);
@@ -1267,7 +1331,8 @@ void ribi::kalman::QtKalmanFilterExperimentModel::SetExample(const boost::shared
 
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::SetKalmanFilterType(const KalmanFilterType type) noexcept
+void ribi::kalman::QtKalmanFilterExperimentModel::SetKalmanFilterType(
+  const KalmanFilterType type) noexcept
 {
   if (m_kalman_filter_type != type)
   {
@@ -1291,7 +1356,9 @@ void ribi::kalman::QtKalmanFilterExperimentModel::SetNumberOfTimesteps(const int
   }
 }
 
-void ribi::kalman::QtKalmanFilterExperimentModel::SetWhiteNoiseSystemType(const WhiteNoiseSystemType type) noexcept
+void ribi::kalman::QtKalmanFilterExperimentModel::SetWhiteNoiseSystemType(
+  const WhiteNoiseSystemType type
+) noexcept
 {
   if (m_white_noise_system_type != type)
   {
@@ -1333,7 +1400,8 @@ std::string ribi::kalman::QtKalmanFilterExperimentModel::ToDokuWiki() const noex
     << "  * Lag real: " << lag_real_str << "\n"
     << "  * Number of timesteps: " << number_of_timesteps_str << "\n"
     << "  * Version: " << boost::lexical_cast<std::string>(m_version) << "\n"
-    << "  * White noise system type: " << WhiteNoiseSystemTypes().ToStr(m_white_noise_system_type) << "\n"
+    << "  * White noise system type: "
+      << WhiteNoiseSystemTypes().ToStr(m_white_noise_system_type) << "\n"
     << " \n"
     << "<html>\n"   //HTML opening tag must have its own line
     << this->GetContext() << '\n'
@@ -1341,7 +1409,9 @@ std::string ribi::kalman::QtKalmanFilterExperimentModel::ToDokuWiki() const noex
     << " \n";
   //Go through all m_models
   {
-    typedef std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *>::const_iterator Iterator;
+    typedef std::map<
+      KalmanFilterExperimentParameterType,QAbstractTableModel *
+    >::const_iterator Iterator;
     const Iterator j = m_models.end();
     for (Iterator i = m_models.begin(); i!=j; ++i)
     {
@@ -1408,7 +1478,8 @@ std::string ribi::kalman::QtKalmanFilterExperimentModel::ToHtml() const noexcept
   s+="  <li>Lag real: " + boost::lexical_cast<std::string>(m_lag_real) + "</li>";
   s+="  <li>Number of timesteps: " + boost::lexical_cast<std::string>(m_number_of_timesteps) + "</li>";
   s+="  <li>Version: " + boost::lexical_cast<std::string>(m_version) + "</li>";
-  s+="  <li>White noise system type: " + WhiteNoiseSystemTypes().ToStr(m_white_noise_system_type) + "</li>";
+  s+="  <li>White noise system type: "
+    + WhiteNoiseSystemTypes().ToStr(m_white_noise_system_type) + "</li>";
   s+="</ul>";
   s+="<p>&nbsp</p>";
   s+="<!-- <context> -->";
@@ -1417,7 +1488,9 @@ std::string ribi::kalman::QtKalmanFilterExperimentModel::ToHtml() const noexcept
 
   //Go through all m_models
   {
-    typedef std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *>::const_iterator Iterator;
+    typedef std::map<
+      KalmanFilterExperimentParameterType,QAbstractTableModel *
+    >::const_iterator Iterator;
     const Iterator j = m_models.end();
     for (Iterator i = m_models.begin(); i!=j; ++i)
     {
@@ -1452,7 +1525,10 @@ std::string ribi::kalman::QtKalmanFilterExperimentModel::ToHtml() const noexcept
   return s;
 }
 
-bool ribi::kalman::operator==(const QtKalmanFilterExperimentModel& lhs, const QtKalmanFilterExperimentModel& rhs) noexcept
+bool ribi::kalman::operator==(
+  const QtKalmanFilterExperimentModel& lhs,
+  const QtKalmanFilterExperimentModel& rhs
+) noexcept
 {
   return lhs.ToDokuWiki() == rhs.ToDokuWiki();
 }
