@@ -11,13 +11,19 @@ namespace kalman {
 
 struct StandardKalmanFilterCalculationElements;
 
-struct FixedLagSmootherKalmanFilterCalculationElements : public KalmanFilterCalculationElements
+struct FixedLagSmootherKalmanFilterCalculationElements
+  : public KalmanFilterCalculationElements
 {
+  /// @param prev_state_est the previous state estimate
   explicit FixedLagSmootherKalmanFilterCalculationElements(
-    const boost::numeric::ublas::vector<double>& measurement = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& predicted_state = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& previous_state_estimate = boost::numeric::ublas::vector<double>(),
-    const boost::numeric::ublas::vector<double>& updated_state = boost::numeric::ublas::vector<double>());
+    const boost::numeric::ublas::vector<double>& measurement
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& predicted_state
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& prev_state_est
+      = boost::numeric::ublas::vector<double>(),
+    const boost::numeric::ublas::vector<double>& updated_state
+      = boost::numeric::ublas::vector<double>());
 
   ///Clear the calculation, will set IsComplete to false
   void Clear();

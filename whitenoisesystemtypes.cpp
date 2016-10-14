@@ -49,6 +49,5 @@ ribi::kalman::WhiteNoiseSystemType ribi::kalman::WhiteNoiseSystemTypes::ToType(
 {
   assert(!m_map.right.empty());
   assert(m_map.right.count(s) == 1);
-  const auto t = m_map.right.find(s)->second;
-  return t;
+  return m_map.right.find(s)->second;
 }

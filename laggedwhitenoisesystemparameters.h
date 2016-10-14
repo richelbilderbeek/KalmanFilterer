@@ -15,11 +15,12 @@ namespace kalman {
 
 struct LaggedWhiteNoiseSystemParameters : public WhiteNoiseSystemParameters
 {
+  /// @param measurement_noise the real measurement noise
   explicit LaggedWhiteNoiseSystemParameters(
     const boost::numeric::ublas::matrix<double>& control,
     const boost::numeric::ublas::vector<double>& initial_state,
     const int lag,
-    const boost::numeric::ublas::vector<double>& real_measurement_noise,
+    const boost::numeric::ublas::vector<double>& measurement_noise, //real_measurement_noise
     const boost::numeric::ublas::vector<double>& real_process_noise,
     const boost::numeric::ublas::matrix<double>& state_transition);
 

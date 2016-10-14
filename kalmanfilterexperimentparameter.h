@@ -24,7 +24,8 @@ struct KalmanFilterExperimentParameter
     const KalmanFilterExperimentParameterType parameter
   ) const noexcept;
 
-  ///Check if a convert from KalmanFilterExperimentParameter to a WhiteNoiseSystemParameter will succeed
+  ///Check if a convert from KalmanFilterExperimentParameter
+  /// to a WhiteNoiseSystemParameter will succeed
   bool CanConvertToWhiteNoiseSystemParameter(
     const KalmanFilterExperimentParameterType parameter
   ) const noexcept;

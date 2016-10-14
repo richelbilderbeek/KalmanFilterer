@@ -1,3 +1,3 @@
 #!/bin/bash
 qmake KalmanFilterTestDesktop.pro
-make
+make debug

@@ -39,7 +39,10 @@ struct GapsFilledWhiteNoiseSystem : public WhiteNoiseSystem
 
   private:
   ///GapsFilledWhiteNoiseSystem must be created with a GapsFilledWhiteNoiseSystemFactory
-  explicit GapsFilledWhiteNoiseSystem(const boost::shared_ptr<const WhiteNoiseSystemParameters>& white_noise_system_parameters);
+  /// @param parameters the white noise system parameters
+  explicit GapsFilledWhiteNoiseSystem(
+    const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters
+  );
   friend class GapsFilledWhiteNoiseSystemFactory;
 
   ///Can only be deleted by boost::checked_delete

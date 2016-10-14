@@ -11,12 +11,12 @@
 ribi::kalman::WhiteNoiseSystemParameters::WhiteNoiseSystemParameters(
   const boost::numeric::ublas::matrix<double>& control,
   const boost::numeric::ublas::vector<double>& initial_state,
-  const boost::numeric::ublas::vector<double>& real_measurement_noise,
+  const boost::numeric::ublas::vector<double>& measurement_noise,
   const boost::numeric::ublas::vector<double>& real_process_noise,
   const boost::numeric::ublas::matrix<double>& state_transition)
   : m_control{control},
     m_initial_state{initial_state},
-    m_real_measurement_noise{real_measurement_noise},
+    m_real_measurement_noise{measurement_noise},
     m_real_process_noise{real_process_noise},
     m_state_transition{state_transition}
 {

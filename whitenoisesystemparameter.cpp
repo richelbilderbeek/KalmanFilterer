@@ -46,10 +46,10 @@ bool ribi::kalman::WhiteNoiseSystemParameter::IsMatrix(
     case WhiteNoiseSystemParameterType::real_process_noise: return false;
     case WhiteNoiseSystemParameterType::state_transition: return true;
     case WhiteNoiseSystemParameterType::n_parameters:
-      assert(!"n_parameters is not an implemented type of WhiteNoiseSystemParameterType");
+      assert(!"n_parameters is not an implemented type of WhiteNoiseSystemParameterType"); //!OCLINT
       throw std::logic_error(__func__);
   }
-  assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
+  assert(!"Unimplemented type of WhiteNoiseSystemParameterType"); //!OCLINT
   throw std::logic_error(__func__);
 }
 
@@ -81,7 +81,7 @@ std::string ribi::kalman::WhiteNoiseSystemParameter::ToDescription(
       assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
       throw std::logic_error(__func__);
   }
-  assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
+  assert(!"Unimplemented type of WhiteNoiseSystemParameterType"); //!OCLINT
   throw std::logic_error(__func__);
 }
 
@@ -106,7 +106,7 @@ std::string ribi::kalman::WhiteNoiseSystemParameter::ToName(
       assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
       throw std::logic_error(__func__);
   }
-  assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
+  assert(!"Unimplemented type of WhiteNoiseSystemParameterType"); //!OCLINT
   throw std::logic_error(__func__);
 }
 
@@ -128,10 +128,11 @@ std::string ribi::kalman::WhiteNoiseSystemParameter::ToSymbol(
     case WhiteNoiseSystemParameterType::state_transition:
       return "A";
     case WhiteNoiseSystemParameterType::n_parameters:
+    default:
       assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
       throw std::logic_error(__func__);
   }
-  assert(!"Unimplemented type of WhiteNoiseSystemParameterType");
+  assert(!"Unimplemented type of WhiteNoiseSystemParameterType"); //!OCLINT
   throw std::logic_error(__func__);
 }
 
