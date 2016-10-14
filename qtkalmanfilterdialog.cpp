@@ -50,8 +50,8 @@ ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(
 
       const KalmanFilterParameterType type = v[i];
 
-      QtKalmanFiltererParameterDialog * const dialog
-        = new QtKalmanFiltererParameterDialog(
+      QtParameterDialog * const dialog
+        = new QtParameterDialog(
           KalmanFilterParameter().ToName(type),
           KalmanFilterParameter().ToDescription(type),
           m_model->Find(

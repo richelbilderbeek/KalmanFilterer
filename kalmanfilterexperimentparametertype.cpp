@@ -1,14 +1,9 @@
-
-
 #include "kalmanfilterexperimentparametertype.h"
-
-//#include <cassert>
-//#include <boost/numeric/conversion/cast.hpp>
 
 bool ribi::kalman::operator<(
   const KalmanFilterExperimentParameterType lhs,
   const KalmanFilterExperimentParameterType rhs
-)
+) noexcept
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -19,7 +14,7 @@ bool ribi::kalman::operator<(
 bool ribi::kalman::operator==(
   const KalmanFilterExperimentParameterType lhs,
   const KalmanFilterExperimentParameterType rhs
-)
+) noexcept
 {
   //Must cast enum class to integer, because of a bug
   //in GCC version 4.4.0:
@@ -30,7 +25,7 @@ bool ribi::kalman::operator==(
 bool ribi::kalman::operator!=(
   const KalmanFilterExperimentParameterType lhs,
   const KalmanFilterExperimentParameterType rhs
-)
+) noexcept
 {
   return !(lhs == rhs);
 }

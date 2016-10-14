@@ -60,7 +60,10 @@ struct KalmanFilterCalculationElements
   ///Is read at step 1 of the algorithm:
   ///x_predicted = [...] x_n-1 [...]
   ///Fails if already set
-  void SetPreviousStateEstimate(const boost::numeric::ublas::vector<double>& previous_state_estimate);
+  /// @param the previous state estimate
+  void SetPreviousStateEstimate(
+    const boost::numeric::ublas::vector<double>& prev_state_estimate
+  );
 
   ///Set the updated state ('x_n')
   ///Is calculated at step 6 of the algorithm:
@@ -73,7 +76,7 @@ struct KalmanFilterCalculationElements
   explicit KalmanFilterCalculationElements(
     const boost::numeric::ublas::vector<double>& measurement,
     const boost::numeric::ublas::vector<double>& predicted_state,
-    const boost::numeric::ublas::vector<double>& previous_state_estimate,
+    const boost::numeric::ublas::vector<double>& previous_state_est, //previous_state_estimate
     const boost::numeric::ublas::vector<double>& updated_state);
 
   private:

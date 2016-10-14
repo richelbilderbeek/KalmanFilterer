@@ -36,7 +36,10 @@ public:
   KalmanFilterType GetType() const { return KalmanFilterType::standard; }
 
   ///Display the calculation of an experiment at a certain timestep
-  void ShowCalculation(const int t, const boost::shared_ptr<const KalmanFilterExperiment>& experiment);
+  void ShowCalculation(
+    const int t,
+    const boost::shared_ptr<const KalmanFilterExperiment>& experiment
+  );
 
 protected:
   void SetTime(const int t);

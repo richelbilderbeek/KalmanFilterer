@@ -34,11 +34,13 @@ struct KalmanFilterParameters
     { return m_initial_state_estimate; }
 
   ///Obtain how the states are observed ('H')
-  const boost::numeric::ublas::matrix<double>& GetObservation() const
-    { return m_observation; }
+  const auto& GetObservation() const { return m_observation; }
 
   ///Obtain the state transition matrix ('F'), containing the physics of the system
-  const boost::numeric::ublas::matrix<double>& GetStateTransition() const { return m_state_transition; }
+  const boost::numeric::ublas::matrix<double>& GetStateTransition() const
+  {
+    return m_state_transition;
+  }
 
   ///Check if this parameter set has a certain type of KalmanFilterParameter
   static bool HasParameterType(const KalmanFilterParameterType type);
@@ -47,7 +49,7 @@ struct KalmanFilterParameters
   ///An ABC can only be constructed by derived classes
   explicit KalmanFilterParameters(
     const boost::numeric::ublas::matrix<double>& control,
-    const boost::numeric::ublas::vector<double>& initial_state_estimate,
+    const boost::numeric::ublas::vector<double>& initial_state_est, //initial_state_estimate
     const boost::numeric::ublas::matrix<double>& observation,
     const boost::numeric::ublas::matrix<double>& state_transition
   );

@@ -105,7 +105,7 @@ private:
   QtWhiteNoiseSystemParametersDialog * const m_noise_parameters_dialog;
 
   ///The parameter type and its corresponding dialog, specific for an Experiment
-  std::map<KalmanFilterExperimentParameterType,QtKalmanFiltererParameterDialog *> m_parameters;
+  std::map<KalmanFilterExperimentParameterType,QtParameterDialog *> m_parameters;
 
   #ifndef NDEBUG
   ///Check the internal state of this class

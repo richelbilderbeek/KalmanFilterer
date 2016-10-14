@@ -142,9 +142,6 @@ struct QtKalmanFilterExperimentModel : public QObject
   ///The white noise system type
   WhiteNoiseSystemType m_white_noise_system_type;
 
-  ///Create the map
-  static std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *> CreateMap() noexcept;
-
   ///Create fixed-lag smoother Kalman filter parameters
   boost::shared_ptr<KalmanFilterParameters>
     CreateFixedLagSmootherKalmanFilterParameters() const noexcept;
@@ -193,6 +190,9 @@ struct QtKalmanFilterExperimentModel : public QObject
   ///If the string holds a WhiteNoiseSystemType, set this class to hold the same value
   void ReadWhiteNoiseSystemType(const std::string& s);
 };
+
+///Create the map
+std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *> CreateExperimentMap() noexcept;
 
 ///Create a model suiting a parameter
 QAbstractTableModel * CreateModel(const KalmanFilterExperimentParameterType type) noexcept;

@@ -25,23 +25,22 @@ struct KalmanFilterExample
     const std::string& title,
     const std::string& context,
     const std::vector<std::string>& inputs,
-    const boost::shared_ptr<const StandardKalmanFilterParameters>& kalman_filter_parameters,
+    const boost::shared_ptr<const StandardKalmanFilterParameters>&
+      kf_parameters, //kalman_filter_parameters
     const int number_of_timesteps,
     const std::vector<std::string>& state_names,
-    const boost::shared_ptr<const StandardWhiteNoiseSystemParameters>& white_noise_system_parameters);
-
-  static std::vector<boost::shared_ptr<KalmanFilterExample> > CreateExamples() noexcept;
-
-  static std::unique_ptr<KalmanFilterExample> CreateExample(const int i);
+    const boost::shared_ptr<const StandardWhiteNoiseSystemParameters>&
+      wns_parameters //white_noise_system_parameters
+    );
 
   const std::string& GetContext() const { return m_context; }
   const std::vector<std::string>& GetInputs() const { return m_inputs; }
-  const boost::shared_ptr<const StandardKalmanFilterParameters>& GetKalmanFilterParameters() const
+  const auto& GetKalmanFilterParameters() const
     { return m_kalman_filter_parameters; }
   int GetNumberOfTimesteps() const { return m_number_of_timesteps; }
   const std::vector<std::string>& GetStateNames() const { return m_state_names; }
   const std::string& GetTitle() const { return m_title; }
-  const boost::shared_ptr<const StandardWhiteNoiseSystemParameters>& GetWhiteNoiseSystemParameters() const
+  const auto& GetWhiteNoiseSystemParameters() const
     { return  m_white_noise_system_parameters; }
 
   private:
@@ -58,20 +57,28 @@ struct KalmanFilterExample
   const int m_number_of_timesteps;
   const std::vector<std::string> m_state_names;
   const std::string m_title;
-  const boost::shared_ptr<const StandardWhiteNoiseSystemParameters> m_white_noise_system_parameters;
+  const boost::shared_ptr<
+    const StandardWhiteNoiseSystemParameters
+  > m_white_noise_system_parameters;
 
-  static std::unique_ptr<KalmanFilterExample> CreateExample0();
-  static std::unique_ptr<KalmanFilterExample> CreateExample1();
-  static std::unique_ptr<KalmanFilterExample> CreateExample2();
-  static std::unique_ptr<KalmanFilterExample> CreateExample3();
-  static std::unique_ptr<KalmanFilterExample> CreateExample4();
-  static std::unique_ptr<KalmanFilterExample> CreateExample5();
-  static std::unique_ptr<KalmanFilterExample> CreateExample6();
-  static std::unique_ptr<KalmanFilterExample> CreateExample7();
-  static std::unique_ptr<KalmanFilterExample> CreateExample8();
-
-  static std::string DisplayAsUblasVector(const std::vector<std::string>& v);
 };
+
+std::vector<boost::shared_ptr<KalmanFilterExample> > CreateExamples() noexcept;
+
+///Throws if i is out of range
+std::unique_ptr<KalmanFilterExample> CreateExample(const int i);
+
+std::unique_ptr<KalmanFilterExample> CreateExample0() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample1() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample2() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample3() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample4() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample5() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample6() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample7() noexcept;
+std::unique_ptr<KalmanFilterExample> CreateExample8() noexcept;
+
+std::string DisplayAsUblasVector(const std::vector<std::string>& v);
 
 } //~namespace kalman
 } //~namespace ribi

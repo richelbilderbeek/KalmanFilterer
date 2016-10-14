@@ -22,7 +22,7 @@ ribi::kalman::KalmanFilterExperiment::KalmanFilterExperiment(
   )
   : m_calculation_elements{},
     m_context{context},
-    m_inputs{ribi::kalman::KalmanFilterExperiment::ParseInput(input_functions,time)},
+    m_inputs{ParseInput(input_functions,time)},
     m_kalman_filter{m_kalman_filter},
     m_real_states{},
     m_state_names{state_names},
@@ -158,9 +158,10 @@ bool ribi::kalman::KalmanFilterExperiment::IsValid() const
 }
 
 std::vector<boost::numeric::ublas::vector<double>>
-ribi::kalman::KalmanFilterExperiment::ParseInput(
+ribi::kalman::ParseInput(
   const std::vector<std::string>& input,
-  const int n_timesteps)
+  const int n_timesteps
+)
 {
   const int n_rows = n_timesteps;
   const int n_cols = input.size();
@@ -195,5 +196,4 @@ ribi::kalman::KalmanFilterExperiment::ParseInput(
   assert(n_timesteps == boost::numeric_cast<int>(m.size()));
   assert(m.empty() || input.size() == m[0].size());
   return m;
-
 }

@@ -38,30 +38,34 @@ struct KalmanFilterExperiment
   );
 
   ///Obtain the calculation elements of each timestep
-  const std::vector<boost::shared_ptr<KalmanFilterCalculationElements> >& GetCalculationElements() const
+  const auto& GetCalculationElements() const
     { return m_calculation_elements; }
 
   ///Obtain the HTML description of the context of this experiment
   const std::string& GetContext() const { return m_context; }
 
   ///Obtain the predicted states
-  ///The states are stored as a chronological collection (the std::vector) of states (the ublas::vector)
+  ///The states are stored as a chronological collection
+  ///(the std::vector) of states (the ublas::vector)
   std::vector<boost::numeric::ublas::vector<double>> GetPredictedStates() const;
 
   ///Obtain the inputs of each timestep
-  ///The states are stored as a chronological collection (the std::vector) of inputs (the ublas::vector)
+  ///The states are stored as a chronological collection
+  /// (the std::vector) of inputs (the ublas::vector)
   const std::vector<boost::numeric::ublas::vector<double> >& GetInputs() const
     { return m_inputs; }
 
   ///Obtain the Kalman filter
-  const boost::shared_ptr<KalmanFilter>& GetKalmanFilter() const { return m_kalman_filter; }
+  const auto& GetKalmanFilter() const { return m_kalman_filter; }
 
   ///Obtain the measured states, that is, measured with noise
-  ///The states are stored as a chronological collection (the std::vector) of states (the ublas::vector)
+  ///The states are stored as a chronological collection
+  /// (the std::vector) of states (the ublas::vector)
   std::vector<boost::numeric::ublas::vector<double>> GetMeasuredStates() const;
 
   ///Obtain the real states, that is, the values that would be measured without noise
-  ///The states are stored as a chronological collection (the std::vector) of states (the ublas::vector)
+  ///The states are stored as a chronological collection
+  ///(the std::vector) of states (the ublas::vector)
   const std::vector<boost::numeric::ublas::vector<double> >& GetRealStates() const
     { return m_real_states; }
 
@@ -86,10 +90,6 @@ struct KalmanFilterExperiment
   ~KalmanFilterExperiment() noexcept {}
   friend void boost::checked_delete<>(KalmanFilterExperiment*);
 
-  static std::vector<boost::numeric::ublas::vector<double>> ParseInput(
-    const std::vector<std::string>& input,
-    const int n_timesteps);
-
   ///The calculation elements of each timestep
   std::vector<boost::shared_ptr<KalmanFilterCalculationElements>> m_calculation_elements;
 
@@ -111,6 +111,11 @@ struct KalmanFilterExperiment
   ///The white noise system
   const boost::shared_ptr<WhiteNoiseSystem> m_white_noise_system;
 };
+
+std::vector<boost::numeric::ublas::vector<double>> ParseInput(
+  const std::vector<std::string>& input,
+  const int n_timesteps
+);
 
 } //~namespace kalman
 } //~namespace ribi

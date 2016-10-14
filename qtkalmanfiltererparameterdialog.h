@@ -17,21 +17,21 @@ namespace ribi {
 namespace kalman {
 
 ///Dialog for a parameter, stores a QtKalmanFiltererParameterDialog::ValueType
-class QtKalmanFiltererParameterDialog : public QtHideAndShowDialog
+class QtParameterDialog : public QtHideAndShowDialog
 {
     Q_OBJECT //!OCLINT
 
 public:
-  QtKalmanFiltererParameterDialog(const QtKalmanFiltererParameterDialog&) = delete;
-  QtKalmanFiltererParameterDialog& operator=(const QtKalmanFiltererParameterDialog&) = delete;
+  QtParameterDialog(const QtParameterDialog&) = delete;
+  QtParameterDialog& operator=(const QtParameterDialog&) = delete;
 
-  explicit QtKalmanFiltererParameterDialog(
+  explicit QtParameterDialog(
     const std::string& parameter_name,
-    const std::string& parameter_description,
+    const std::string& description, //parameter_description
     QAbstractTableModel * const model,
     QWidget *parent = 0);
 
-  ~QtKalmanFiltererParameterDialog() noexcept;
+  ~QtParameterDialog() noexcept;
 
   ///Convert the table and its content to HTML
   std::string ToHtml() const;

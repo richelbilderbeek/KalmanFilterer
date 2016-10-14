@@ -48,7 +48,7 @@ ribi::kalman::KalmanFilterExample::KalmanFilterExample(
 }
 
 std::vector<boost::shared_ptr<ribi::kalman::KalmanFilterExample>>
-ribi::kalman::KalmanFilterExample::CreateExamples() noexcept
+ribi::kalman::CreateExamples() noexcept
 {
   std::vector<boost::shared_ptr<KalmanFilterExample> > v;
   for (int i=0; ; ++i)
@@ -65,7 +65,7 @@ ribi::kalman::KalmanFilterExample::CreateExamples() noexcept
 }
 
 std::unique_ptr<ribi::kalman::KalmanFilterExample>
-ribi::kalman::KalmanFilterExample::CreateExample(const int i)
+ribi::kalman::CreateExample(const int i)
 {
   std::unique_ptr<KalmanFilterExample> p;
   switch (i)
@@ -88,7 +88,8 @@ ribi::kalman::KalmanFilterExample::CreateExample(const int i)
 
 
 
-std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExample::CreateExample0()
+std::unique_ptr<ribi::kalman::KalmanFilterExample>
+ribi::kalman::CreateExample0() noexcept
 {
   const std::string title = "Constant voltage";
 
@@ -197,7 +198,7 @@ std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExa
 }
 
 std::unique_ptr<ribi::kalman::KalmanFilterExample>
-ribi::kalman::KalmanFilterExample::CreateExample1()
+ribi::kalman::CreateExample1() noexcept
 {
   const std::string title = "Accelerating car (two states)";
   const int n = 2;
@@ -338,7 +339,8 @@ ribi::kalman::KalmanFilterExample::CreateExample1()
   return example;
 }
 
-std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExample::CreateExample2()
+std::unique_ptr<ribi::kalman::KalmanFilterExample>
+ribi::kalman::CreateExample2() noexcept
 {
   const std::string title = "Cannonball";
   const int number_of_timesteps = 1000;
@@ -525,7 +527,8 @@ std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExa
   return example;
 }
 
-std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExample::CreateExample3()
+std::unique_ptr<ribi::kalman::KalmanFilterExample>
+ribi::kalman::CreateExample3() noexcept
 {
   const std::string title = "Spring";
   const std::string context
@@ -657,7 +660,8 @@ std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExa
   return example;
 }
 
-std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExample::CreateExample4()
+std::unique_ptr<ribi::kalman::KalmanFilterExample>
+ribi::kalman::CreateExample4() noexcept
 {
   const std::string title = "Airhockey puck";
   const std::string context
@@ -737,7 +741,7 @@ std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExa
 
 
 std::unique_ptr<ribi::kalman::KalmanFilterExample>
-ribi::kalman::KalmanFilterExample::CreateExample5()
+ribi::kalman::CreateExample5() noexcept
 {
   const std::string title = "Accelerating car (3 states)";
   const std::string context
@@ -876,7 +880,8 @@ ribi::kalman::KalmanFilterExample::CreateExample5()
   return example;
 }
 
-std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExample::CreateExample6()
+std::unique_ptr<ribi::kalman::KalmanFilterExample>
+ribi::kalman::CreateExample6() noexcept
 {
   const std::string title = "Exponential decay";
   //One state
@@ -1062,7 +1067,7 @@ std::unique_ptr<ribi::kalman::KalmanFilterExample> ribi::kalman::KalmanFilterExa
 }
 
 std::unique_ptr<ribi::kalman::KalmanFilterExample>
-ribi::kalman::KalmanFilterExample::CreateExample7()
+ribi::kalman::CreateExample7() noexcept
 {
   const std::string title = "Harmonic oscillation (two states)";
   //Two states
@@ -1259,7 +1264,7 @@ ribi::kalman::KalmanFilterExample::CreateExample7()
 }
 
 std::unique_ptr<ribi::kalman::KalmanFilterExample>
-ribi::kalman::KalmanFilterExample::CreateExample8()
+ribi::kalman::CreateExample8() noexcept
 {
   const std::string title = "Harmonic oscillation (three states)";
   //Two states
@@ -1447,7 +1452,7 @@ ribi::kalman::KalmanFilterExample::CreateExample8()
   return example;
 }
 
-std::string ribi::kalman::KalmanFilterExample::DisplayAsUblasVector(const std::vector<std::string>& v)
+std::string ribi::kalman::DisplayAsUblasVector(const std::vector<std::string>& v)
 {
   std::stringstream s;
   s << "[" << v.size() << "](";

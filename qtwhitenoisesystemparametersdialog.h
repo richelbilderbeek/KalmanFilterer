@@ -44,8 +44,8 @@ public:
   ~QtWhiteNoiseSystemParametersDialog() noexcept;
 
   ///Find a WhiteNoiseSystemParameterType its corresponding table
-  QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type);
-  const QtKalmanFiltererParameterDialog * Find(const WhiteNoiseSystemParameterType type) const;
+  QtParameterDialog * Find(const WhiteNoiseSystemParameterType type);
+  const QtParameterDialog * Find(const WhiteNoiseSystemParameterType type) const;
 
   ///Read the lag (in timesteps) from the dialog
   int GetLag() const;
@@ -73,7 +73,7 @@ private:
   const boost::shared_ptr<QtKalmanFilterExperimentModel> m_model;
 
   ///The parameter type and its corresponding dialog
-  std::map<WhiteNoiseSystemParameterType,QtKalmanFiltererParameterDialog *> m_parameters;
+  std::map<WhiteNoiseSystemParameterType,QtParameterDialog *> m_parameters;
 
 private slots:
 

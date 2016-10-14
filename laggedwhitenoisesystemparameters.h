@@ -26,10 +26,6 @@ struct LaggedWhiteNoiseSystemParameters : public WhiteNoiseSystemParameters
   ///The lag (in timesteps) the lagged white noise system has
   int GetLag() const noexcept { return m_lag; }
 
-  ///The white noise system parameters of unlagged behavior
-  //const boost::shared_ptr<const StandardWhiteNoiseSystemParameters>& GetStandardWhiteNoiseSystemParameters() const
-  //  { return m_standard_parameters; }
-
   ///Obtain the type as an enum
   WhiteNoiseSystemType GetType() const noexcept { return WhiteNoiseSystemType::lagged; }
 

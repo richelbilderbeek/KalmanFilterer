@@ -51,8 +51,8 @@ ribi::kalman::QtWhiteNoiseSystemParametersDialog::QtWhiteNoiseSystemParametersDi
 
       const WhiteNoiseSystemParameterType type = v[i];
       assert(type != WhiteNoiseSystemParameterType::n_parameters);
-      QtKalmanFiltererParameterDialog * const dialog
-        = new QtKalmanFiltererParameterDialog(
+      QtParameterDialog * const dialog
+        = new QtParameterDialog(
           WhiteNoiseSystemParameter().ToName(type),
           WhiteNoiseSystemParameter().ToDescription(type),
           m_model->Find( KalmanFilterExperimentParameter().ConvertToKalmanFilterExperimentParameter(v[i]) )
@@ -92,20 +92,20 @@ ribi::kalman::QtWhiteNoiseSystemParametersDialog::~QtWhiteNoiseSystemParametersD
   delete ui;
 }
 
-ribi::kalman::QtKalmanFiltererParameterDialog * ribi::kalman::QtWhiteNoiseSystemParametersDialog::Find(const WhiteNoiseSystemParameterType type)
+ribi::kalman::QtParameterDialog * ribi::kalman::QtWhiteNoiseSystemParametersDialog::Find(const WhiteNoiseSystemParameterType type)
 {
   //Calls the const version of Find
   //To avoid duplication in const and non-const member functions
   // * Herb Sutter, Andrei Alexandrescu. C++ coding standards: 101 rules, guidelines,
   //   and best practices. 2005. ISBN: 0-32-111358-6. Chapter 94: 'Avoid casting away const', item 'Exceptions'
-  return const_cast<QtKalmanFiltererParameterDialog *>(const_cast<const QtWhiteNoiseSystemParametersDialog&>(*this).Find(type));
+  return const_cast<QtParameterDialog *>(const_cast<const QtWhiteNoiseSystemParametersDialog&>(*this).Find(type));
 }
 
-const ribi::kalman::QtKalmanFiltererParameterDialog * ribi::kalman::QtWhiteNoiseSystemParametersDialog::Find(const WhiteNoiseSystemParameterType type) const
+const ribi::kalman::QtParameterDialog * ribi::kalman::QtWhiteNoiseSystemParametersDialog::Find(const WhiteNoiseSystemParameterType type) const
 {
   assert(m_model->CreateWhiteNoiseSystemParameters()->GetType() == this->GetWhiteNoiseSystemType());
   assert(m_parameters.find(type) != m_parameters.end());
-  const QtKalmanFiltererParameterDialog * const table = (*m_parameters.find(type)).second;
+  const QtParameterDialog * const table = (*m_parameters.find(type)).second;
   assert(table);
   return table;
 }

@@ -32,9 +32,9 @@ unix:!macx{
     QMAKE_LINK = g++-5
     QMAKE_CC = gcc-5
 
-    CONFIG += c++14
+    CONFIG += c++17
     # Cannot use -Weffc++ due to function parser
-    QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++14
+    QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++17
   }
 
 }

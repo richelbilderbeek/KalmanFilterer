@@ -13,23 +13,9 @@
 #include "kalmanfilterparameter.h"
 #include "whitenoisesystemparameter.h"
 
-const std::vector<
-  std::pair<
-    ribi::kalman::KalmanFilterParameterType,
-    ribi::kalman::KalmanFilterExperimentParameterType
-  >
-> ribi::kalman::KalmanFilterExperimentParameter::m_map_kalman_filter
-  = CreateMapKalmanFilter();
-
-const std::vector<
-  std::pair<
-    ribi::kalman::WhiteNoiseSystemParameterType,
-    ribi::kalman::KalmanFilterExperimentParameterType
-  >
-> ribi::kalman::KalmanFilterExperimentParameter::m_map_white_noise_system
-  = CreateMapWhiteNoiseSystem();
-
 ribi::kalman::KalmanFilterExperimentParameter::KalmanFilterExperimentParameter()
+  : m_map_kalman_filter{CreateMapKalmanFilter()},
+    m_map_white_noise_system{CreateMapWhiteNoiseSystem()}
 {
 
 }
@@ -111,12 +97,13 @@ ribi::kalman::KalmanFilterExperimentParameter::ConvertToWhiteNoiseSystemParamete
   throw std::logic_error(__func__);
 }
 
-const std::vector<
+std::vector<
   std::pair<
     ribi::kalman::KalmanFilterParameterType,
     ribi::kalman::KalmanFilterExperimentParameterType
   >
-> ribi::kalman::KalmanFilterExperimentParameter::CreateMapKalmanFilter()
+>
+ribi::kalman::CreateMapKalmanFilter() noexcept
 {
   std::vector<
     std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>
@@ -159,13 +146,13 @@ const std::vector<
   return v;
 }
 
-const std::vector<
+std::vector<
   std::pair<
     ribi::kalman::WhiteNoiseSystemParameterType,
     ribi::kalman::KalmanFilterExperimentParameterType
   >
 >
-  ribi::kalman::KalmanFilterExperimentParameter::CreateMapWhiteNoiseSystem()
+ribi::kalman::CreateMapWhiteNoiseSystem() noexcept
 {
   std::vector<
     std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>

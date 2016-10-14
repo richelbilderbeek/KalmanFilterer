@@ -1,12 +1,14 @@
 #include "kalmanfiltertypes.h"
 
-boost::bimap<
-  ribi::kalman::KalmanFilterType,std::string
-> ribi::kalman::KalmanFilterTypes::m_map;
+ribi::kalman::KalmanFilterTypes::KalmanFilterTypes()
+  : m_map{CreateKalmanFilterTypesMap()}
+{
+
+}
 
 boost::bimap<
   ribi::kalman::KalmanFilterType,std::string
-> ribi::kalman::KalmanFilterTypes::CreateMap() noexcept
+> ribi::kalman::CreateKalmanFilterTypesMap() noexcept
 {
   boost::bimap<KalmanFilterType,std::string> m;
   m.insert(boost::bimap<KalmanFilterType,std::string>::value_type(
@@ -36,7 +38,6 @@ std::string ribi::kalman::KalmanFilterTypes::ToStr(
   const KalmanFilterType type
 ) const noexcept
 {
-  if (m_map.left.empty()) m_map = CreateMap();
   assert(!m_map.left.empty());
   assert(m_map.left.count(type));
   const std::string s = m_map.left.find(type)->second;
@@ -47,7 +48,6 @@ ribi::kalman::KalmanFilterType ribi::kalman::KalmanFilterTypes::ToType(
   const std::string& s
 ) const
 {
-  if (m_map.right.empty()) m_map = CreateMap();
   assert(!m_map.right.empty());
   assert(m_map.right.count(s) == 1);
   const KalmanFilterType t = m_map.right.find(s)->second;

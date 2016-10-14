@@ -64,7 +64,7 @@ private:
   const boost::shared_ptr<QtKalmanFilterExperimentModel> m_model;
 
   ///The parameter type and its corresponding dialog
-  std::map<KalmanFilterParameterType,QtKalmanFiltererParameterDialog *> m_parameters;
+  std::map<KalmanFilterParameterType,QtParameterDialog *> m_parameters;
 
   ///Obtain the all KalmanFilterParameterType values, ordered for humans
   const std::vector<KalmanFilterParameterType> GetParameterTypes() const;

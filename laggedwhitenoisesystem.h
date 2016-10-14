@@ -21,7 +21,8 @@ namespace kalman {
 struct LaggedWhiteNoiseSystem : public WhiteNoiseSystem
 {
   ///Obtain the lagged white noise system parameters
-  const boost::shared_ptr<const LaggedWhiteNoiseSystemParameters>& GetLaggedWhiteNoiseSystemParameters() const
+  const boost::shared_ptr<const LaggedWhiteNoiseSystemParameters>&
+    GetLaggedWhiteNoiseSystemParameters() const
     { return m_parameters; }
 
   ///Obtain the type as an enum
@@ -38,7 +39,9 @@ struct LaggedWhiteNoiseSystem : public WhiteNoiseSystem
 
   private:
   ///LaggedWhiteNoiseSystem must be created with a LaggedWhiteNoiseSystemFactory
-  explicit LaggedWhiteNoiseSystem(const boost::shared_ptr<const WhiteNoiseSystemParameters>& white_noise_system_parameters);
+  explicit LaggedWhiteNoiseSystem(
+    const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters
+  );
   friend class LaggedWhiteNoiseSystemFactory;
 
   ///Can only be deleted by boost::checked_delete

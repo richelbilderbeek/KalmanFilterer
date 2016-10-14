@@ -159,7 +159,7 @@ ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(
    m_kalman_filter_type(KalmanFilterType::standard),
    m_lag_estimated(0),
    m_lag_real(0),
-   m_models(CreateMap()),
+   m_models(CreateExperimentMap()),
    m_number_of_timesteps(0),
    m_version(m_version_current),
    m_white_noise_system_type(WhiteNoiseSystemType::standard)
@@ -217,7 +217,7 @@ ribi::kalman::QtKalmanFilterExperimentModel::QtKalmanFilterExperimentModel(
 }
 
 std::map<ribi::kalman::KalmanFilterExperimentParameterType,QAbstractTableModel *>
-  ribi::kalman::QtKalmanFilterExperimentModel::CreateMap() noexcept
+  ribi::kalman::CreateExperimentMap() noexcept
 {
   std::map<KalmanFilterExperimentParameterType,QAbstractTableModel *> m;
 

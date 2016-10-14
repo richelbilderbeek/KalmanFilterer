@@ -34,11 +34,11 @@ ribi::kalman::QtKalmanFilterExamplesDialog::QtKalmanFilterExamplesDialog(QWidget
   ui->setupUi(this);
   {
     assert(this->layout());
-    const std::size_t sz = KalmanFilterExample::CreateExamples().size();
+    const std::size_t sz = CreateExamples().size();
     for (std::size_t i=0; i!=sz; ++i)
     {
-      assert(KalmanFilterExample::CreateExamples()[i]);
-      const std::string title = KalmanFilterExample::CreateExamples()[i]->GetTitle();
+      assert(CreateExamples()[i]);
+      const std::string title = CreateExamples()[i]->GetTitle();
       const std::string text = boost::lexical_cast<std::string>(i) + ". " + title;
       ui->box->addItem(QString(text.c_str()));
     }
@@ -52,7 +52,7 @@ ribi::kalman::QtKalmanFilterExamplesDialog::~QtKalmanFilterExamplesDialog() noex
 
 void ribi::kalman::QtKalmanFilterExamplesDialog::EmitExample(const int index) const
 {
-  std::unique_ptr<KalmanFilterExample> example = KalmanFilterExample::CreateExample(index);
+  std::unique_ptr<KalmanFilterExample> example = CreateExample(index);
   assert(example);
   const KalmanFilterExample * const p = example.release();
   assert(p);

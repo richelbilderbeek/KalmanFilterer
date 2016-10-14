@@ -29,9 +29,20 @@ enum class KalmanFilterExperimentParameterType
   n_parameters                        //E
 };
 
-bool operator<(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs);
-bool operator==(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs);
-bool operator!=(const KalmanFilterExperimentParameterType lhs, const KalmanFilterExperimentParameterType rhs);
+bool operator<(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+) noexcept;
+
+bool operator==(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+) noexcept;
+
+bool operator!=(
+  const KalmanFilterExperimentParameterType lhs,
+  const KalmanFilterExperimentParameterType rhs
+) noexcept;
 
 } //~namespace kalman
 } //~namespace ribi

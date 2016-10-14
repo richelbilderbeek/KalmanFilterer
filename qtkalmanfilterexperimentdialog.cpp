@@ -90,8 +90,8 @@ ribi::kalman::QtKalmanFilterExperimentDialog::QtKalmanFilterExperimentDialog(
         continue;
       }
 
-      QtKalmanFiltererParameterDialog * const dialog
-        = new QtKalmanFiltererParameterDialog(
+      QtParameterDialog * const dialog
+        = new QtParameterDialog(
           KalmanFilterExperimentParameter().ToName(type),
           KalmanFilterExperimentParameter().ToDescription(type),
           m_model->Find(type)

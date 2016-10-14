@@ -20,26 +20,38 @@ struct KalmanFilterExperimentParameter
   KalmanFilterExperimentParameter();
 
   ///Check if a convert from KalmanFilterExperimentParameter to a KalmanFilterParameter will succeed
-  bool CanConvertToKalmanFilterParameter(const KalmanFilterExperimentParameterType parameter) const noexcept;
+  bool CanConvertToKalmanFilterParameter(
+    const KalmanFilterExperimentParameterType parameter
+  ) const noexcept;
 
   ///Check if a convert from KalmanFilterExperimentParameter to a WhiteNoiseSystemParameter will succeed
-  bool CanConvertToWhiteNoiseSystemParameter(const KalmanFilterExperimentParameterType parameter) const noexcept;
+  bool CanConvertToWhiteNoiseSystemParameter(
+    const KalmanFilterExperimentParameterType parameter
+  ) const noexcept;
 
   ///Convert a KalmanFilterParameter to a KalmanFilterExperimentParameter,
   ///which will always succeed
-  KalmanFilterExperimentParameterType ConvertToKalmanFilterExperimentParameter(const KalmanFilterParameterType parameter) const noexcept;
+  KalmanFilterExperimentParameterType ConvertToKalmanFilterExperimentParameter(
+    const KalmanFilterParameterType parameter
+  ) const noexcept;
 
   ///Convert a KalmanFilterParameter to a KalmanFilterExperimentParameter,
   ///which will always succeed
-  KalmanFilterExperimentParameterType ConvertToKalmanFilterExperimentParameter(const WhiteNoiseSystemParameterType parameter) const noexcept;
+  KalmanFilterExperimentParameterType ConvertToKalmanFilterExperimentParameter(
+    const WhiteNoiseSystemParameterType parameter
+  ) const noexcept;
 
   ///Convert a KalmanFilterExperimentParameter to a KalmanFilterParameter,
   ///assumes CanConvertToKalmanFilterParameter succeeds
-  KalmanFilterParameterType ConvertToKalmanFilterParameter(const KalmanFilterExperimentParameterType parameter) const noexcept;
+  KalmanFilterParameterType ConvertToKalmanFilterParameter(
+    const KalmanFilterExperimentParameterType parameter
+  ) const noexcept;
 
   ///Convert a KalmanFilterExperimentParameter to a WhiteNoiseSystemParameterType,
   ///assumes CanConvertToWhiteNoiseSystemParameter succeeds
-  WhiteNoiseSystemParameterType ConvertToWhiteNoiseSystemParameter(const KalmanFilterExperimentParameterType parameter) const noexcept;
+  WhiteNoiseSystemParameterType ConvertToWhiteNoiseSystemParameter(
+    const KalmanFilterExperimentParameterType parameter
+  ) const noexcept;
 
   ///Get all KalmanFilterExperimentParameterType values
   std::vector<KalmanFilterExperimentParameterType> GetAll() const noexcept;
@@ -73,12 +85,21 @@ struct KalmanFilterExperimentParameter
 
   private:
 
-  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>> m_map_kalman_filter;
-  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>> m_map_white_noise_system;
-  static const std::vector<std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>> CreateMapKalmanFilter();
-  static const std::vector<std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>> CreateMapWhiteNoiseSystem();
-
+  const std::vector<
+    std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>
+  > m_map_kalman_filter;
+  const std::vector<
+    std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>
+  > m_map_white_noise_system; //m_map_white_noise_system
 };
+
+std::vector<
+  std::pair<KalmanFilterParameterType,KalmanFilterExperimentParameterType>
+> CreateMapKalmanFilter() noexcept;
+
+std::vector<
+  std::pair<WhiteNoiseSystemParameterType,KalmanFilterExperimentParameterType>
+> CreateMapWhiteNoiseSystem() noexcept;
 
 } //~namespace kalman
 } //~namespace ribi
