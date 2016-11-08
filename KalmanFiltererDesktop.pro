@@ -43,6 +43,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = app
 
+CONFIG += debug_and_release
 CONFIG(release, debug|release) {
   message(Release mode)
   DEFINES += NDEBUG NTRACE_BILDERBIKKEL
