@@ -185,9 +185,6 @@ ribi::kalman::ParseInput(
       }
       catch (std::runtime_error& e)
       {
-        //TRACE(e.what());
-        //TRACE("Unparsable function (will be parsed against 't'):");
-        //TRACE(s);
         assert(!"Parsing the function should have succeeded, as the GUI takes this out");
         throw;
       }
