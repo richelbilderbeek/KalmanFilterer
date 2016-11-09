@@ -36,3 +36,4 @@ debug/
 release/
 *.gcno
 *.gcna
+*.pro.user.*

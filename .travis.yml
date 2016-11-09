@@ -32,15 +32,29 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./build_test_console.sh
+  # Build console tests
+  - qmake KalmanFilterTestConsole.pro
+  - make
+  # Build desktop tests
+  - qmake KalmanFilterTestDesktop.pro
+  - make debug
+  # Build console
+  - qmake KalmanFiltererConsole.pro
+  - make
+  # Build desktop
+  - qmake KalmanFiltererDesktop.pro
+  - make
+  # Run tests
   - ./KalmanFilterTestConsole
-  - ./build_test_desktop.sh
   - ./KalmanFilterTestDesktop
+  # Run normal programs
+  - ./KalmanFiltererDesktop &
+  - sleep 10
+  - sudo killall -9 KalmanFiltererDesktop
+  # Code coverage
   - ./get_code_cov.sh
   - codecov
-  #- ./clean.sh # Now build without -gcov
-  - ./build_desktop.sh
-  - ./build_console.sh
+  # OCLint
   - ./do_oclint.sh
 
 after_success: 
