@@ -67,7 +67,7 @@ void ribi::kalman::QtKalmanFiltererMainDialogTest::all_tests()
 {
   return; // TODO
 
-  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: Create self"); }
+  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog: Create self"); }
   {
     const boost::shared_ptr<QtKalmanFiltererMainDialog> d
       = ribi::kalman::QtKalmanFiltererMainDialog::Create();
@@ -82,8 +82,8 @@ void ribi::kalman::QtKalmanFiltererMainDialogTest::all_tests()
     d->on_button_start_clicked();
     d->show();
   }
-  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: (1/2) Click on example x and write these to a DokuWiki file"); }
-  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog::Test: (2/2) Click on example y and read the file from x"); }
+  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog: (1/2) Click on example x and write these to a DokuWiki file"); }
+  //if (verbose) { TRACE("ribi::kalman::QtKalmanFiltererMainDialog: (2/2) Click on example y and read the file from x"); }
   {
     const boost::shared_ptr<QtKalmanFiltererMainDialog> d
       = ribi::kalman::QtKalmanFiltererMainDialog::Create();
