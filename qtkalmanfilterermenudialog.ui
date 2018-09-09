@@ -57,7 +57,7 @@ QPushButton { font: 48px, bold, &quot;Courier New&quot;, courier, monospace }
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="KalmanFilterer.qrc">:/images/KalmanFiltererWelcome.png</pixmap>
+      <pixmap resource="KalmanFilterer.qrc">:/images/pics/KalmanFiltererWelcome.png</pixmap>
      </property>
     </widget>
    </item>

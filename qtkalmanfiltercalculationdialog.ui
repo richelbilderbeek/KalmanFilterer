@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="KalmanFilterer.qrc">
-    <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
+    <normaloff>:/images/pics/R.png</normaloff>:/images/pics/R.png</iconset>
   </property>
  </widget>
  <resources>
