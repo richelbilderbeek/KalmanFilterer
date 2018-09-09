@@ -59,17 +59,17 @@ before_script:
 
 script: 
   # Build console tests
-  - qmake KalmanFilterTestConsole.pro
-  - make
+  - qmake -qt=qt5 KalmanFilterTestConsole.pro
+  - make --silent
   # Build desktop tests
-  - qmake KalmanFilterTestDesktop.pro
-  - make debug
+  - qmake -qt=qt5 KalmanFilterTestDesktop.pro
+  - make --silent debug
   # Build console
-  - qmake KalmanFiltererConsole.pro
-  - make
+  - qmake -qt=qt5 KalmanFiltererConsole.pro
+  - make --silent
   # Build desktop
-  - qmake KalmanFiltererDesktop.pro
-  - make
+  - qmake -qt=qt5 KalmanFiltererDesktop.pro
+  - make --silent
   # Run tests
   - ./KalmanFilterTestConsole
   - ./KalmanFilterTestDesktop

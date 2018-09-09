@@ -1,5 +1,5 @@
 #!/bin/bash
-GCOV_EXE=gcov-5 # gcov and g++ versions must match
+GCOV_EXE=gcov-6 # gcov and g++ versions must match
 OBJ_FILES_PATH=.
 
 if [ ! -d "$OBJ_FILES_PATH" ]
