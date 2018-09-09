@@ -16,12 +16,10 @@ unix:!macx{
   message("Console application, built for Linux")
 
   CONFIG += c++14
-  QMAKE_CXX = g++-5
-  QMAKE_LINK = g++-5
-  QMAKE_CC = gcc-5
 
   # Cannot use -Weffc++ due to function parser
-  QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++14
+  # Cannot use -Werror due to function parser
+  QMAKE_CXXFLAGS += -Wall -Wextra -std=c++14
 }
 
 # Go ahead and use Qt.Core: it is about as platform-independent as

@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/images">
-        <file>R.png</file>
-        <file>PicYellow.png</file>
-        <file>PicBlack.png</file>
-        <file>PicGreen.png</file>
-        <file>PicOrange.png</file>
-        <file>PicRed.png</file>
-        <file>PicTransparent.png</file>
-        <file>KalmanFiltererWelcome.png</file>
+        <file>pics/PicBlack.png</file>
+        <file>pics/PicGreen.png</file>
+        <file>pics/PicOrange.png</file>
+        <file>pics/PicRed.png</file>
+        <file>pics/PicTransparent.png</file>
+        <file>pics/PicYellow.png</file>
+        <file>pics/R.png</file>
+        <file>pics/KalmanFiltererWelcome.png</file>
     </qresource>
     <qresource prefix="/files">
         <file>0.txt</file>

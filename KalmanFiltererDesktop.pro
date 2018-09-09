@@ -21,20 +21,12 @@ unix:!macx{
   # Linux only
   message("Desktop application, no effc++, built for Linux")
   message(Host name: $$QMAKE_HOST.name)
-  QMAKE_CXX = g++-5
-  QMAKE_LINK = g++-5
-  QMAKE_CC = gcc-5
-  QMAKE_CXXFLAGS += -Wall -Wextra -Werror -std=c++14
+  QMAKE_CXXFLAGS += -Wall -Wextra -std=c++14
+  # FunctionParser has many warning
+  # -Werror
 
   #equals(QT_MAJOR_VERSION, 4): LIBS +=  -lQtSvg
   #greaterThan(QT_MAJOR_VERSION, 4): QT +=  concurrent opengl printsupport svg
-}
-
-cross_compile {
-  # Crosscompile only
-  message("Desktop application, no effc++, cross-compiling from Linux to Windows")
-  greaterThan(QT_MAJOR_VERSION, 4): QT += svg
-  QMAKE_CXXFLAGS += -std=c++1y -Wall -Wextra #-Weffc++
 }
 
 

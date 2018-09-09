@@ -1,7 +1,3 @@
-# Qwt does not go well with -Weffc++
-include(../RibiLibraries/ConsoleApplicationNoWeffcpp.pri)
-
-include(../RibiLibraries/Boost.pri)
 include(../RibiLibraries/Fparser.pri)
 include(../RibiClasses/CppAbout/CppAbout.pri)
 include(../RibiClasses/CppFileIo/CppFileIo.pri)
@@ -22,12 +18,65 @@ include(KalmanFilterTestConsole.pri)
 
 SOURCES += main_test.cpp
 
-# Thanks to Qt
+# C++14
+CONFIG += c++14
+QMAKE_CXXFLAGS += -std=c++14
+
+# Fix error: unrecognized option '--push-state--no-as-needed'
+QMAKE_LFLAGS += -fuse-ld=gold
+
+# High warning levels
+# Qt does not go well with -Weffc++
+QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
+# FunctionParser has many compile warning
+# -Werror
+
+# Debug and release mode
+CONFIG += debug_and_release
+
+# In release mode, define NDEBUG
+CONFIG(release, debug|release) {
+
+  DEFINES += NDEBUG
+
+  # gprof
+  QMAKE_CXXFLAGS += -pg
+  QMAKE_LFLAGS += -pg
+
+  # GSL
+  DEFINES += GSL_UNENFORCED_ON_CONTRACT_VIOLATION
+}
+
+# In debug mode, turn on gcov and UBSAN
+CONFIG(debug, debug|release) {
+
+  # gcov
+  QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
+  LIBS += -lgcov
+
+  # UBSAN
+  QMAKE_CXXFLAGS += -fsanitize=undefined
+  QMAKE_LFLAGS += -fsanitize=undefined
+  LIBS += -lubsan
+
+  # gprof
+  QMAKE_CXXFLAGS += -pg
+  QMAKE_LFLAGS += -pg
+}
+
+# Qt
+QT += core gui widgets
+
+# Prevent Qt for failing with this error:
+# qrc_[*].cpp:400:44: error: ‘qInitResources_[*]__init_variable__’ defined but not used
+# [*]: the resource filename
 QMAKE_CXXFLAGS += -Wno-unused-variable
 
-# gcov
-QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
-LIBS += -lgcov
+# Fixes
+#/usr/include/boost/math/constants/constants.hpp:277: error: unable to find numeric literal operator 'operator""Q'
+#   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
+#   ^
+QMAKE_CXXFLAGS += -fext-numeric-literals
 
 # Boost.Test
 LIBS += -lboost_unit_test_framework
