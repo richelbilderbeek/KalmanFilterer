@@ -7,6 +7,8 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov 
 
 KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using the STL, Boost, Qt and Qwt libraries.
 
+ * [Download the Windows executable](http://richelbilderbeek.nl/KalmanFiltererDesktopExe.zip)
+
 ![Menu v2.0](pics/KalmanFiltererMenu_2_0.png)
 
 ![Calculation v2.0](pics/KalmanFiltererCalculation_2_0.png)

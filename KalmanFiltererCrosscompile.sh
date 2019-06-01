@@ -9,7 +9,7 @@ then
   exit
 fi
  
-for myprofile in `ls | egrep ".pro\>"`
+for myprofile in KalmanFiltererDesktop.pro
 do
   mytarget=`echo $myprofile | sed "s/\.pro//"`
    

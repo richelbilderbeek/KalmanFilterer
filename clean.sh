@@ -10,6 +10,9 @@ rm *.gcda
 rm ui_*
 rm moc_*
 rm qrc_*
-rm AsciiArterConsole
-rm AsciiArterConsoleTest
-rm AsciiArterDesktop
+rm KalmanFiltererConsole
+rm KalmanFiltererDesktop
+rm KalmanFiltererConsoleTest
+rm KalmanFiltererDesktopTest
+rm -rf debug
+rm -rf release

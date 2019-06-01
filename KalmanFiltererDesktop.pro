@@ -40,7 +40,19 @@ QMAKE_CXXFLAGS += -Wno-unused-variable
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 LIBS += -lgcov
 
+# Fixes
+#/usr/include/boost/math/constants/constants.hpp:277: error: unable to find numeric literal operator 'operator""Q'
+#   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
+#   ^
+QMAKE_CXXFLAGS += -fext-numeric-literals
+
 # Qwt
 # Normal compiling
 LIBS += -lqwt-qt5
 INCLUDEPATH += /usr/include/qwt
+
+# For crosscompiling
+#INCLUDEPATH += /home/richel/GitHubs/RibiLibraries/mxe/usr/i686-w64-mingw32.static/qt5/include
+#LIBS += -lqwt
+#QT += svg
+
