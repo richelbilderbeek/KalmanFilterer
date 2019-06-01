@@ -37,8 +37,8 @@ ribi::About ribi::kalman::KalmanFiltererMenuDialog::GetAbout() const noexcept
     "KalmanFilterer",
     "tool to work with Kalman filters",
     "[date unknown]",
-    "2013-2016",
-    "http://www.richelbilderbeek.nl/ToolKalmanFilterer.htm",
+    "2013-2019",
+    "https://github.com/richelbilderbeek/KalmanFilterer",
     GetVersion(),
     GetVersionHistory()
   );
