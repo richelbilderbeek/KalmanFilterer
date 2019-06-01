@@ -1,26 +1,9 @@
-win32 {
-  # Windows only
-  message("Console application, built for Windows")
-  QMAKE_CXXFLAGS += -std=c++1y -Wall -Wextra -Weffc++
-}
+CONFIG += c++14
+QMAKE_CXXFLAGS += -std=c++14
 
-macx {
-  # Mac only
-  message("Console application, built for Mac")
-  QMAKE_CXXFLAGS = -mmacosx-version-min=10.7 -std=gnu0x -stdlib=libc+
-  CONFIG +=c++1y
-}
-
-unix:!macx{
-  # Linux only
-  message("Console application, built for Linux")
-
-  CONFIG += c++14
-
-  # Cannot use -Weffc++ due to function parser
-  # Cannot use -Werror due to function parser
-  QMAKE_CXXFLAGS += -Wall -Wextra -std=c++14
-}
+# Cannot use -Weffc++ due to function parser
+# Cannot use -Werror due to function parser
+QMAKE_CXXFLAGS += -Wall -Wextra
 
 # Go ahead and use Qt.Core: it is about as platform-independent as
 # the STL and Boost

@@ -37,3 +37,4 @@ release/
 *.gcno
 *.gcna
 *.pro.user.*
+.qmake.stash
