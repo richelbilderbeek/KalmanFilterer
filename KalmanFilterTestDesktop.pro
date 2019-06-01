@@ -60,7 +60,6 @@ include(../RibiClasses/CppRibiRandom/CppRibiRandom.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
 include(../RibiClasses/CppTempLocale/CppTempLocale.pri)
 include(../RibiLibraries/Fparser.pri)
-include(../RibiLibraries/Qwt.pri)
 
 include(KalmanFilter.pri)
 include(KalmanFiltererDesktop.pri)
@@ -86,3 +85,8 @@ QMAKE_CXXFLAGS += -Wno-unused-variable
 
 # QtConcurrent::ThreadEngineStarter gives this error
 QMAKE_CXXFLAGS += -Wno-unused-local-typedefs
+
+# Qwt
+# Normal compiling
+LIBS += -lqwt-qt5
+INCLUDEPATH += /usr/include/qwt

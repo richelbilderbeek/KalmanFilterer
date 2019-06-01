@@ -38,14 +38,13 @@ TEMPLATE = app
 CONFIG += debug_and_release
 CONFIG(release, debug|release) {
   message(Release mode)
-  DEFINES += NDEBUG NTRACE_BILDERBIKKEL
+  DEFINES += NDEBUG
 }
 
 include(../RibiLibraries/Boost.pri)
 include(../RibiLibraries/Fparser.pri)
 include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
-include(../RibiLibraries/Qwt.pri)
 
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
@@ -66,3 +65,8 @@ QMAKE_CXXFLAGS += -Wno-unused-variable
 # gcov
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 LIBS += -lgcov
+
+# Qwt
+# Normal compiling
+LIBS += -lqwt-qt5
+INCLUDEPATH += /usr/include/qwt

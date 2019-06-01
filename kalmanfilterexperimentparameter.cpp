@@ -53,7 +53,7 @@ ribi::kalman::KalmanFilterExperimentParameter::ConvertToKalmanFilterExperimentPa
     if ((*i).first == parameter) return (*i).second;
   }
   assert(!"Should never get here");
-  throw std::logic_error(__func__);
+  return ribi::kalman::KalmanFilterExperimentParameterType::n_parameters;
 }
 
 ribi::kalman::KalmanFilterExperimentParameterType
@@ -66,7 +66,7 @@ ribi::kalman::KalmanFilterExperimentParameter::ConvertToKalmanFilterExperimentPa
     if ((*i).first == parameter) return (*i).second;
   }
   assert(!"Should never get here");
-  throw std::logic_error(__func__);
+  return ribi::kalman::KalmanFilterExperimentParameterType::n_parameters;
 }
 
 ribi::kalman::KalmanFilterParameterType
@@ -80,7 +80,7 @@ ribi::kalman::KalmanFilterExperimentParameter::ConvertToKalmanFilterParameter(
     if ((*i).second == parameter) return (*i).first;
   }
   assert(!"Should never get here");
-  throw std::logic_error(__func__);
+  return ribi::kalman::KalmanFilterParameterType::n_parameters;
 }
 
 ribi::kalman::WhiteNoiseSystemParameterType
@@ -94,7 +94,7 @@ ribi::kalman::KalmanFilterExperimentParameter::ConvertToWhiteNoiseSystemParamete
     if ((*i).second == parameter) return (*i).first;
   }
   assert(!"Should never get here");
-  throw std::logic_error(__func__);
+  return ribi::kalman::WhiteNoiseSystemParameterType::n_parameters;
 }
 
 std::vector<
@@ -237,10 +237,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsDouble(
     case KalmanFilterExperimentParameterType::state_transition:                   return true;
     case KalmanFilterExperimentParameterType::n_parameters:
       assert(!"n_parameters is not implemented to be used");
-      throw std::logic_error("use of n_parameters");
+      return false;
   }
   assert(!"Unimplemented type");
-  throw std::logic_error(__func__);
+  return false;
 }
 
 bool ribi::kalman::KalmanFilterExperimentParameter::IsFunction(
@@ -265,10 +265,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsFunction(
     case KalmanFilterExperimentParameterType::state_transition:                   return false;
     case KalmanFilterExperimentParameterType::n_parameters:
       assert(!"n_parameters is not implemented to be used");
-      throw std::logic_error("use of n_parameters");
+      return false;
   }
   assert(!"Unimplemented type");
-  throw std::logic_error(__func__);
+  return false;
 }
 
 bool ribi::kalman::KalmanFilterExperimentParameter::IsInt(
@@ -293,10 +293,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsInt(
     case KalmanFilterExperimentParameterType::state_transition:                   return false;
     case KalmanFilterExperimentParameterType::n_parameters:
       assert(!"n_parameters is not implemented to be used");
-      throw std::logic_error("use of n_parameters");
+      return false;
   }
   assert(!"Unimplemented type");
-  throw std::logic_error(__func__);
+  return false;
 }
 
 bool ribi::kalman::KalmanFilterExperimentParameter::IsString(
@@ -321,10 +321,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsString(
     case KalmanFilterExperimentParameterType::state_transition:                   return false;
     case KalmanFilterExperimentParameterType::n_parameters:
       assert(!"n_parameters is not implemented to be used");
-      throw std::logic_error("use of n_parameters");
+      return false;
   }
   assert(!"Unimplemented type");
-  throw std::logic_error(__func__);
+  return false;
 }
 
 bool ribi::kalman::KalmanFilterExperimentParameter::IsMatrix(
@@ -356,10 +356,10 @@ bool ribi::kalman::KalmanFilterExperimentParameter::IsVector(
     case KalmanFilterExperimentParameterType::state_transition:                   return false;
     case KalmanFilterExperimentParameterType::n_parameters:
       assert(!"n_parameters is not implemented to be used");
-      throw std::logic_error("use of n_parameters");
+      return false;
   }
   assert(!"Unimplemented type");
-  throw std::logic_error(__func__);
+  return false;
 }
 
 std::string ribi::kalman::KalmanFilterExperimentParameter::ToDescription(
@@ -382,10 +382,8 @@ std::string ribi::kalman::KalmanFilterExperimentParameter::ToDescription(
   {
     case KalmanFilterExperimentParameterType::input:
       return "Vector of inputs";
-    case KalmanFilterExperimentParameterType::state_names:
+    default: assert(type == KalmanFilterExperimentParameterType::state_names);
       return "Vector of the state element names";
-    default: assert(!"Unimplemented type of KalmanFilterExperimentParameterType");
-      throw std::logic_error(__func__);
   }
 }
 
@@ -409,10 +407,8 @@ std::string ribi::kalman::KalmanFilterExperimentParameter::ToName(
   {
     case KalmanFilterExperimentParameterType::input:
       return "Input";
-    case KalmanFilterExperimentParameterType::state_names:
+    default: assert(type == KalmanFilterExperimentParameterType::state_names);
       return "State names";
-    default: assert(!"Unimplemented type of KalmanFilterExperimentParameterType");
-      throw std::logic_error(__func__);
   }
 }
 
@@ -436,9 +432,7 @@ std::string ribi::kalman::KalmanFilterExperimentParameter::ToSymbol(
   {
     case KalmanFilterExperimentParameterType::input:
       return "y";
-    case KalmanFilterExperimentParameterType::state_names:
+    default: assert(type == KalmanFilterExperimentParameterType::state_names);
       return ""; //State names has no symbol
-    default: assert(!"Unimplemented type of KalmanFilterExperimentParameterType");
-      throw std::logic_error(__func__);
   }
 }

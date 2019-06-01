@@ -3,7 +3,6 @@ include(../RibiClasses/CppAbout/CppAbout.pri)
 include(../RibiClasses/CppFileIo/CppFileIo.pri)
 include(../RibiClasses/CppHelp/CppHelp.pri)
 include(../RibiClasses/CppMenuDialog/CppMenuDialog.pri)
-include(../RibiLibraries/Qwt.pri)
 
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
@@ -65,7 +64,7 @@ CONFIG(debug, debug|release) {
 }
 
 # Qt
-QT += core gui widgets
+QT += core gui
 
 # Prevent Qt for failing with this error:
 # qrc_[*].cpp:400:44: error: ‘qInitResources_[*]__init_variable__’ defined but not used
@@ -80,3 +79,8 @@ QMAKE_CXXFLAGS += -fext-numeric-literals
 
 # Boost.Test
 LIBS += -lboost_unit_test_framework
+
+# Qwt
+# Normal compiling
+LIBS += -lqwt-qt5
+INCLUDEPATH += /usr/include/qwt
