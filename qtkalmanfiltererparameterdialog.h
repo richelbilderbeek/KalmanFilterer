@@ -4,7 +4,7 @@
 #include <vector>
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Weffc++"
+
 #include "qthideandshowdialog.h"
 #include <QTableWidgetItem>
 #pragma GCC diagnostic pop

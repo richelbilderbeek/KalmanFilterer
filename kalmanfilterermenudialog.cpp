@@ -1,5 +1,5 @@
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Weffc++"
+
 #include "kalmanfilterermenudialog.h"
 
 #include "container.h"

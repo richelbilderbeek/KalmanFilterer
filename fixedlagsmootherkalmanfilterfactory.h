@@ -2,7 +2,7 @@
 #define FIXEDLAGSMOOTHERKALMANFILTERFACTORY_H
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Weffc++"
+
 #include "fixedlagsmootherkalmanfilter.h"
 #pragma GCC diagnostic pop
 

@@ -4,7 +4,7 @@
 #include <vector>
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Weffc++"
+
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #include <boost/checked_delete.hpp>
 #include <boost/shared_ptr.hpp>

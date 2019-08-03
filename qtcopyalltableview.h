@@ -2,7 +2,7 @@
 #define QTCOPYALLTABLEVIEW_H
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Weffc++"
+
 #include <QTableView>
 #pragma GCC diagnostic pop
 
