@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -7,7 +7,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "matrix.h"
-#pragma GCC diagnostic pop
+
 
 
 using namespace ribi;

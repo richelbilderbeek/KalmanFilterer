@@ -1,9 +1,9 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "laggedwhitenoisesystemparameters.h"
-#pragma GCC diagnostic pop
+
 
 #include <cassert>
 #include "standardwhitenoisesystemparameters.h"

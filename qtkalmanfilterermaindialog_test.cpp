@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -60,7 +60,7 @@
 #define DISABLE_QWEBVIEW
 //#endif
 
-#pragma GCC diagnostic pop
+
 
 
 void ribi::kalman::QtKalmanFiltererMainDialogTest::all_tests()

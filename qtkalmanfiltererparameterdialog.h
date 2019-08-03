@@ -3,11 +3,11 @@
 
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 #include "qthideandshowdialog.h"
 #include <QTableWidgetItem>
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtKalmanFiltererParameterDialog;

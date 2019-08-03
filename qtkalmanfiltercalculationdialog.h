@@ -1,14 +1,14 @@
 #ifndef QTKALMANFILTERCALCULATIONDIALOG_H
 #define QTKALMANFILTERCALCULATIONDIALOG_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 #include "qthideandshowdialog.h"
 #include <QTableWidget>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilterexperiment.h"
 

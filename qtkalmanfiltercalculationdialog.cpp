@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -8,7 +8,7 @@
 
 #include "ui_qtkalmanfiltercalculationdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFilterCalculationDialog
   ::QtKalmanFilterCalculationDialog(QWidget *parent) :

@@ -3,10 +3,10 @@
 
 #include <queue>
 
-#pragma GCC diagnostic push
+
 
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "whitenoisesystem.h"
 #include "whitenoisesystemparameters.h"

@@ -1,10 +1,10 @@
 #ifndef QTKALMANFILTERERMENUDIALOG_H
 #define QTKALMANFILTERERMENUDIALOG_H
 
-#pragma GCC diagnostic push
+
 
 #include "qthideandshowdialog.h"
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtKalmanFiltererMenuDialog;

@@ -1,11 +1,11 @@
 #ifndef STANDARDWHITENOISESYSTEMPARAMETERS_H
 #define STANDARDWHITENOISESYSTEMPARAMETERS_H
 
-#pragma GCC diagnostic push
+
 
 #include <boost/checked_delete.hpp>
 #include "whitenoisesystemparameters.h"
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

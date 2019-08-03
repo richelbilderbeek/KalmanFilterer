@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -6,7 +6,7 @@
 
 #include "qtkalmanfilterermenudialog.h"
 #include "trace.h"
-#pragma GCC diagnostic pop
+
 
 const std::string CreateStyleSheet()
 {

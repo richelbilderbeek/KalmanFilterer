@@ -1,11 +1,11 @@
 #ifndef STANDARDWHITENOISESYSTEM_H
 #define STANDARDWHITENOISESYSTEM_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "standardwhitenoisesystemparameters.h"
 #include "whitenoisesystem.h"

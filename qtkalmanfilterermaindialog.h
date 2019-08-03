@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/shared_ptr.hpp>
@@ -23,7 +23,7 @@
 #include "qtsteadystatekalmanfiltercalculationdialog.h"
 #include "qtwhitenoisesystemparametersdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 
 namespace Ui {

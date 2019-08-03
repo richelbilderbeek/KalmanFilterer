@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -7,7 +7,7 @@
 #include <cassert>
 #include "kalmanfiltercalculationelementsfactory.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::SteadyStateKalmanFilterFactory::SteadyStateKalmanFilterFactory()
 {

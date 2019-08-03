@@ -1,7 +1,7 @@
 #ifndef FIXEDLAGSMOOTHERKALMANFILTER_H
 #define FIXEDLAGSMOOTHERKALMANFILTER_H
 
-#pragma GCC diagnostic push
+
 
 
 
@@ -10,7 +10,7 @@
 #include "standardkalmanfilterparameters.h"
 #include "fixedlagsmootherkalmanfilterparameters.h"
 #include "fixedlagsmootherkalmanfiltercalculationelements.h"
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

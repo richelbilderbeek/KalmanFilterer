@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -15,7 +15,7 @@
 #include <boost/numeric/ublas/io.hpp>
 #include "matrix.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::KalmanFilterExample::KalmanFilterExample(
   const std::string& title,

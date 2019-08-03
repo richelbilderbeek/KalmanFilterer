@@ -1,9 +1,9 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "steadystatekalmanfiltercalculationelements.h"
-#pragma GCC diagnostic pop
+
 
 #include <cassert>
 #include "kalmanfiltercalculationelementsfactory.h"

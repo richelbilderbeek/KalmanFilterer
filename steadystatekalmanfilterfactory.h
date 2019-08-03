@@ -1,10 +1,10 @@
 #ifndef STEADYSTATEKALMANFILTERFACTORY_H
 #define STEADYSTATEKALMANFILTERFACTORY_H
 
-#pragma GCC diagnostic push
+
 
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "steadystatekalmanfilter.h"
 

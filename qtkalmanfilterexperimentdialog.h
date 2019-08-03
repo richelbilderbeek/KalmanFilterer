@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/shared_ptr.hpp>
@@ -21,7 +21,7 @@
 #include "qtkalmanfilterexperimentmodel.h"
 #include "kalmanfilterexample.h"
 
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtKalmanFilterExperimentDialog;

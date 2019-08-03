@@ -1,7 +1,7 @@
 #ifndef QTSTANDARDKALMANFILTERERALGORITHMDIALOG_H
 #define QTSTANDARDKALMANFILTERERALGORITHMDIALOG_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
@@ -10,7 +10,7 @@
 #include <QTableWidget>
 #include "standardkalmanfiltercalculationelements.h"
 #include "qtkalmanfiltercalculationdialog.h"
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtStandardKalmanFilterCalculationDialog;

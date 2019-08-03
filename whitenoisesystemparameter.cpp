@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <boost/numeric/conversion/cast.hpp>
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::WhiteNoiseSystemParameter::WhiteNoiseSystemParameter()
 {

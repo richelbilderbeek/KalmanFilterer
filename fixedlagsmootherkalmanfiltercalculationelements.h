@@ -1,10 +1,10 @@
 #ifndef FIXEDLAGSMOOTHERKALMANFILTERCALCULATIONELEMENTS_H
 #define FIXEDLAGSMOOTHERKALMANFILTERCALCULATIONELEMENTS_H
 
-#pragma GCC diagnostic push
+
 
 #include "kalmanfiltercalculationelements.h"
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

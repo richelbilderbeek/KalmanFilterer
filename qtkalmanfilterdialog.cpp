@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -26,7 +26,7 @@
 #include "kalmanfilterexperimentparameter.h"
 #include "ui_qtkalmanfilterdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFilterDialog::QtKalmanFilterDialog(
   const boost::shared_ptr<QtKalmanFilterExperimentModel> model,

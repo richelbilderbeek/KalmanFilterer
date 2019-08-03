@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -24,7 +24,7 @@
 #include "qtmatrix.h"
 #include "ui_qtkalmanfilterexamplesdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFilterExamplesDialog::QtKalmanFilterExamplesDialog(QWidget *parent)
   : QtHideAndShowDialog(parent),

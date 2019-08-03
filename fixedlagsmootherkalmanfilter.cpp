@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -10,7 +10,7 @@
 
 #include "matrix.h"
 #include "standardkalmanfilterfactory.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::FixedLagSmootherKalmanFilter::FixedLagSmootherKalmanFilter(
   const boost::shared_ptr<FixedLagSmootherKalmanFilterCalculationElements>& calculation,

@@ -1,9 +1,9 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "fixedlagsmootherkalmanfilterparameters.h"
-#pragma GCC diagnostic pop
+
 
 #include <cassert>
 

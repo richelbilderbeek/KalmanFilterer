@@ -1,7 +1,7 @@
 #ifndef KALMANFILTER_H
 #define KALMANFILTER_H
 
-#pragma GCC diagnostic push
+
 
 
 
@@ -11,7 +11,7 @@
 #include "kalmanfiltertype.h"
 #include "kalmanfilterparameters.h"
 #include "kalmanfiltercalculationelements.h"
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

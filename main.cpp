@@ -1,10 +1,10 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "kalmanfilterermenudialog.h"
 #include "trace.h"
-#pragma GCC diagnostic pop
+
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -38,7 +38,7 @@
 #include "whitenoisesystemtype.h"
 #include "whitenoisesystemtypes.h"
 
-#pragma GCC diagnostic pop
+
 
 boost::numeric::ublas::matrix<double> ConvertToUblasMatrixDouble(
   const boost::numeric::ublas::matrix<std::string>& v

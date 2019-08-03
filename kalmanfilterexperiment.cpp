@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -10,7 +10,7 @@
 #include "kalmanfiltercalculationelementsfactory.h"
 #include "modelfunctionparser.h"
 #include "matrix.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::KalmanFilterExperiment::KalmanFilterExperiment(
   const int time,

@@ -1,10 +1,10 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "laggedwhitenoisesystemfactory.h"
 #include "matrix.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::LaggedWhiteNoiseSystemFactory::LaggedWhiteNoiseSystemFactory()
 {

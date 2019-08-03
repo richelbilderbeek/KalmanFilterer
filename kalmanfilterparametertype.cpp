@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -6,7 +6,7 @@
 
 #include <cassert>
 #include <boost/numeric/conversion/cast.hpp>
-#pragma GCC diagnostic pop
+
 
 bool ribi::kalman::operator<(
   const KalmanFilterParameterType lhs,

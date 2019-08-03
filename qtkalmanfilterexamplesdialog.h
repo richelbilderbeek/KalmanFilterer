@@ -1,13 +1,13 @@
 #ifndef QTKALMANFILTERERPARAMETERSDIALOG
 #define QTKALMANFILTERERPARAMETERSDIALOG
 
-#pragma GCC diagnostic push
+
 
 
 #include "qthideandshowdialog.h"
 
 #include <boost/signals2.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilterexample.h"
 

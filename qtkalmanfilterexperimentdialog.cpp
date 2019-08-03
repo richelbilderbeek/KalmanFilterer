@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -46,7 +46,7 @@
 #include "whitenoisesystemparameter.h"
 #include "whitenoisesystemtypes.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFilterExperimentDialog::QtKalmanFilterExperimentDialog(
   const boost::shared_ptr<QtKalmanFilterExperimentModel> model,

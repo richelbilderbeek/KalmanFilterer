@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -8,7 +8,7 @@
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/random/lagged_fibonacci.hpp>
 #include <boost/random/normal_distribution.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "matrix.h"
 #include "standardwhitenoisesystemparameters.h"

@@ -4,12 +4,12 @@
 #include <memory>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/checked_delete.hpp>
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "standardkalmanfilterparameters.h"
 #include "standardwhitenoisesystemparameters.h"

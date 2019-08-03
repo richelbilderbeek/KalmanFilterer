@@ -1,9 +1,9 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "whitenoisesystemparameters.h"
-#pragma GCC diagnostic pop
+
 
 #include <cassert>
 #include "matrix.h"

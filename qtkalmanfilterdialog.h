@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include "qthideandshowdialog.h"
@@ -12,7 +12,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilter.h"
 #include "kalmanfiltertype.h"

@@ -3,7 +3,7 @@
 
 #include <map>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/shared_ptr.hpp>
@@ -12,7 +12,7 @@
 #include <QObject>
 
 #include <boost/signals2.hpp>
-#pragma GCC diagnostic pop
+
 #include "kalmanfilterexperimentparametertype.h"
 #include "kalmanfiltertype.h"
 #include "kalmanfilter.h"

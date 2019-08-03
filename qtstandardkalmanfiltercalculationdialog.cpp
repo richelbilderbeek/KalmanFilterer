@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -13,7 +13,7 @@
 #include "standardkalmanfilterparameters.h"
 #include "ui_qtstandardkalmanfiltercalculationdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtStandardKalmanFilterCalculationDialog
   ::QtStandardKalmanFilterCalculationDialog(QWidget *parent) :

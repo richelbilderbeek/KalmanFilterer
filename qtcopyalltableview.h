@@ -1,10 +1,10 @@
 #ifndef QTCOPYALLTABLEVIEW_H
 #define QTCOPYALLTABLEVIEW_H
 
-#pragma GCC diagnostic push
+
 
 #include <QTableView>
-#pragma GCC diagnostic pop
+
 
 #include <string>
 #include <vector>

@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -31,7 +31,7 @@
 #include "qtkalmanfilterexperimentdialog.h"
 #include "steadystatekalmanfilterfactory.h"
 #include "ui_qtkalmanfiltererparameterdialog.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtParameterDialog::QtParameterDialog(
   const std::string& parameter_name,

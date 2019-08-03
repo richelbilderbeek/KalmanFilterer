@@ -1,10 +1,10 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "standardwhitenoisesystemfactory.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::StandardWhiteNoiseSystemFactory::StandardWhiteNoiseSystemFactory()
 {

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/checked_delete.hpp>
@@ -17,7 +17,7 @@
 #include "kalmanfilter.h"
 #include "whitenoisesystem.h"
 
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

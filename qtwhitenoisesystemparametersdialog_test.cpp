@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -32,7 +32,7 @@
 #include "whitenoisesystemparameter.h"
 #include "whitenoisesystemparametertype.h"
 
-#pragma GCC diagnostic pop
+
 
 void ribi::kalman::QtWhiteNoiseSystemParametersDialogTest::all_tests()
 {

@@ -1,12 +1,12 @@
 #ifndef STEADYSTATEKALMANFILTER_H
 #define STEADYSTATEKALMANFILTER_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
-#pragma GCC diagnostic pop
+
 
 
 #include "kalmanfilter.h"

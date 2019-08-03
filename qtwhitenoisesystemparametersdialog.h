@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
@@ -12,7 +12,7 @@
 #include <boost/shared_ptr.hpp>
 #include "qthideandshowdialog.h"
 #include <QTableWidget>
-#pragma GCC diagnostic pop
+
 
 ///NEVER FORGET: Do never use forward declarations in header files parsed by MOC
 #include "laggedwhitenoisesystemparameters.h"

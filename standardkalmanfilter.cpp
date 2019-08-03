@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -7,7 +7,7 @@
 #include <boost/numeric/conversion/cast.hpp>
 
 #include "matrix.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::StandardKalmanFilter::StandardKalmanFilter(
   const boost::shared_ptr<StandardKalmanFilterCalculationElements>& calculation,

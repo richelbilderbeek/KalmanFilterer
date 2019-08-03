@@ -1,12 +1,12 @@
 #ifndef STANDARDKALMANFILTERPARAMETERS_H
 #define STANDARDKALMANFILTERPARAMETERS_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/checked_delete.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilterparameters.h"
 

@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -11,7 +11,7 @@
 
 #include "matrix.h"
 #include "standardkalmanfilterfactory.h"
-#pragma GCC diagnostic pop
+
 
 using namespace ribi;
 using namespace ribi::kalman;

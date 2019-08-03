@@ -1,10 +1,10 @@
 #ifndef STEADYSTATEKALMANFILTERPARAMETERS_H
 #define STEADYSTATEKALMANFILTERPARAMETERS_H
 
-#pragma GCC diagnostic push
+
 
 #include <boost/checked_delete.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilterparameters.h"
 

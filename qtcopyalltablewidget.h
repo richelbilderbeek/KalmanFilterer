@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 #include <QTableWidget>
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 

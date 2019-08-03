@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -10,7 +10,7 @@
 #include "kalmanfilter.h"
 #include "kalmanfilterparameters.h"
 #include "steadystatekalmanfilterparameters.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::SteadyStateKalmanFilter::SteadyStateKalmanFilter(
   const boost::shared_ptr<KalmanFilterCalculationElements>& calculation,

@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -12,7 +12,7 @@
 #include "kalmanfiltercalculationelements.h"
 #include "ui_qtfixedlagsmootherkalmanfiltercalculationdialog.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtFixedLagSmootherKalmanFilterCalculationDialog
   ::QtFixedLagSmootherKalmanFilterCalculationDialog(QWidget *parent) :

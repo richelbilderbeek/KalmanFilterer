@@ -1,7 +1,7 @@
 #ifndef WHITENOISESYSTEM_H
 #define WHITENOISESYSTEM_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/shared_ptr.hpp>
@@ -9,7 +9,7 @@
 #include "whitenoisesystemtype.h"
 #include "whitenoisesystemparameters.h"
 
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 namespace kalman {

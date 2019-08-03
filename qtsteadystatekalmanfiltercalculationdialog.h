@@ -1,7 +1,7 @@
 #ifndef QTSTEADYSTATEKALMANFILTERCALCULATIONDIALOG_H
 #define QTSTEADYSTATEKALMANFILTERCALCULATIONDIALOG_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/numeric/ublas/matrix.hpp>
@@ -11,7 +11,7 @@
 #include "kalmanfilterexperiment.h"
 #include "qtkalmanfiltercalculationdialog.h"
 #include "steadystatekalmanfiltercalculationelements.h"
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtSteadyStateKalmanFilterCalculationDialog;

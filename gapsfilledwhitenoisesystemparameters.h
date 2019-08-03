@@ -1,10 +1,10 @@
 #ifndef GAPSFILLEDWHITENOISESYSTEMPARAMETERS_H
 #define GAPSFILLEDWHITENOISESYSTEMPARAMETERS_H
 
-#pragma GCC diagnostic push
+
 
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "whitenoisesystemparameters.h"
 

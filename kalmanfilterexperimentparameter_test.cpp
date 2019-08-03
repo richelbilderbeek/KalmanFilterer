@@ -3,12 +3,12 @@
 #include <stdexcept>
 #include <boost/test/unit_test.hpp>
 
-#pragma GCC diagnostic push
+
 
 
 
 #include <boost/numeric/conversion/cast.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfilterparameter.h"
 #include "whitenoisesystemparameter.h"

@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/bimap.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "kalmanfiltertype.h"
 

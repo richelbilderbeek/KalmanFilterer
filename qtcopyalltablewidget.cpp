@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -14,7 +14,7 @@
 
 #include "container.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::QtCopyAllTableWidget::QtCopyAllTableWidget(QWidget *parent)
   : QTableWidget(parent)

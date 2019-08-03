@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -21,7 +21,7 @@
 #include "qtwhitenoisesystemparametersdialog.h"
 #include "standardwhitenoisesystemparameters.h"
 #include "ui_qtkalmanfilterermenudialog.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFiltererMenuDialog::QtKalmanFiltererMenuDialog(QWidget *parent) :
     QtHideAndShowDialog(parent),

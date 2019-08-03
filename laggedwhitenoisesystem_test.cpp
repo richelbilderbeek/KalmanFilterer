@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -7,7 +7,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <boost/numeric/conversion/cast.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "matrix.h"
 #include "laggedwhitenoisesystem.h"

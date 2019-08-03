@@ -1,10 +1,10 @@
 #ifndef STANDARDKALMANFILTERFACTORY_H
 #define STANDARDKALMANFILTERFACTORY_H
 
-#pragma GCC diagnostic push
+
 
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "standardkalmanfilter.h"
 

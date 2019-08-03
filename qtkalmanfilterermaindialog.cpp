@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -59,7 +59,7 @@
 #define DISABLE_QWEBVIEW
 //#endif
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::QtKalmanFiltererMainDialog::QtKalmanFiltererMainDialog(
   const boost::shared_ptr<QtKalmanFilterExperimentModel> model,

@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 #include "kalmanfilterermenudialog.h"
 
@@ -16,7 +16,7 @@
 #include "standardwhitenoisesystemparameters.h"
 #include "steadystatekalmanfilter.h"
 #include "steadystatekalmanfilterparameters.h"
-#pragma GCC diagnostic pop
+
 
 int ribi::kalman::KalmanFiltererMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {

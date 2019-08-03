@@ -1,11 +1,11 @@
-#pragma GCC diagnostic push
+
 
 
 
 #include "gapsfilledwhitenoisesystemfactory.h"
 
 #include "matrix.h"
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::GapsFilledWhiteNoiseSystemFactory::GapsFilledWhiteNoiseSystemFactory()
 {

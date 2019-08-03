@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -8,7 +8,7 @@
 
 #include "ribi_random.h"
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::WhiteNoiseSystem::WhiteNoiseSystem(
   const boost::shared_ptr<const WhiteNoiseSystemParameters>& parameters

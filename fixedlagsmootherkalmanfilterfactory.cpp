@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -6,7 +6,7 @@
 
 #include <cassert>
 
-#pragma GCC diagnostic pop
+
 
 ribi::kalman::FixedLagSmootherKalmanFilterFactory::FixedLagSmootherKalmanFilterFactory()
 {

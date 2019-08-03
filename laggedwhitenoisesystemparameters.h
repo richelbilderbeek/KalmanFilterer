@@ -1,11 +1,11 @@
 #ifndef LAGGEDWHITENOISESYSTEMPARAMETERS_H
 #define LAGGEDWHITENOISESYSTEMPARAMETERS_H
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/shared_ptr.hpp>
-#pragma GCC diagnostic pop
+
 
 #include "whitenoisesystemparameters.h"
 #include "standardwhitenoisesystemparameters.h"

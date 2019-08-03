@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 
@@ -14,7 +14,7 @@
 #include "gapsfilledwhitenoisesystemfactory.h"
 #include "gapsfilledwhitenoisesystemparameters.h"
 
-#pragma GCC diagnostic pop
+
 
 using namespace ribi;
 using namespace ribi::kalman;
