@@ -1,10 +1,5 @@
 # KalmanFilterer
 
-Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
----|---|---
-`master`|[![Build Status](https://travis-ci.org/richelbilderbeek/KalmanFilterer.svg?branch=master)](https://travis-ci.org/richelbilderbeek/KalmanFilterer) | [![codecov.io](https://codecov.io/github/richelbilderbeek/KalmanFilterer/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/KalmanFilterer?branch=master)
-`develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/KalmanFilterer.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/KalmanFilterer) | [![codecov.io](https://codecov.io/github/richelbilderbeek/KalmanFilterer/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/KalmanFilterer?branch=develop)
-
 KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using the STL, Boost, Qt and Qwt libraries.
 
  * [Download the Windows executable](http://richelbilderbeek.nl/KalmanFiltererDesktopExe.zip)
