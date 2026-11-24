@@ -1,5 +1,7 @@
 # KalmanFilterer
 
+[Go to the nicely rendered website](https://richelbilderbeek.github.io/KalmanFilterer/).
+
 KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using the STL, Boost, Qt and Qwt libraries.
 
  * [Download the Windows executable](http://richelbilderbeek.nl/KalmanFiltererDesktopExe.zip)

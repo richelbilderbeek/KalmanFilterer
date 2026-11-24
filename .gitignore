@@ -39,3 +39,5 @@ release/
 *.pro.user.*
 .qmake.stash
 *.zip
+
+site/
