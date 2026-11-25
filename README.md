@@ -1,11 +1,15 @@
 # KalmanFilterer
 
-[Go to the nicely rendered website](https://richelbilderbeek.github.io/KalmanFilterer/).
+[Go to the nicely rendered
+website](https://richelbilderbeek.github.io/KalmanFilterer/).
 
-KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using the STL, Boost, Qt and Qwt libraries.
+KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using
+the STL, Boost, Qt and Qwt libraries.
 
-* [Download the Windows executable](http://richelbilderbeek.nl/KalmanFiltererDesktopExe.zip)
-* Videos: [YouTube](https://youtu.be/msEOLkdcZBA) [download (.ogv)](http://richelbilderbeek.nl/kalman_filterer.ogv)
+* [Download the Windows
+  executable](http://richelbilderbeek.nl/KalmanFiltererDesktopExe.zip)
+* Videos: [YouTube](https://youtu.be/msEOLkdcZBA) [download
+  (.ogv)](http://richelbilderbeek.nl/kalman_filterer.ogv)
 
 ![Menu v2.0](pics/KalmanFiltererMenu_2_0.png)
 
@@ -13,7 +17,7 @@ KalmanFilterer is a tool to investigate Kalman filters, programmed in C++ using 
 
 ![Plotting v2.0](pics/KalmanFiltererPlot_2_0.png)
 
-# Older screenshots
+## Older screenshots
 
 ![v1.15](pics/KalmanFilterer_1_15.png)
 
