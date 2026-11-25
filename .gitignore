@@ -41,3 +41,7 @@ release/
 *.zip
 
 site/
+
+wordlist.dic
+
+coverage/

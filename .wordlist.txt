@@ -1,0 +1,7 @@
+Bilderbeek's
+Kalman
+KalmanFilterer
+Qwt
+Richèl
+STL
+ogv
