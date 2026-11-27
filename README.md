@@ -1,5 +1,7 @@
 # KalmanFilterer
 
+[![Codecov](https://codecov.io/gh/richelbilderbeek/KalmanFilterer/branch/main/graph/badge.svg)](https://codecov.io/gh/richelbilderbeek/KalmanFilterer)
+
 [Go to the nicely rendered
 website](https://richelbilderbeek.github.io/KalmanFilterer/).
 

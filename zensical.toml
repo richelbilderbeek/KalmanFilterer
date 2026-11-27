@@ -2,7 +2,7 @@
 site_name = "KalmanFilterer"
 site_url = "https://richelbilderbeek.github.io/KalmanFilterer/"
 repo_url = "https://github.com/richelbilderbeek/KalmanFilterer"
-edit_uri = "blob/master/docs/"
+edit_uri = "blob/main/docs/"
 
 nav = [
   { "Start" = "README.md"}
